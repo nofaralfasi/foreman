@@ -83,3 +83,10 @@ function fetchNetworks(url, clusterId) {
     },
   });
 }
+
+export function onFirmwareChange(item) {
+  const selected = $(item).val();
+  const inputs = $('#efi_features');
+
+  inputs.toggleClass('hide', selected === 'bios');
+}

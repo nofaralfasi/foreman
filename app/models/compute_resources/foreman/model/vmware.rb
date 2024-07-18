@@ -206,6 +206,7 @@ module Foreman::Model
         "automatic" => N_("Automatic"),
         "bios" => N_("BIOS"),
         "efi" => N_("EFI"),
+        "uefi_sb" => N_("UEFI Secure Boot"),
       }
     end
 
@@ -494,6 +495,18 @@ module Foreman::Model
       firmware_type = args.delete(:firmware_type)
       args[:firmware] = firmware_mapping(firmware_type) if args[:firmware] == 'automatic'
 
+      virtual_tpm = args.delete(:virtual_tpm) == '1'
+      if args[:firmware] == 'bios' && virtual_tpm
+        errors.add :base, _('TPM is not supported with BIOS firmware and has been automatically disabled. Please review firmware selection.')
+      else
+        args[:virtual_tpm] = virtual_tpm
+      end
+
+      if args[:firmware] == 'uefi_sb'
+        args[:firmware] = 'efi'
+        args[:secure_boot] = true
+      end
+
       args.reject! { |k, v| v.nil? }
       args
     end
@@ -526,6 +539,7 @@ module Foreman::Model
       else
         vm = new_vm(args)
         vm.firmware = 'bios' if vm.firmware == 'automatic'
+        raise errors.full_messages.join(', ') unless errors.empty?
         vm.save
       end
     rescue Fog::Vsphere::Compute::NotFound => e
@@ -761,22 +775,6 @@ module Foreman::Model
       normalized
     end
 
-    def secure_boot
-      attrs[:secure_boot] ||= false
-    end
-
-    def secure_boot=(enabled)
-      attrs[:secure_boot] = ActiveRecord::Type::Boolean.new.cast(enabled)
-    end
-
-    def virtual_tpm
-      attrs[:virtual_tpm] ||= false
-    end
-
-    def virtual_tpm=(enabled)
-      attrs[:virtual_tpm] = ActiveRecord::Type::Boolean.new.cast(enabled)
-    end
-
     private
 
     def dc
@@ -832,8 +830,14 @@ module Foreman::Model
     end
 
     def firmware_mapping(firmware_type)
-      return 'efi' if firmware_type == :uefi
-      'bios'
+      case firmware_type
+      when :uefi
+        'efi'
+      when :uefi_sb
+        'uefi_sb'
+      else
+        'bios'
+      end
     end
 
     def set_vm_volumes_attributes(vm, vm_attrs)

@@ -6,9 +6,17 @@
   <%= counter_f(f, :corespersocket, label: _('Cores per socket'), recommended_max_value: compute_resource.max_cpu_count, value: f.object.corespersocket || 1) %>
 </div>
 <%= text_f f, :memory_mb, :class => "col-md-2", :label => _("Memory (MB)") %>
+
+<%
+  firmware = if f.object.firmware == 'efi' && f.object.secure_boot
+                   'uefi_sb'
+                 else
+                   f.object.firmware
+                 end
+%>
 <%= field(f, :firmware, :label => _('Firmware'), :label_size => "col-md-2") do
   compute_resource.firmware_types.collect do |type, name|
-    radio_button_f f, :firmware, {:disabled => !new_vm, :value => type, :text => _(name)}
+    radio_button_f f, :firmware, {:checked => (firmware == type), :disabled => !new_vm, :value => type, :text => _(name), :onchange => 'tfm.computeResource.vmware.onFirmwareChange(this)'}
   end.join(' ').html_safe
 end %>
 <%= selectable_f f, :cluster, compute_resource.clusters, { :include_blank => _('Please select a cluster') },
@@ -49,15 +57,13 @@ end %>
                { :disabled => images.empty?, :label => _('Image'), :label_size => "col-md-2" } %>
 </div>
 
-<%= checkbox_f f, :secure_boot, { :help_inline => _("Enable Secure Bott for provisioning."),
-                                  :label => _('Secure Boot'),
-                                  :label_size => "col-md-2",
-                                  :disabled => !new_vm } %>
-
-<%= checkbox_f f, :virtual_tpm, { :help_inline => _("Add Virtual TPM module to the VM."),
-                                  :label => _('Virtual TPM'),
-                                  :label_size => "col-md-2",
-                                  :disabled => !new_vm } %>
+<!-- # BIOS firmware doesn't support virtual TPM. -->
+<div id='efi_features' <%= 'class=hide' if !new_vm || f.object.firmware == 'bios' %>>
+  <%= checkbox_f f, :virtual_tpm, { :help_inline => _("Add Virtual TPM module to the VM."),
+                                    :label => _('Virtual TPM'),
+                                    :label_help => _("Only compatible with EFI firmware."),
+                                    :label_size => "col-md-2" } %>
+</div>
 
 <%= compute_specific_js(compute_resource, "nic_info") %>
 
