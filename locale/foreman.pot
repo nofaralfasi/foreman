@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 15:05-0400\n"
-"PO-Revision-Date: 2024-08-08 15:05-0400\n"
+"POT-Creation-Date: 2024-11-01 15:36-0400\n"
+"PO-Revision-Date: 2024-11-01 15:36-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -47,38 +47,38 @@ msgstr ""
 msgid "physical @ bridge %s"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:31
+#: ../app/assets/javascripts/host_edit.js:57
 msgid "Loading interfaces information ..."
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:43
+#: ../app/assets/javascripts/host_edit.js:69
 msgid "Error loading interfaces information: %s"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:92
+#: ../app/assets/javascripts/host_edit.js:118
 msgid "Loading virtual machine information ..."
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:503
+#: ../app/assets/javascripts/host_edit.js:550
 msgid "Loading parameters..."
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:656
+#: ../app/assets/javascripts/host_edit.js:703
 #: ../app/helpers/hosts_nic_helper.rb:22
-#: ../app/views/hostgroups/_form.html.erb:48
-#: ../app/views/hostgroups/_form.html.erb:55
+#: ../app/views/hostgroups/_form.html.erb:56
+#: ../app/views/hostgroups/_form.html.erb:63
 msgid "No subnets"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:822
+#: ../app/assets/javascripts/host_edit.js:869
 msgid "Error generating IP: %s"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:952
+#: ../app/assets/javascripts/host_edit.js:999
 msgid "Warning: This combination of loader and OS might not be able to boot."
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit.js:956
+#: ../app/assets/javascripts/host_edit.js:1003
 msgid "Manual configuration is needed."
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ../app/assets/javascripts/host_edit_interfaces.js:192
 #: ../app/helpers/hosts_helper.rb:65 ../app/helpers/hosts_helper.rb:374
-#: ../app/registries/foreman/settings/provisioning.rb:4
+#: ../config/initializers/f_foreman_settings_provisioning.rb:2
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Provisioning/index.js:45
 msgid "Provisioning"
 msgstr ""
@@ -118,21 +118,21 @@ msgid ""
 "use this one instead?"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit_interfaces.js:359
+#: ../app/assets/javascripts/host_edit_interfaces.js:357
 msgid "virtual attached to %s"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit_interfaces.js:360
+#: ../app/assets/javascripts/host_edit_interfaces.js:358
 msgid "virtual"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit_interfaces.js:365
+#: ../app/assets/javascripts/host_edit_interfaces.js:363
 msgid "physical"
 msgstr ""
 
-#: ../app/assets/javascripts/host_edit_interfaces.js:404
+#: ../app/assets/javascripts/host_edit_interfaces.js:402
 #: ../app/helpers/hostgroup_description_helper.rb:9
-#: ../app/registries/menu/loader.rb:62 ../app/views/hosts/index.html.erb:6
+#: ../app/registries/menu/loader.rb:56 ../app/views/hosts/index.html.erb:6
 #: ../app/views/hosts/new.html.erb:1 ../app/views/hosts/welcome.html.erb:3
 msgid "Create Host"
 msgstr ""
@@ -142,7 +142,7 @@ msgstr ""
 #: ../app/helpers/host_description_helper.rb:101
 #: ../app/helpers/hosts_helper.rb:383 ../app/helpers/hosts_helper.rb:385
 #: ../app/models/host_status/build_status.rb:27
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:56
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:52
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/index.js:88
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/BulkActions/buildHosts/BulkBuildHostModal.js:127
 msgid "Build"
@@ -252,20 +252,20 @@ msgstr ""
 msgid "Admin permissions required"
 msgstr ""
 
-#: ../app/controllers/api/base_controller.rb:351
+#: ../app/controllers/api/base_controller.rb:349
 msgid "%{resource_name} not found by id '%{id}'"
 msgstr ""
 
-#: ../app/controllers/api/base_controller.rb:364
+#: ../app/controllers/api/base_controller.rb:362
 msgid "Missing one of the required permissions: %s"
 msgstr ""
 
-#: ../app/controllers/api/base_controller.rb:396
-#: ../app/controllers/application_controller.rb:178
+#: ../app/controllers/api/base_controller.rb:394
+#: ../app/controllers/application_controller.rb:179
 msgid "unknown permission for %s"
 msgstr ""
 
-#: ../app/controllers/api/base_controller.rb:407
+#: ../app/controllers/api/base_controller.rb:405
 msgid "unknown parent permission for %s"
 msgstr ""
 
@@ -289,10 +289,10 @@ msgstr ""
 #: ../app/controllers/api/v2/os_default_templates_controller.rb:55
 #: ../app/controllers/api/v2/parameters_controller.rb:27
 #: ../app/controllers/api/v2/parameters_controller.rb:52
-#: ../app/controllers/api/v2/parameters_controller.rb:80
-#: ../app/controllers/api/v2/parameters_controller.rb:101
-#: ../app/controllers/api/v2/parameters_controller.rb:122
-#: ../app/controllers/api/v2/parameters_controller.rb:142
+#: ../app/controllers/api/v2/parameters_controller.rb:81
+#: ../app/controllers/api/v2/parameters_controller.rb:102
+#: ../app/controllers/api/v2/parameters_controller.rb:123
+#: ../app/controllers/api/v2/parameters_controller.rb:143
 #: ../app/controllers/api/v2/provisioning_templates_controller.rb:20
 #: ../app/controllers/api/v2/ptables_controller.rb:16
 msgid "ID of operating system"
@@ -563,7 +563,7 @@ msgstr ""
 #: ../app/controllers/api/v2/hostgroups_controller.rb:55
 #: ../app/controllers/api/v2/hosts_controller.rb:100
 #: ../app/controllers/api/v2/parameters_controller.rb:66
-#: ../app/controllers/api/v2/registration_controller.rb:64
+#: ../app/controllers/api/v2/registration_controller.rb:65
 msgid "Type of value"
 msgstr ""
 
@@ -991,10 +991,10 @@ msgstr ""
 #: ../app/controllers/api/v2/domains_controller.rb:27
 #: ../app/controllers/api/v2/parameters_controller.rb:30
 #: ../app/controllers/api/v2/parameters_controller.rb:55
-#: ../app/controllers/api/v2/parameters_controller.rb:83
-#: ../app/controllers/api/v2/parameters_controller.rb:105
-#: ../app/controllers/api/v2/parameters_controller.rb:126
-#: ../app/controllers/api/v2/parameters_controller.rb:145
+#: ../app/controllers/api/v2/parameters_controller.rb:84
+#: ../app/controllers/api/v2/parameters_controller.rb:106
+#: ../app/controllers/api/v2/parameters_controller.rb:127
+#: ../app/controllers/api/v2/parameters_controller.rb:146
 msgid "ID of subnet"
 msgstr ""
 
@@ -1237,7 +1237,7 @@ msgstr ""
 #: ../app/controllers/api/v2/hosts_controller.rb:98
 #: ../app/controllers/api/v2/operatingsystems_controller.rb:25
 #: ../app/controllers/api/v2/operatingsystems_controller.rb:51
-#: ../app/controllers/api/v2/registration_controller.rb:62
+#: ../app/controllers/api/v2/registration_controller.rb:63
 msgid "Name of the parameter"
 msgstr ""
 
@@ -1245,7 +1245,7 @@ msgstr ""
 #: ../app/controllers/api/v2/hosts_controller.rb:99
 #: ../app/controllers/api/v2/operatingsystems_controller.rb:26
 #: ../app/controllers/api/v2/operatingsystems_controller.rb:52
-#: ../app/controllers/api/v2/registration_controller.rb:63
+#: ../app/controllers/api/v2/registration_controller.rb:64
 msgid "Parameter value"
 msgstr ""
 
@@ -1274,12 +1274,12 @@ msgid "Clone a host group"
 msgstr ""
 
 #: ../app/controllers/api/v2/hostgroups_controller.rb:103
-#: ../app/controllers/api/v2/hosts_controller.rb:309
+#: ../app/controllers/api/v2/hosts_controller.rb:308
 msgid "Rebuild orchestration config"
 msgstr ""
 
 #: ../app/controllers/api/v2/hostgroups_controller.rb:105
-#: ../app/controllers/api/v2/hosts_controller.rb:311
+#: ../app/controllers/api/v2/hosts_controller.rb:310
 msgid "Limit rebuild steps, valid steps are %{host_rebuild_steps}"
 msgstr ""
 
@@ -1288,12 +1288,12 @@ msgid "Operate on child hostgroup hosts"
 msgstr ""
 
 #: ../app/controllers/api/v2/hostgroups_controller.rb:115
-#: ../app/controllers/api/v2/hosts_controller.rb:316
+#: ../app/controllers/api/v2/hosts_controller.rb:315
 msgid "Configuration successfully rebuilt."
 msgstr ""
 
 #: ../app/controllers/api/v2/hostgroups_controller.rb:118
-#: ../app/controllers/api/v2/hosts_controller.rb:318
+#: ../app/controllers/api/v2/hosts_controller.rb:317
 msgid "Configuration rebuild failed for: %s."
 msgstr ""
 
@@ -1414,10 +1414,10 @@ msgstr ""
 #: ../app/controllers/api/v2/hosts_controller.rb:33
 #: ../app/controllers/api/v2/parameters_controller.rb:25
 #: ../app/controllers/api/v2/parameters_controller.rb:50
-#: ../app/controllers/api/v2/parameters_controller.rb:78
-#: ../app/controllers/api/v2/parameters_controller.rb:99
-#: ../app/controllers/api/v2/parameters_controller.rb:120
-#: ../app/controllers/api/v2/parameters_controller.rb:140
+#: ../app/controllers/api/v2/parameters_controller.rb:79
+#: ../app/controllers/api/v2/parameters_controller.rb:100
+#: ../app/controllers/api/v2/parameters_controller.rb:121
+#: ../app/controllers/api/v2/parameters_controller.rb:141
 #: ../app/controllers/api/v2/template_combinations_controller.rb:11
 msgid "ID of host group"
 msgstr ""
@@ -1425,20 +1425,20 @@ msgstr ""
 #: ../app/controllers/api/v2/hosts_controller.rb:34
 #: ../app/controllers/api/v2/parameters_controller.rb:28
 #: ../app/controllers/api/v2/parameters_controller.rb:53
-#: ../app/controllers/api/v2/parameters_controller.rb:81
-#: ../app/controllers/api/v2/parameters_controller.rb:102
-#: ../app/controllers/api/v2/parameters_controller.rb:123
-#: ../app/controllers/api/v2/parameters_controller.rb:143
+#: ../app/controllers/api/v2/parameters_controller.rb:82
+#: ../app/controllers/api/v2/parameters_controller.rb:103
+#: ../app/controllers/api/v2/parameters_controller.rb:124
+#: ../app/controllers/api/v2/parameters_controller.rb:144
 msgid "ID of location"
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:35
 #: ../app/controllers/api/v2/parameters_controller.rb:29
 #: ../app/controllers/api/v2/parameters_controller.rb:54
-#: ../app/controllers/api/v2/parameters_controller.rb:82
-#: ../app/controllers/api/v2/parameters_controller.rb:103
-#: ../app/controllers/api/v2/parameters_controller.rb:124
-#: ../app/controllers/api/v2/parameters_controller.rb:144
+#: ../app/controllers/api/v2/parameters_controller.rb:83
+#: ../app/controllers/api/v2/parameters_controller.rb:104
+#: ../app/controllers/api/v2/parameters_controller.rb:125
+#: ../app/controllers/api/v2/parameters_controller.rb:145
 msgid "ID of organization"
 msgstr ""
 
@@ -1451,7 +1451,7 @@ msgid "not required if using a subnet with DHCP proxy"
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:78
-#: ../app/controllers/api/v2/registration_controller.rb:55
+#: ../app/controllers/api/v2/registration_controller.rb:56
 msgid ""
 "required for managed host that is bare metal, not required if it's a virtual m"
 "achine"
@@ -1461,9 +1461,9 @@ msgstr ""
 #: ../app/controllers/api/v2/hosts_controller.rb:80
 #: ../app/controllers/api/v2/hosts_controller.rb:85
 #: ../app/controllers/api/v2/hosts_controller.rb:89
-#: ../app/controllers/api/v2/registration_controller.rb:56
 #: ../app/controllers/api/v2/registration_controller.rb:57
 #: ../app/controllers/api/v2/registration_controller.rb:58
+#: ../app/controllers/api/v2/registration_controller.rb:59
 msgid "required if host is managed and value is not inherited from host group"
 msgstr ""
 
@@ -1492,12 +1492,12 @@ msgid "Host's owner type"
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:97
-#: ../app/controllers/api/v2/registration_controller.rb:61
+#: ../app/controllers/api/v2/registration_controller.rb:62
 msgid "Host's parameters (array or indexed hash)"
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:104
-#: ../app/controllers/api/v2/registration_controller.rb:68
+#: ../app/controllers/api/v2/registration_controller.rb:69
 #: ../app/views/hosts/_form.html.erb:129
 msgid "Include this host within Foreman reporting"
 msgstr ""
@@ -1507,7 +1507,7 @@ msgid "The method used to provision the host."
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:106
-#: ../app/controllers/api/v2/registration_controller.rb:69
+#: ../app/controllers/api/v2/registration_controller.rb:70
 msgid ""
 "True/False flag whether a host is managed or unmanaged. Note: this value also "
 "determines whether several parameters are required or not"
@@ -1518,7 +1518,7 @@ msgid "UUID to track orchestration tasks status, GET /api/orchestration/:UUID/ta
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:108
-#: ../app/controllers/api/v2/registration_controller.rb:70
+#: ../app/controllers/api/v2/registration_controller.rb:71
 #: ../app/views/hosts/_form.html.erb:134
 msgid "Additional information about this host"
 msgstr ""
@@ -1528,8 +1528,8 @@ msgid "Host's network interfaces."
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:112
-#: ../app/controllers/api/v2/interfaces_controller.rb:80
-#: ../app/controllers/api/v2/interfaces_controller.rb:89
+#: ../app/controllers/api/v2/interfaces_controller.rb:78
+#: ../app/controllers/api/v2/interfaces_controller.rb:87
 msgid "ID of interface"
 msgstr ""
 
@@ -1538,7 +1538,7 @@ msgid "Additional compute resource specific attributes."
 msgstr ""
 
 #: ../app/controllers/api/v2/hosts_controller.rb:119
-#: ../app/controllers/api/v2/registration_controller.rb:76
+#: ../app/controllers/api/v2/registration_controller.rb:77
 msgid "Parameters for host's %s facet"
 msgstr ""
 
@@ -1555,19 +1555,19 @@ msgstr ""
 msgid "Update a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:169
+#: ../app/controllers/api/v2/hosts_controller.rb:168
 msgid "Delete a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:176
+#: ../app/controllers/api/v2/hosts_controller.rb:175
 msgid "Get ENC values of host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:183
+#: ../app/controllers/api/v2/hosts_controller.rb:182
 msgid "Get status of host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:185
+#: ../app/controllers/api/v2/hosts_controller.rb:184
 msgid ""
 "status type, can be one of\n"
 "* global\n"
@@ -1575,132 +1575,132 @@ msgid ""
 "* build\n"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:194
+#: ../app/controllers/api/v2/hosts_controller.rb:193
 msgid "Returns string representing a host status of a given type"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:201
-#: ../app/controllers/api/v2/hosts_controller.rb:219
+#: ../app/controllers/api/v2/hosts_controller.rb:200
+#: ../app/controllers/api/v2/hosts_controller.rb:218
 msgid "Status %s does not exist."
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:205
+#: ../app/controllers/api/v2/hosts_controller.rb:204
 msgid "Clear sub-status of host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:207
+#: ../app/controllers/api/v2/hosts_controller.rb:206
 msgid ""
 "status type\n"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:213
+#: ../app/controllers/api/v2/hosts_controller.rb:212
 msgid "Clears a host sub-status of a given type"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:217
+#: ../app/controllers/api/v2/hosts_controller.rb:216
 msgid "Cannot delete global status."
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:225
+#: ../app/controllers/api/v2/hosts_controller.rb:224
 msgid "Get vm attributes of host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:248
+#: ../app/controllers/api/v2/hosts_controller.rb:247
 msgid "Disassociate the host from a VM"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:255
+#: ../app/controllers/api/v2/hosts_controller.rb:254
 msgid "Run a power operation on host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:257
+#: ../app/controllers/api/v2/hosts_controller.rb:256
 msgid ""
 "power action, valid actions are (on/start), (off/stop), (soft/reboot), (cycle/"
 "reset), (state/status)"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:261
+#: ../app/controllers/api/v2/hosts_controller.rb:260
 #: ../app/services/power_manager/power_status.rb:17
 msgid "Power operations are not enabled on this host."
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:268
+#: ../app/controllers/api/v2/hosts_controller.rb:267
 msgid "Unknown power action: available methods are %s"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:272
+#: ../app/controllers/api/v2/hosts_controller.rb:271
 msgid ""
 "Fetch the status of whether the host is powered on or not. Supported hosts are"
 " VMs and physical hosts with BMCs."
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:274
+#: ../app/controllers/api/v2/hosts_controller.rb:273
 msgid ""
 "Timeout to retrieve the power status of the host in seconds. Default is 3 seco"
 "nds."
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:280
+#: ../app/controllers/api/v2/hosts_controller.rb:279
 msgid "Boot host from specified device"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:282
+#: ../app/controllers/api/v2/hosts_controller.rb:281
 msgid "boot device, valid devices are disk, cdrom, pxe, bios"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:289
+#: ../app/controllers/api/v2/hosts_controller.rb:288
 msgid "Unknown device: available devices are %s"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:295
+#: ../app/controllers/api/v2/hosts_controller.rb:294
 msgid "Upload facts for a host, creating the host if required"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:296
+#: ../app/controllers/api/v2/hosts_controller.rb:295
 msgid "hostname of the host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:297
+#: ../app/controllers/api/v2/hosts_controller.rb:296
 msgid "hash containing the facts for the host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:298
+#: ../app/controllers/api/v2/hosts_controller.rb:297
 msgid "optional: certname of the host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:299
+#: ../app/controllers/api/v2/hosts_controller.rb:298
 msgid "optional: the STI type of host to create"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:322
+#: ../app/controllers/api/v2/hosts_controller.rb:321
 msgid "Preview rendered provisioning template content"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:324
+#: ../app/controllers/api/v2/hosts_controller.rb:323
 msgid "Template kinds, available values: %{template_kinds}"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:328
+#: ../app/controllers/api/v2/hosts_controller.rb:327
 msgid "No template with kind %{kind} for %{host}"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:334
+#: ../app/controllers/api/v2/hosts_controller.rb:333
 msgid "Get provisioning templates for the host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:343
+#: ../app/controllers/api/v2/hosts_controller.rb:342
 msgid "No templates found for %{host}"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:353
+#: ../app/controllers/api/v2/hosts_controller.rb:352
 msgid "Get all inherited parameters for a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:432
+#: ../app/controllers/api/v2/hosts_controller.rb:431
 msgid "Invalid type for host creation via facts: %s"
 msgstr ""
 
-#: ../app/controllers/api/v2/hosts_controller.rb:435
+#: ../app/controllers/api/v2/hosts_controller.rb:434
 msgid "A problem occurred when detecting host type: %s"
 msgstr ""
 
@@ -1807,158 +1807,158 @@ msgstr ""
 msgid "Unassign a given host from the Foreman instance"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:13
+#: ../app/controllers/api/v2/interfaces_controller.rb:11
 msgid "List all interfaces for host"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:14
+#: ../app/controllers/api/v2/interfaces_controller.rb:12
 msgid "List all interfaces for domain"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:15
+#: ../app/controllers/api/v2/interfaces_controller.rb:13
 msgid "List all interfaces for subnet"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:16
-#: ../app/controllers/api/v2/interfaces_controller.rb:26
-#: ../app/controllers/api/v2/interfaces_controller.rb:70
-#: ../app/controllers/api/v2/interfaces_controller.rb:79
-#: ../app/controllers/api/v2/interfaces_controller.rb:88
+#: ../app/controllers/api/v2/interfaces_controller.rb:14
+#: ../app/controllers/api/v2/interfaces_controller.rb:24
+#: ../app/controllers/api/v2/interfaces_controller.rb:68
+#: ../app/controllers/api/v2/interfaces_controller.rb:77
+#: ../app/controllers/api/v2/interfaces_controller.rb:86
 msgid "ID or name of host"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:17
+#: ../app/controllers/api/v2/interfaces_controller.rb:15
 msgid "ID or name of domain"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:18
+#: ../app/controllers/api/v2/interfaces_controller.rb:16
 msgid "ID or name of subnet"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:25
+#: ../app/controllers/api/v2/interfaces_controller.rb:23
 msgid "Show an interface for host"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:27
+#: ../app/controllers/api/v2/interfaces_controller.rb:25
 msgid "ID or name of interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:34
+#: ../app/controllers/api/v2/interfaces_controller.rb:32
 msgid "MAC address of interface. Required for managed interfaces on bare metal."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:35
+#: ../app/controllers/api/v2/interfaces_controller.rb:33
 msgid "IPv4 address of interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:36
+#: ../app/controllers/api/v2/interfaces_controller.rb:34
 msgid "IPv6 address of interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:37
+#: ../app/controllers/api/v2/interfaces_controller.rb:35
 msgid "Interface type, e.g. bmc. Default is %{default_nic_type}"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:38
+#: ../app/controllers/api/v2/interfaces_controller.rb:36
 msgid "Interface's DNS name"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:39
+#: ../app/controllers/api/v2/interfaces_controller.rb:37
 msgid "Foreman subnet ID of IPv4 interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:40
+#: ../app/controllers/api/v2/interfaces_controller.rb:38
 msgid "Foreman subnet ID of IPv6 interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:41
+#: ../app/controllers/api/v2/interfaces_controller.rb:39
 msgid ""
 "Foreman domain ID of interface. Required for primary interfaces on managed hos"
 "ts."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:42
+#: ../app/controllers/api/v2/interfaces_controller.rb:40
 msgid "Device identifier, e.g. eth0 or eth1.1"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:43
+#: ../app/controllers/api/v2/interfaces_controller.rb:41
 msgid ""
 "Should this interface be managed via DHCP and DNS smart proxy and should it be"
 " configured during provisioning?"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:44
+#: ../app/controllers/api/v2/interfaces_controller.rb:42
 msgid ""
 "Should this interface be used for constructing the FQDN of the host? Each mana"
 "ged hosts needs to have one primary interface."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:45
+#: ../app/controllers/api/v2/interfaces_controller.rb:43
 msgid ""
 "Should this interface be used for TFTP of PXELinux (or SSH for image-based hos"
 "ts)? Each managed hosts needs to have one provision interface."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:47
-#: ../app/controllers/api/v2/interfaces_controller.rb:48
+#: ../app/controllers/api/v2/interfaces_controller.rb:45
+#: ../app/controllers/api/v2/interfaces_controller.rb:46
 msgid "Only for BMC interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:49
+#: ../app/controllers/api/v2/interfaces_controller.rb:47
 msgid "Interface provider, e.g. IPMI. Only for BMC interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:51
+#: ../app/controllers/api/v2/interfaces_controller.rb:49
 msgid "Alias or VLAN device"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:52
+#: ../app/controllers/api/v2/interfaces_controller.rb:50
 msgid ""
 "VLAN tag, this attribute has precedence over the subnet VLAN ID. Only for virt"
 "ual interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:53
+#: ../app/controllers/api/v2/interfaces_controller.rb:51
 msgid "MTU, this attribute has precedence over the subnet MTU."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:54
+#: ../app/controllers/api/v2/interfaces_controller.rb:52
 msgid ""
 "Identifier of the interface to which this interface belongs, e.g. eth1. Only f"
 "or virtual interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:56
+#: ../app/controllers/api/v2/interfaces_controller.rb:54
 msgid "Bond mode of the interface, e.g. balance-rr. Only for bond interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:57
+#: ../app/controllers/api/v2/interfaces_controller.rb:55
 msgid ""
 "Identifiers of attached interfaces, e.g. `['eth1', 'eth2']`. For bond interfac"
 "es those are the slaves. Only for bond and bridges interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:58
+#: ../app/controllers/api/v2/interfaces_controller.rb:56
 msgid "Space separated options, e.g. miimon=100. Only for bond interfaces."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:60
+#: ../app/controllers/api/v2/interfaces_controller.rb:58
 msgid "Additional compute resource specific attributes for the interface."
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:64
+#: ../app/controllers/api/v2/interfaces_controller.rb:62
 msgid "interface information"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:69
+#: ../app/controllers/api/v2/interfaces_controller.rb:67
 msgid "Create an interface on a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:78
+#: ../app/controllers/api/v2/interfaces_controller.rb:76
 msgid "Update a host's interface"
 msgstr ""
 
-#: ../app/controllers/api/v2/interfaces_controller.rb:87
+#: ../app/controllers/api/v2/interfaces_controller.rb:85
 msgid "Delete a host's interface"
 msgstr ""
 
@@ -2245,19 +2245,19 @@ msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:24
 #: ../app/controllers/api/v2/parameters_controller.rb:49
-#: ../app/controllers/api/v2/parameters_controller.rb:77
-#: ../app/controllers/api/v2/parameters_controller.rb:98
-#: ../app/controllers/api/v2/parameters_controller.rb:119
-#: ../app/controllers/api/v2/parameters_controller.rb:139
+#: ../app/controllers/api/v2/parameters_controller.rb:78
+#: ../app/controllers/api/v2/parameters_controller.rb:99
+#: ../app/controllers/api/v2/parameters_controller.rb:120
+#: ../app/controllers/api/v2/parameters_controller.rb:140
 msgid "ID of host"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:26
 #: ../app/controllers/api/v2/parameters_controller.rb:51
-#: ../app/controllers/api/v2/parameters_controller.rb:79
-#: ../app/controllers/api/v2/parameters_controller.rb:100
-#: ../app/controllers/api/v2/parameters_controller.rb:121
-#: ../app/controllers/api/v2/parameters_controller.rb:141
+#: ../app/controllers/api/v2/parameters_controller.rb:80
+#: ../app/controllers/api/v2/parameters_controller.rb:101
+#: ../app/controllers/api/v2/parameters_controller.rb:122
+#: ../app/controllers/api/v2/parameters_controller.rb:142
 #: ../app/controllers/api/v2/subnets_controller.rb:17
 msgid "ID of domain"
 msgstr ""
@@ -2291,120 +2291,124 @@ msgid "Show a nested parameter for a subnet"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:56
-#: ../app/controllers/api/v2/parameters_controller.rb:104
-#: ../app/controllers/api/v2/parameters_controller.rb:125
+#: ../app/controllers/api/v2/parameters_controller.rb:105
+#: ../app/controllers/api/v2/parameters_controller.rb:126
 msgid "ID of parameter"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:70
-msgid "Create a nested parameter for a host"
+#: ../app/controllers/api/v2/parameters_controller.rb:67
+msgid "Should the value be hidden"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:71
-msgid "Create a nested parameter for a host group"
+msgid "Create a nested parameter for a host"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:72
-msgid "Create a nested parameter for a domain"
+msgid "Create a nested parameter for a host group"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:73
-msgid "Create a nested parameter for an operating system"
+msgid "Create a nested parameter for a domain"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:74
-msgid "Create a nested parameter for a location"
+msgid "Create a nested parameter for an operating system"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:75
-msgid "Create a nested parameter for an organization"
+msgid "Create a nested parameter for a location"
 msgstr ""
 
 #: ../app/controllers/api/v2/parameters_controller.rb:76
+msgid "Create a nested parameter for an organization"
+msgstr ""
+
+#: ../app/controllers/api/v2/parameters_controller.rb:77
 msgid "Create a nested parameter for a subnet"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:91
+#: ../app/controllers/api/v2/parameters_controller.rb:92
 msgid "Update a nested parameter for a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:92
+#: ../app/controllers/api/v2/parameters_controller.rb:93
 msgid "Update a nested parameter for a host group"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:93
+#: ../app/controllers/api/v2/parameters_controller.rb:94
 msgid "Update a nested parameter for a domain"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:94
+#: ../app/controllers/api/v2/parameters_controller.rb:95
 msgid "Update a nested parameter for an operating system"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:95
+#: ../app/controllers/api/v2/parameters_controller.rb:96
 msgid "Update a nested parameter for a location"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:96
+#: ../app/controllers/api/v2/parameters_controller.rb:97
 msgid "Update a nested parameter for an organization"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:97
+#: ../app/controllers/api/v2/parameters_controller.rb:98
 msgid "Update a nested parameter for a subnet"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:112
+#: ../app/controllers/api/v2/parameters_controller.rb:113
 msgid "Delete a nested parameter for a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:113
+#: ../app/controllers/api/v2/parameters_controller.rb:114
 msgid "Delete a nested parameter for a host group"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:114
+#: ../app/controllers/api/v2/parameters_controller.rb:115
 msgid "Delete a nested parameter for a domain"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:115
+#: ../app/controllers/api/v2/parameters_controller.rb:116
 msgid "Delete a nested parameter for an operating system"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:116
+#: ../app/controllers/api/v2/parameters_controller.rb:117
 msgid "Delete a nested parameter for a location"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:117
+#: ../app/controllers/api/v2/parameters_controller.rb:118
 msgid "Delete a nested parameter for an organization"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:118
+#: ../app/controllers/api/v2/parameters_controller.rb:119
 msgid "Delete a nested parameter for a subnet"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:132
+#: ../app/controllers/api/v2/parameters_controller.rb:133
 msgid "Delete all nested parameters for a host"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:133
+#: ../app/controllers/api/v2/parameters_controller.rb:134
 msgid "Delete all nested parameters for a host group"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:134
+#: ../app/controllers/api/v2/parameters_controller.rb:135
 msgid "Delete all nested parameters for a domain"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:135
+#: ../app/controllers/api/v2/parameters_controller.rb:136
 msgid "Delete all nested parameters for an operating system"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:136
+#: ../app/controllers/api/v2/parameters_controller.rb:137
 msgid "Delete all nested parameter for a location"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:137
+#: ../app/controllers/api/v2/parameters_controller.rb:138
 msgid "Delete all nested parameter for an organization"
 msgstr ""
 
-#: ../app/controllers/api/v2/parameters_controller.rb:138
+#: ../app/controllers/api/v2/parameters_controller.rb:139
 msgid "Delete all nested parameters for a subnet"
 msgstr ""
 
@@ -2689,7 +2693,7 @@ msgstr ""
 
 #: ../app/controllers/api/v2/registration_commands_controller.rb:15
 #: ../app/controllers/api/v2/registration_controller.rb:22
-#: ../app/controllers/api/v2/registration_controller.rb:82
+#: ../app/controllers/api/v2/registration_controller.rb:83
 msgid ""
 "Set 'host_registration_insights' parameter for the host. If it is set to true,"
 " insights client will be installed and registered on Red Hat family operating "
@@ -2698,7 +2702,7 @@ msgstr ""
 
 #: ../app/controllers/api/v2/registration_commands_controller.rb:16
 #: ../app/controllers/api/v2/registration_controller.rb:23
-#: ../app/controllers/api/v2/registration_controller.rb:83
+#: ../app/controllers/api/v2/registration_controller.rb:84
 msgid ""
 "Set 'host_registration_remote_execution' parameter for the host. If it is set "
 "to true, SSH keys will be installed on the host"
@@ -2709,7 +2713,7 @@ msgid "Expiration of the authorization token (in hours), 0 means 'unlimited'."
 msgstr ""
 
 #: ../app/controllers/api/v2/registration_commands_controller.rb:18
-msgid "Enable insecure argument for the initial curl"
+msgid "Enable insecure argument for the initial curl/wget"
 msgstr ""
 
 #: ../app/controllers/api/v2/registration_commands_controller.rb:19
@@ -2749,7 +2753,12 @@ msgstr ""
 msgid "URL of the GPG key for the repository"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_commands_controller.rb:31
+#: ../app/controllers/api/v2/registration_commands_controller.rb:28
+#: ../app/controllers/api/v2/registration_controller.rb:33
+msgid "The download utility to use during host registration"
+msgstr ""
+
+#: ../app/controllers/api/v2/registration_commands_controller.rb:32
 msgid "Operating system doesn't have a 'host_init_config' template assigned."
 msgstr ""
 
@@ -2768,29 +2777,29 @@ msgid ""
 "ent/latest/el8/x86_64/'"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:41
+#: ../app/controllers/api/v2/registration_controller.rb:42
 msgid ""
 "Global Registration Template with name %s defined via default_global_registrat"
 "ion_item Setting not found, please configure the existing template name first"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:48
+#: ../app/controllers/api/v2/registration_controller.rb:49
 msgid "Find or create a host and render the 'Host initial configuration' template"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:53
+#: ../app/controllers/api/v2/registration_controller.rb:54
 msgid "IPv4 address, not required if using a subnet with DHCP proxy"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:54
+#: ../app/controllers/api/v2/registration_controller.rb:55
 msgid "IPv6 address, not required if using a subnet with DHCP proxy"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:71
+#: ../app/controllers/api/v2/registration_controller.rb:72
 msgid "Host's network interfaces"
 msgstr ""
 
-#: ../app/controllers/api/v2/registration_controller.rb:100
+#: ../app/controllers/api/v2/registration_controller.rb:101
 msgid ""
 "Unable to find 'Host initial configuration' template for host %{host} running "
 "%{os}, associate the 'Host initial configuration' template for this OS first"
@@ -3471,51 +3480,51 @@ msgstr ""
 msgid "Use to authenticate against external authentication source"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:85
+#: ../app/controllers/application_controller.rb:86
 msgid "An email address is required, please update your account details"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:101
+#: ../app/controllers/application_controller.rb:102
 msgid "Invalid query"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:135
+#: ../app/controllers/application_controller.rb:136
 msgid "Data has been cleaned up"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:248
+#: ../app/controllers/application_controller.rb:247
 msgid "Administrator user account required"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:281
+#: ../app/controllers/application_controller.rb:280
 msgid "Successfully created %s."
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:283
+#: ../app/controllers/application_controller.rb:282
 msgid "Successfully updated %s."
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:285
+#: ../app/controllers/application_controller.rb:284
 msgid "Successfully deleted %s."
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:287
+#: ../app/controllers/application_controller.rb:286
 msgid "Unknown action name for success message: %s"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:312
+#: ../app/controllers/application_controller.rb:311
 msgid "Conflict - %s"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:361
+#: ../app/controllers/application_controller.rb:360
 msgid "You must create at least one location before continuing."
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:363
+#: ../app/controllers/application_controller.rb:362
 msgid "You must create at least one organization before continuing."
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:376
+#: ../app/controllers/application_controller.rb:375
 #: ../app/helpers/dashboard_helper.rb:61 ../app/helpers/layout_helper.rb:194
 #: ../app/models/host_status/configuration_status.rb:73
 #: ../app/models/host_status/global.rb:10
@@ -3523,7 +3532,7 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: ../app/controllers/application_controller.rb:376
+#: ../app/controllers/application_controller.rb:375
 #: ../app/helpers/dashboard_helper.rb:62 ../app/models/host_status/global.rb:8
 #: ../app/views/hosts/_dhcp_lease_errors.html.erb:18
 msgid "OK"
@@ -3792,23 +3801,23 @@ msgstr ""
 msgid "Puppet CA"
 msgstr ""
 
-#: ../app/controllers/concerns/foreman/controller/registration.rb:57
+#: ../app/controllers/concerns/foreman/controller/registration.rb:58
 #: ../app/controllers/foreman_register/hosts_controller.rb:68
 #: ../app/controllers/templates_controller.rb:141
 msgid "There was an error rendering the %{name} template: %{error}"
 msgstr ""
 
-#: ../app/controllers/concerns/foreman/controller/registration.rb:103
+#: ../app/controllers/concerns/foreman/controller/registration.rb:104
 msgid "URL in :url parameter is missing a scheme, please set http:// or https://"
 msgstr ""
 
-#: ../app/controllers/concerns/foreman/controller/registration_commands.rb:35
+#: ../app/controllers/concerns/foreman/controller/registration_commands.rb:39
 msgid ""
 "Invalid value '%{value}' for jwt_expiration. The value must be between %{minim"
 "um} and %{maximum}. 0 means 'unlimited'."
 msgstr ""
 
-#: ../app/controllers/concerns/foreman/controller/registration_commands.rb:85
+#: ../app/controllers/concerns/foreman/controller/registration_commands.rb:89
 msgid "Proxy lacks one of the following features: 'Registration', 'Templates'"
 msgstr ""
 
@@ -3860,11 +3869,11 @@ msgstr ""
 msgid "Host is not associated with an operating system"
 msgstr ""
 
-#: ../app/controllers/hostgroups_controller.rb:46
+#: ../app/controllers/hostgroups_controller.rb:47
 msgid "The following fields would need reviewing"
 msgstr ""
 
-#: ../app/controllers/hostgroups_controller.rb:82
+#: ../app/controllers/hostgroups_controller.rb:83
 msgid "Cannot delete group %{current} because it has nested groups."
 msgstr ""
 
@@ -3884,7 +3893,7 @@ msgid "PXE"
 msgstr ""
 
 #: ../app/controllers/hosts_controller.rb:16
-#: ../app/models/compute_resources/foreman/model/vmware.rb:208
+#: ../app/models/compute_resources/foreman/model/vmware.rb:207
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Bios/index.js:25
 msgid "BIOS"
 msgstr ""
@@ -4343,7 +4352,7 @@ msgstr ""
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/index.js:244
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/index.js:284
 #: ../webpack/assets/javascripts/react_app/components/PF4/TableIndexPage/Table/DeleteModal.js:48
-#: ../webpack/assets/javascripts/react_app/components/PF4/TableIndexPage/Table/Table.js:88
+#: ../webpack/assets/javascripts/react_app/components/PF4/TableIndexPage/Table/Table.js:91
 #: ../webpack/assets/javascripts/react_app/components/common/table/components/DeleteButton.js:9
 msgid "Delete"
 msgstr ""
@@ -4445,17 +4454,17 @@ msgid "Added %{from} to %{to}"
 msgstr ""
 
 #: ../app/helpers/audits_helper.rb:94
-msgid "Removed %{from} to %{to}"
+msgid "Removed %{from} from %{to}"
 msgstr ""
 
 #. TRANSLATORS: "Table name" or "Table name|Column name" for error messages
 #: ../app/helpers/audits_helper.rb:127 ../app/helpers/audits_helper.rb:369
-#: ../app/registries/menu/loader.rb:13 ../app/views/users/_form.html.erb:6
+#: ../app/registries/menu/loader.rb:7 ../app/views/users/_form.html.erb:6
 #: model_attributes.rb:706
 msgid "User"
 msgstr ""
 
-#: ../app/helpers/audits_helper.rb:202 ../app/registries/menu/loader.rb:54
+#: ../app/helpers/audits_helper.rb:202 ../app/registries/menu/loader.rb:48
 #: ../app/views/architectures/index.html.erb:9
 #: ../app/views/config_reports/index.html.erb:4
 #: ../app/views/domains/index.html.erb:9
@@ -4476,7 +4485,7 @@ msgstr ""
 
 #: ../app/helpers/audits_helper.rb:210
 #: ../app/helpers/host_description_helper.rb:136
-#: ../app/registries/menu/loader.rb:46
+#: ../app/registries/menu/loader.rb:40
 #: ../webpack/assets/javascripts/react_app/routes/Audits/AuditsPage/AuditsPage.js:20
 msgid "Audits"
 msgstr ""
@@ -4855,7 +4864,7 @@ msgstr ""
 #: ../webpack/assets/javascripts/react_app/components/ColumnSelector/ColumnSelector.js:186
 #: ../webpack/assets/javascripts/react_app/components/ConfirmModal/index.js:55
 #: ../webpack/assets/javascripts/react_app/components/ForemanModal/subcomponents/SubmitOrCancel/CancelBtn.js:23
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:64
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:60
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Parameters/EditTableRow.js:174
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/BulkActions/reassignHostGroup/BulkReassignHostgroupModal.js:122
 #: ../webpack/assets/javascripts/react_app/components/Layout/components/ImpersonateIcon/ImpersonateIcon.js:36
@@ -4879,15 +4888,15 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: ../app/helpers/form_helper.rb:327
+#: ../app/helpers/form_helper.rb:326
 msgid "no value"
 msgstr ""
 
-#: ../app/helpers/form_helper.rb:332
+#: ../app/helpers/form_helper.rb:331
 msgid "Inherit parent (%s)"
 msgstr ""
 
-#: ../app/helpers/form_helper.rb:336
+#: ../app/helpers/form_helper.rb:335
 msgid "Remove Parameter"
 msgstr ""
 
@@ -4966,7 +4975,7 @@ msgstr ""
 #. TRANSLATORS: "Table name" or "Table name|Column name" for error messages
 #: ../app/helpers/host_description_helper.rb:66
 #: ../app/views/domains/_form.html.erb:4
-#: ../app/views/hostgroups/_form.html.erb:45
+#: ../app/views/hostgroups/_form.html.erb:53
 #: ../app/views/subnets/_form.html.erb:25
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:68
 #: model_attributes.rb:112
@@ -4975,7 +4984,7 @@ msgstr ""
 
 #. TRANSLATORS: "Table name" or "Table name|Column name" for error messages
 #: ../app/helpers/host_description_helper.rb:67
-#: ../app/views/hostgroups/_form.html.erb:60
+#: ../app/views/hostgroups/_form.html.erb:68
 #: ../app/views/realms/_form.html.erb:4
 #: ../app/views/smart_proxies/plugins/_realm.html.erb:2 model_attributes.rb:492
 msgid "Realm"
@@ -4993,7 +5002,7 @@ msgstr ""
 
 #: ../app/helpers/host_description_helper.rb:70
 #: ../app/views/hosts/_list.html.erb:14
-#: ../config/initializers/foreman_register.rb:26
+#: ../config/initializers/foreman_register.rb:28
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:180
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:93
 msgid "Comment"
@@ -5034,7 +5043,7 @@ msgstr ""
 #: ../app/views/hosts/_assign_hosts.html.erb:14
 #: ../app/views/hosts/_list.html.erb:12
 #: ../app/views/hosts/_selected_hosts.html.erb:13
-#: ../config/initializers/foreman_register.rb:20
+#: ../config/initializers/foreman_register.rb:22
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:113
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:100
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:31
@@ -5043,7 +5052,7 @@ msgid "Host group"
 msgstr ""
 
 #: ../app/helpers/host_description_helper.rb:76
-#: ../config/initializers/foreman_register.rb:22
+#: ../config/initializers/foreman_register.rb:24
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/OperatingSystem/index.js:72
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:71
 msgid "Boot time"
@@ -5075,7 +5084,7 @@ msgstr ""
 #: ../app/views/dashboard/_new_hosts_widget_host_list.html.erb:5
 #: ../app/views/hosts/_list.html.erb:11
 #: ../app/views/hosts/select_multiple_owner.html.erb:6
-#: ../config/initializers/foreman_register.rb:18
+#: ../config/initializers/foreman_register.rb:20
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:54
 msgid "Owner"
 msgstr ""
@@ -5146,8 +5155,8 @@ msgid "Host audit entries"
 msgstr ""
 
 #: ../app/helpers/host_description_helper.rb:137
-#: ../app/registries/foreman/settings/facts.rb:2
-#: ../app/registries/menu/loader.rb:45
+#: ../app/registries/menu/loader.rb:39
+#: ../config/initializers/f_foreman_settings_facts.rb:2
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/index.js:129
 msgid "Facts"
 msgstr ""
@@ -5157,7 +5166,7 @@ msgid "Browse host facts"
 msgstr ""
 
 #: ../app/helpers/host_description_helper.rb:138
-#: ../app/registries/menu/loader.rb:47
+#: ../app/registries/menu/loader.rb:41
 #: ../app/views/config_reports/index.html.erb:12
 #: ../app/views/config_reports/index.html.erb:17
 #: ../db/seeds.d/170-notification_blueprints.rb:52
@@ -5291,8 +5300,8 @@ msgid "Allocation (GB)"
 msgstr ""
 
 #: ../app/helpers/hosts_helper.rb:331 ../app/helpers/lookup_keys_helper.rb:36
-#: ../app/registries/foreman/settings/facts.rb:90 ../app/services/ipam.rb:2
-#: ../app/views/subnets/_fields.html.erb:27
+#: ../app/services/ipam.rb:2 ../app/views/subnets/_fields.html.erb:27
+#: ../config/initializers/f_foreman_settings_facts.rb:90
 msgid "None"
 msgstr ""
 
@@ -5364,7 +5373,7 @@ msgstr ""
 #: ../app/helpers/images_helper.rb:8
 #: ../app/views/compute_resources_vms/form/ec2/_base.html.erb:7
 #: ../app/views/compute_resources_vms/form/gce/_base.html.erb:13
-#: ../app/views/compute_resources_vms/form/libvirt/_base.html.erb:22
+#: ../app/views/compute_resources_vms/form/libvirt/_base.html.erb:20
 #: ../app/views/compute_resources_vms/form/openstack/_base.html.erb:13
 #: ../app/views/compute_resources_vms/form/ovirt/_base.html.erb:77
 #: ../app/views/compute_resources_vms/form/vmware/_base.html.erb:49
@@ -5381,7 +5390,7 @@ msgstr ""
 msgid "Image ID as provided by the compute resource, e.g. ami-.."
 msgstr ""
 
-#: ../app/helpers/images_helper.rb:18 ../app/registries/menu/loader.rb:89
+#: ../app/helpers/images_helper.rb:18 ../app/registries/menu/loader.rb:83
 #: ../app/views/about/index.html.erb:12
 #: ../app/views/compute_attributes/edit.html.erb:4
 #: ../app/views/compute_attributes/new.html.erb:5
@@ -5728,7 +5737,7 @@ msgid "Refresh features"
 msgstr ""
 
 #: ../app/helpers/smart_proxies_helper.rb:89
-#: ../app/registries/foreman/settings/facts.rb:90
+#: ../config/initializers/f_foreman_settings_facts.rb:90
 msgid "All"
 msgstr ""
 
@@ -5911,6 +5920,42 @@ msgstr ""
 msgid "Render report template"
 msgstr ""
 
+#: ../app/lib/foreman/http_proxy.rb:28
+msgid ""
+"Proxied request failed with: %s\n"
+"%s"
+msgstr ""
+
+#: ../app/lib/net/dns/a_record.rb:13
+msgid "IPv4 DNS record"
+msgid_plural "IPv4 DNS records"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/lib/net/dns/aaaa_record.rb:13
+msgid "IPv6 DNS record"
+msgid_plural "IPv6 DNS records"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/lib/net/dns/ptr_4_record.rb:12
+msgid "Reverse IPv4 DNS record"
+msgid_plural "Reverse IPv4 DNS records"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/lib/net/dns/ptr_6_record.rb:12
+msgid "Reverse IPv6 DNS record"
+msgid_plural "Reverse IPv6 DNS records"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/lib/net/validations.rb:12
+msgid ""
+"hostname can contain only lowercase letters, numbers, dashes and dots accordin"
+"g to RFC921, RFC952 and RFC1123"
+msgstr ""
+
 #: ../app/mailers/application_mailer.rb:64
 msgid ""
 ":foreman_url is not set, please configure in the Foreman Web UI (Administer ->"
@@ -6011,11 +6056,11 @@ msgstr ""
 msgid "Not implemented for %s"
 msgstr ""
 
-#: ../app/models/compute_resource.rb:419
+#: ../app/models/compute_resource.rb:418
 msgid "Not implemented"
 msgstr ""
 
-#: ../app/models/compute_resource.rb:475
+#: ../app/models/compute_resource.rb:474
 msgid "cannot be changed"
 msgstr ""
 
@@ -6047,29 +6092,29 @@ msgid ""
 " resource is reachable and that you have appropriate access permissions."
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/libvirt.rb:300
+#: ../app/models/compute_resources/foreman/model/libvirt.rb:301
 msgid "At least one volume must be specified for image-based provisioning."
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/libvirt.rb:325
+#: ../app/models/compute_resources/foreman/model/libvirt.rb:326
 msgid ""
 "Please specify volume size. You may optionally use suffix 'G' to specify volum"
 "e size in gigabytes."
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/openstack.rb:78
+#: ../app/models/compute_resources/foreman/model/openstack.rb:79
 msgid "must end with /v2 or /v3"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/openstack.rb:140
+#: ../app/models/compute_resources/foreman/model/openstack.rb:141
 msgid "No matching server groups found"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/openstack.rb:145
+#: ../app/models/compute_resources/foreman/model/openstack.rb:146
 msgid "Hint data is missing"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/openstack.rb:182
+#: ../app/models/compute_resources/foreman/model/openstack.rb:183
 msgid "Failed to deploy vm %{name}, fault: %{e}"
 msgstr ""
 
@@ -6101,47 +6146,47 @@ msgstr ""
 msgid "Failed to create X509 certificate, error: %s"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:18
+#: ../app/models/compute_resources/foreman/model/vmware.rb:17
 msgid "not supported by this compute resource"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:36
+#: ../app/models/compute_resources/foreman/model/vmware.rb:35
 msgid "VNC"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:37
+#: ../app/models/compute_resources/foreman/model/vmware.rb:36
 msgid "VMRC"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:207
+#: ../app/models/compute_resources/foreman/model/vmware.rb:206
 msgid "Automatic"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:209
+#: ../app/models/compute_resources/foreman/model/vmware.rb:208
 msgid "EFI"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:215
+#: ../app/models/compute_resources/foreman/model/vmware.rb:214
 msgid "Persistent"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:216
+#: ../app/models/compute_resources/foreman/model/vmware.rb:215
 msgid "Independent - Persistent"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:217
+#: ../app/models/compute_resources/foreman/model/vmware.rb:216
 msgid "Independent - Nonpersistent"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:223
+#: ../app/models/compute_resources/foreman/model/vmware.rb:222
 msgid "Harddisk"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:224
+#: ../app/models/compute_resources/foreman/model/vmware.rb:223
 msgid "CD-ROM"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:225
+#: ../app/models/compute_resources/foreman/model/vmware.rb:224
 #: ../app/views/compute_resources_vms/form/gce/_base.html.erb:17
 #: ../app/views/compute_resources_vms/form/libvirt/_network.html.erb:16
 #: ../app/views/compute_resources_vms/form/libvirt/_network.html.erb:24
@@ -6149,36 +6194,36 @@ msgstr ""
 #: ../app/views/compute_resources_vms/form/ovirt/_network.html.erb:20
 #: ../app/views/compute_resources_vms/form/vmware/_network.html.erb:9
 #: ../app/views/hostgroups/_form.html.erb:7 ../app/views/hosts/_bmc.html.erb:22
-#: ../config/initializers/foreman_register.rb:29
+#: ../config/initializers/foreman_register.rb:31
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtOpenstack.js:20
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtOvirt.js:49
 msgid "Network"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:226
+#: ../app/models/compute_resources/foreman/model/vmware.rb:225
 msgid "Floppy"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:449
+#: ../app/models/compute_resources/foreman/model/vmware.rb:448
 #: ../app/views/templates/_form.html.erb:35
 msgid "Default"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:532
+#: ../app/models/compute_resources/foreman/model/vmware.rb:531
 msgid ""
 "Foreman could not find a required vSphere resource. Check if Foreman has the r"
 "equired permissions and the resource exists. Reason: %s"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:616
+#: ../app/models/compute_resources/foreman/model/vmware.rb:615
 msgid "The console is not available because the VM is not powered on"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:690
+#: ../app/models/compute_resources/foreman/model/vmware.rb:689
 msgid "Could not find network %s on VMWare compute resource"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:800
+#: ../app/models/compute_resources/foreman/model/vmware.rb:799
 msgid ""
 "The remote system presented a public key with hash %s but we're expecting a di"
 "fferent hash. If you are sure the remote system is authentic, go to the comput"
@@ -6186,7 +6231,7 @@ msgid ""
 " and submit"
 msgstr ""
 
-#: ../app/models/compute_resources/foreman/model/vmware.rb:803
+#: ../app/models/compute_resources/foreman/model/vmware.rb:802
 msgid "Can not load datacenters due to an incorrect user name or password."
 msgstr ""
 
@@ -6213,11 +6258,11 @@ msgstr ""
 msgid "Adding would cause a cycle!"
 msgstr ""
 
-#: ../app/models/concerns/ensure_not_used_by.rb:18
+#: ../app/models/concerns/ensure_not_used_by.rb:19
 msgid "%{record} is used by %{what}"
 msgstr ""
 
-#: ../app/models/concerns/ensure_not_used_by.rb:21
+#: ../app/models/concerns/ensure_not_used_by.rb:22
 msgid "%{record} is being used by a hidden %{what} resource"
 msgstr ""
 
@@ -6322,136 +6367,136 @@ msgstr ""
 msgid "is invalid %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration.rb:160
+#: ../app/models/concerns/orchestration.rb:157
 msgid "%{task} task failed with the following error: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration.rb:201
+#: ../app/models/concerns/orchestration.rb:194
 msgid "Failed to perform rollback on %{task} - %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration.rb:229
-#: ../app/models/concerns/orchestration.rb:230
+#: ../app/models/concerns/orchestration.rb:222
+#: ../app/models/concerns/orchestration.rb:223
 msgid "invalid method %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:23
+#: ../app/models/concerns/orchestration/compute.rb:24
 msgid ""
 "Receiving vm data for host '%{host}' from used compute resource '%{compute_res"
 "ource}' failed: '%{exception}'."
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:64
+#: ../app/models/concerns/orchestration/compute.rb:65
 msgid "Render user data template for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:67
+#: ../app/models/concerns/orchestration/compute.rb:68
 msgid "Set up compute instance %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:70
+#: ../app/models/concerns/orchestration/compute.rb:71
 msgid "Acquire IP addresses for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:73
+#: ../app/models/concerns/orchestration/compute.rb:74
 msgid "Query instance details for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:76
+#: ../app/models/concerns/orchestration/compute.rb:77
 msgid "Set IP addresses for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:80
+#: ../app/models/concerns/orchestration/compute.rb:81
 msgid "Power up compute instance %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:88
+#: ../app/models/concerns/orchestration/compute.rb:89
 msgid "Compute resource update for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:94
+#: ../app/models/concerns/orchestration/compute.rb:95
 msgid "Removing compute instance %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:101
+#: ../app/models/concerns/orchestration/compute.rb:102
 msgid "Failed to find compute attributes, please check if VM %s was deleted"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:113
-#: ../app/models/concerns/orchestration/compute.rb:116
+#: ../app/models/concerns/orchestration/compute.rb:114
+#: ../app/models/concerns/orchestration/compute.rb:117
 msgid ""
 "Failed to create a compute %{compute_resource} instance %{name}: %{message}\n"
 " "
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:127
+#: ../app/models/concerns/orchestration/compute.rb:128
 msgid ""
 "%{image} needs user data, but %{os_link} is not associated to any provisioning"
 " template of the kind user_data. Please associate it with a suitable template "
 "or uncheck 'User data' for %{compute_resource_image_link}."
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:152
+#: ../app/models/concerns/orchestration/compute.rb:153
 msgid "Failed to remove certificates for %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:174
+#: ../app/models/concerns/orchestration/compute.rb:175
 msgid "Failed to acquire IP addresses from compute resource for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:179
+#: ../app/models/concerns/orchestration/compute.rb:180
 msgid "failed to save %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:199
+#: ../app/models/concerns/orchestration/compute.rb:200
 msgid "Failed to get IP for %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:209
+#: ../app/models/concerns/orchestration/compute.rb:210
 msgid "Failed to set IPs via IPAM for %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:214
+#: ../app/models/concerns/orchestration/compute.rb:215
 msgid "Failed to set IP for %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:224
+#: ../app/models/concerns/orchestration/compute.rb:225
 msgid "Failed to destroy a compute %{compute_resource} instance %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:231
+#: ../app/models/concerns/orchestration/compute.rb:232
 msgid "Failed to power up a compute %{compute_resource} instance %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:238
+#: ../app/models/concerns/orchestration/compute.rb:239
 msgid "Failed to stop compute %{compute_resource} instance %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:245
+#: ../app/models/concerns/orchestration/compute.rb:246
 msgid "Failed to update a compute %{compute_resource} instance %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:252
+#: ../app/models/concerns/orchestration/compute.rb:253
 msgid "Failed to undo update compute %{compute_resource} instance %{name}: %{e}"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:279
+#: ../app/models/concerns/orchestration/compute.rb:280
 msgid "Selected image does not belong to %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:368
+#: ../app/models/concerns/orchestration/compute.rb:369
 msgid "Could not find virtual machine network interface matching %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:398
+#: ../app/models/concerns/orchestration/compute.rb:399
 msgid "Connection to compute resource timed out"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:400
+#: ../app/models/concerns/orchestration/compute.rb:401
 msgid "Connection to compute resource refused"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/compute.rb:402
+#: ../app/models/concerns/orchestration/compute.rb:403
 msgid "Compute resource destination unreachable"
 msgstr ""
 
@@ -6472,15 +6517,15 @@ msgid "Create DHCP Settings for %s"
 msgstr ""
 
 #: ../app/models/concerns/orchestration/dhcp.rb:160
-#: ../app/models/concerns/orchestration/dhcp.rb:191
+#: ../app/models/concerns/orchestration/dhcp.rb:189
 msgid "Remove DHCP Settings for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/dhcp.rb:199
+#: ../app/models/concerns/orchestration/dhcp.rb:197
 msgid "DHCP conflicts removal for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/dhcp.rb:208
+#: ../app/models/concerns/orchestration/dhcp.rb:206
 msgid "DHCP records %s already exists"
 msgstr ""
 
@@ -6523,7 +6568,7 @@ msgid "This IP address has already been reserved in External IPAM"
 msgstr ""
 
 #: ../app/models/concerns/orchestration/external_ipam.rb:26
-#: ../app/models/host/managed.rb:879
+#: ../app/models/host/managed.rb:878
 msgid "Some interfaces are invalid"
 msgstr ""
 
@@ -6547,27 +6592,27 @@ msgstr ""
 msgid "Removing IPv6 in External IPAM for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:20
+#: ../app/models/concerns/orchestration/puppet_ca.rb:21
 msgid "Failed to initialize the PuppetCA proxy: %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:68
+#: ../app/models/concerns/orchestration/puppet_ca.rb:69
 msgid "Reset PuppetCA certname for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:73
+#: ../app/models/concerns/orchestration/puppet_ca.rb:74
 msgid "Cleanup PuppetCA certificates for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:75
+#: ../app/models/concerns/orchestration/puppet_ca.rb:76
 msgid "Enable PuppetCA autosigning for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:99
+#: ../app/models/concerns/orchestration/puppet_ca.rb:100
 msgid "Delete PuppetCA certificates for %s"
 msgstr ""
 
-#: ../app/models/concerns/orchestration/puppetca.rb:106
+#: ../app/models/concerns/orchestration/puppet_ca.rb:107
 msgid "Disable PuppetCA autosigning for %s"
 msgstr ""
 
@@ -6737,7 +6782,7 @@ msgstr ""
 msgid "is not found in the authentication source"
 msgstr ""
 
-#: ../app/models/external_usergroup.rb:38 ../app/models/user.rb:751
+#: ../app/models/external_usergroup.rb:38 ../app/models/user.rb:752
 msgid "is not permitted"
 msgstr ""
 
@@ -6824,56 +6869,56 @@ msgstr ""
 msgid "Image Based"
 msgstr ""
 
-#: ../app/models/host/managed.rb:645
+#: ../app/models/host/managed.rb:644
 #: ../app/models/parameters/host_parameter.rb:11
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/BulkActions/bulkDelete.js:39
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/BulkActions/bulkDelete.js:66
 msgid "host"
 msgstr ""
 
-#: ../app/models/host/managed.rb:646
+#: ../app/models/host/managed.rb:645
 msgid "hostgroup"
 msgstr ""
 
-#: ../app/models/host/managed.rb:647
+#: ../app/models/host/managed.rb:646
 msgid "global setting"
 msgstr ""
 
-#: ../app/models/host/managed.rb:667
+#: ../app/models/host/managed.rb:666
 msgid "An interface marked as provision is missing"
 msgstr ""
 
-#: ../app/models/host/managed.rb:668
+#: ../app/models/host/managed.rb:667
 msgid "An interface marked as primary is missing"
 msgstr ""
 
-#: ../app/models/host/managed.rb:713
+#: ../app/models/host/managed.rb:712
 msgid "No BMC NIC available for host %s"
 msgstr ""
 
-#: ../app/models/host/managed.rb:826
+#: ../app/models/host/managed.rb:825
 msgid ""
 "There are orchestration modules with methods for configuration rebuild that ha"
 "ve identical name: '%s'"
 msgstr ""
 
-#: ../app/models/host/managed.rb:904
+#: ../app/models/host/managed.rb:903
 msgid "%{value} does not belong to %{os} operating system"
 msgstr ""
 
-#: ../app/models/host/managed.rb:919
+#: ../app/models/host/managed.rb:918
 msgid "is an unsupported provisioning method, available: %s"
 msgstr ""
 
-#: ../app/models/host/managed.rb:924
+#: ../app/models/host/managed.rb:923
 msgid "can't be updated after host is provisioned"
 msgstr ""
 
-#: ../app/models/host/managed.rb:929 ../app/models/nic/interface.rb:141
+#: ../app/models/host/managed.rb:928 ../app/models/nic/interface.rb:141
 msgid "must not include periods"
 msgstr ""
 
-#: ../app/models/host/managed.rb:983
+#: ../app/models/host/managed.rb:982
 msgid ""
 "with id %{object_id} doesn't exist or is not assigned to proper organization a"
 "nd/or location"
@@ -7144,11 +7189,11 @@ msgstr ""
 msgid "subnet"
 msgstr ""
 
-#: ../app/models/personal_access_token.rb:89
+#: ../app/models/personal_access_token.rb:90
 msgid "Could not parse timestamp '%{timestamp}'"
 msgstr ""
 
-#: ../app/models/personal_access_token.rb:95
+#: ../app/models/personal_access_token.rb:96
 msgid "cannot be in the past"
 msgstr ""
 
@@ -7200,29 +7245,29 @@ msgstr ""
 msgid "Input %s: "
 msgstr ""
 
-#: ../app/models/role.rb:110
+#: ../app/models/role.rb:111
 msgid "Unable to create the default role."
 msgstr ""
 
-#: ../app/models/role.rb:290
+#: ../app/models/role.rb:291
 msgid ""
 "One or more of the associated filters are invalid which prevented the role to "
 "be saved"
 msgstr ""
 
-#: ../app/models/role.rb:291
+#: ../app/models/role.rb:292
 msgid "Unable to submit role: Problem with associated filter %s"
 msgstr ""
 
-#: ../app/models/role.rb:306
+#: ../app/models/role.rb:307
 msgid "Cannot delete built-in role"
 msgstr ""
 
-#: ../app/models/role.rb:312
+#: ../app/models/role.rb:313
 msgid "This role is locked from being modified by users."
 msgstr ""
 
-#: ../app/models/role.rb:346
+#: ../app/models/role.rb:347
 msgid "some permissions were not found: %s"
 msgstr ""
 
@@ -7312,12 +7357,12 @@ msgstr ""
 msgid "could not be calculated"
 msgstr ""
 
-#: ../app/models/subnet.rb:7 ../config/initializers/foreman_register.rb:31
+#: ../app/models/subnet.rb:7 ../config/initializers/foreman_register.rb:33
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/NetworkingInterfaces/NICDescriptionList.js:77
 msgid "IPv4"
 msgstr ""
 
-#: ../app/models/subnet.rb:7 ../config/initializers/foreman_register.rb:33
+#: ../app/models/subnet.rb:7 ../config/initializers/foreman_register.rb:35
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/NetworkingInterfaces/NICDescriptionList.js:83
 msgid "IPv6"
 msgstr ""
@@ -7393,7 +7438,7 @@ msgid ""
 "AAAA records are managed via Domain DNS proxy"
 msgstr ""
 
-#: ../app/models/subnet.rb:77 ../app/registries/menu/loader.rb:75
+#: ../app/models/subnet.rb:77 ../app/registries/menu/loader.rb:69
 #: ../app/views/hosts/show.html.erb:35
 #: ../app/views/operatingsystems/_form.html.erb:7
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/constants.js:3
@@ -7498,24 +7543,24 @@ msgstr ""
 msgid "This template is locked and may not be removed."
 msgstr ""
 
-#: ../app/models/template.rb:305
+#: ../app/models/template.rb:304
 msgid "You are not authorized to lock templates."
 msgstr ""
 
-#: ../app/models/template.rb:311
+#: ../app/models/template.rb:308
 msgid "You are not authorized to make a template default."
 msgstr ""
 
-#: ../app/models/template.rb:319 ../app/models/template.rb:338
-#: ../app/models/template_input.rb:65
+#: ../app/models/template.rb:315 ../app/models/template.rb:334
+#: ../app/models/template_input.rb:66
 msgid "This template is locked. Please clone it to a new template to customize."
 msgstr ""
 
-#: ../app/models/template.rb:323
+#: ../app/models/template.rb:319
 msgid "Cannot add audit comment to a locked template."
 msgstr ""
 
-#: ../app/models/template_input.rb:58
+#: ../app/models/template_input.rb:59
 msgid "Cannot delete template input as template is locked."
 msgstr ""
 
@@ -7652,72 +7697,72 @@ msgid ""
 "dpoint."
 msgstr ""
 
-#: ../app/models/user.rb:99
+#: ../app/models/user.rb:100
 msgid "already exists"
 msgstr ""
 
-#: ../app/models/user.rb:244 ../app/models/user.rb:248
-#: ../app/models/user.rb:252
+#: ../app/models/user.rb:245 ../app/models/user.rb:249
+#: ../app/models/user.rb:253
 msgid "Anonymous admin user %s is missing, run foreman-rake db:seed"
 msgstr ""
 
-#: ../app/models/user.rb:657
+#: ../app/models/user.rb:658
 msgid "Incorrect password"
 msgstr ""
 
-#: ../app/models/user.rb:665
+#: ../app/models/user.rb:666
 msgid "A user group already exists with this name"
 msgstr ""
 
-#: ../app/models/user.rb:671
+#: ../app/models/user.rb:672
 msgid "Can't delete the last admin account"
 msgstr ""
 
-#: ../app/models/user.rb:679 ../app/models/usergroup.rb:113
+#: ../app/models/user.rb:680 ../app/models/usergroup.rb:113
 msgid "cannot be removed from the last admin account"
 msgstr ""
 
-#: ../app/models/user.rb:688
+#: ../app/models/user.rb:689
 msgid "Can't delete internal admin account"
 msgstr ""
 
-#: ../app/models/user.rb:697
+#: ../app/models/user.rb:698
 msgid "cannot be removed from an internal protected account"
 msgstr ""
 
-#: ../app/models/user.rb:703
+#: ../app/models/user.rb:704
 msgid "cannot be changed on an internal protected account"
 msgstr ""
 
-#: ../app/models/user.rb:715
+#: ../app/models/user.rb:716
 msgid "you can't assign some of roles you selected"
 msgstr ""
 
-#: ../app/models/user.rb:722
+#: ../app/models/user.rb:723
 msgid "you can't change administrator flag"
 msgstr ""
 
-#: ../app/models/user.rb:733
+#: ../app/models/user.rb:734
 msgid "cannot be changed by a non-admin user"
 msgstr ""
 
-#: ../app/models/user.rb:739
+#: ../app/models/user.rb:740
 msgid "default locations need to be user locations first"
 msgstr ""
 
-#: ../app/models/user.rb:745
+#: ../app/models/user.rb:746
 msgid "default organizations need to be user organizations first"
 msgstr ""
 
-#: ../app/models/user.rb:758
+#: ../app/models/user.rb:759
 msgid "It is not possible to change external users login"
 msgstr ""
 
-#: ../app/models/user.rb:760
+#: ../app/models/user.rb:761
 msgid "You do not have permission to edit the login"
 msgstr ""
 
-#: ../app/models/user.rb:767
+#: ../app/models/user.rb:768
 msgid "It is not possible to disable yourself"
 msgstr ""
 
@@ -7745,21 +7790,21 @@ msgstr ""
 msgid "Unsupported search operators :and / :or"
 msgstr ""
 
-#: ../app/registries/foreman/plugin.rb:230
+#: ../app/registries/foreman/plugin.rb:223
 msgid "%{id} plugin requires Foreman %{matcher} but current is %{current}"
 msgstr ""
 
-#: ../app/registries/foreman/plugin.rb:240
+#: ../app/registries/foreman/plugin.rb:233
 msgid "%{id} plugin requires the %{plugin_name} plugin, not found"
 msgstr ""
 
-#: ../app/registries/foreman/plugin.rb:244
+#: ../app/registries/foreman/plugin.rb:237
 msgid ""
 "%{id} plugin requires the %{plugin_name} plugin %{matcher} but current is %{pl"
 "ugin_version}"
 msgstr ""
 
-#: ../app/registries/foreman/plugin.rb:432
+#: ../app/registries/foreman/plugin.rb:425
 msgid "Cannot register compute resource, wrong type supplied"
 msgstr ""
 
@@ -7794,11 +7839,11 @@ msgid "Could not extend role '%{name}': %{message}"
 msgstr ""
 
 #: ../app/registries/foreman/setting_manager.rb:13
-#: ../app/registries/foreman/settings/general.rb:5
 #: ../app/views/smart_proxies/plugins/_puppet_ca.html.erb:2
 #: ../app/views/users/_form.html.erb:70
-#: ../config/initializers/foreman_register.rb:9
-#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:225
+#: ../config/initializers/f_foreman_settings_general.rb:5
+#: ../config/initializers/foreman_register.rb:11
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:228
 msgid "General"
 msgstr ""
 
@@ -7810,1126 +7855,19 @@ msgstr ""
 msgid "Setting '%s' has an invalid type definition. Please use a valid type."
 msgstr ""
 
-#: ../app/registries/foreman/settings/auth.rb:2
-msgid "Authentication"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:5
-msgid "Foreman will use OAuth for API authorization"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:7
-msgid "OAuth active"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:10
-#: ../app/registries/foreman/settings/auth.rb:12
-msgid "OAuth consumer key"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:16
-#: ../app/registries/foreman/settings/auth.rb:18
-msgid "OAuth consumer secret"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:22
-msgid ""
-"When enabled, Foreman will map users by username in request-header. If this is"
-" disabled, OAuth requests will have admin rights."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:24
-msgid "OAuth map users"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:27
-msgid ""
-"Foreman will block user logins from an IP address after this number of failed "
-"login attempts for 5 minutes. Set to 0 to disable bruteforce protection"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:29
-msgid "Failed login attempts limit"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:32
-msgid ""
-"Only known Smart Proxies may access features that use Smart Proxy authenticati"
-"on"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:34
-msgid "Restrict registered smart proxies"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:37
-msgid ""
-"List of hostnames, IPv4, IPv6 addresses or subnets to be trusted in addition t"
-"o Smart Proxies for access to fact/report importers and ENC output"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:39
-msgid "Trusted hosts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:42
-msgid "SSL Certificate path that Foreman would use to communicate with its proxies"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:44
-msgid "SSL certificate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:47
-msgid "SSL CA file path that Foreman will use to communicate with its proxies"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:49
-msgid "SSL CA file"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:52
-msgid "SSL Private Key path that Foreman will use to communicate with its proxies"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:54
-msgid "SSL private key"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:57
-msgid "Environment variable containing the subject DN from a client SSL certificate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:59
-msgid "SSL client DN env"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:62
-msgid ""
-"Environment variable containing the verification status of a client SSL certif"
-"icate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:64
-msgid "SSL client verify env"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:67
-msgid "Environment variable containing a client's SSL certificate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:69
-msgid "SSL client cert env"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:72
-msgid ""
-"SSL CA file path that will be used in templates (to verify the connection to F"
-"oreman)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:74
-msgid "Server CA file"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:78
-msgid "Private key file path that Foreman will use to encrypt websockets"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:80
-msgid "Websockets SSL key"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:83
-msgid "Certificate path that Foreman will use to encrypt websockets"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:85
-msgid "Websockets SSL certificate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:89
-msgid ""
-"VNC/SPICE websocket proxy console access encryption (websockets_ssl_key/cert s"
-"etting required)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:91
-msgid "Websockets encryption"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:92
-msgid ""
-"Unable to turn on websockets_encrypt, either websockets_ssl_key or websockets_"
-"ssl_cert is missing"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:93
-msgid "Unable to unset websockets_ssl_key when websockets_encrypt is on"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:94
-msgid "Unable to unset websockets_ssl_cert when websockets_encrypt is on"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:98
-msgid ""
-"Redirect your users to this url on logout (authorize_login_delegation should a"
-"lso be enabled)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:100
-msgid "Login delegation logout URL"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:103
-msgid ""
-"Name of the external auth source where unknown externally authentication users"
-" (see authorize_login_delegation) should be created. Empty means no autocreati"
-"on."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:105
-msgid "Authorize login delegation auth source user autocreate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:108
-msgid "Authorize login delegation with REMOTE_USER HTTP header"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:110
-msgid "Authorize login delegation"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:113
-msgid "Authorize login delegation with REMOTE_USER HTTP header for API calls too"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:115
-msgid "Authorize login delegation API"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:118
-msgid "Log out idle users after a certain number of minutes"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:120
-msgid "Idle timeout"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:123
-msgid ""
-"Password hashing algorithm. A password change is needed effect existing passwo"
-"rds."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:125
-msgid "Password hashing algorithm"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:126
-msgid "SHA1"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:126
-msgid "BCrypt"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:126
-msgid "PBKDF2 SHA1"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:129
-msgid ""
-"Cost value of bcrypt password hash function for internal auth-sources (4-30). "
-"A higher value is safer but verification is slower, particularly for stateless"
-" API calls and UI logins. A password change is needed effect existing password"
-"s."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:131
-msgid "BCrypt password cost"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:134
-msgid ""
-"Cost value of PBKDF2 password hash function for internal auth-sources. A highe"
-"r value is safer but verification is slower, particularly for stateless API ca"
-"lls and UI logins. A password change is needed effect existing passwords."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:136
-msgid "PBKDF2 password cost"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:139
-msgid ""
-"Permits access to BMC interface passwords through ENC YAML output and in templ"
-"ates"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:141
-msgid "BMC credentials access"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:144
-msgid ""
-"OpenID Connect JSON Web Key Set(JWKS) URL. Typically https://keycloak.example."
-"com/auth/realms/<realm name>/protocol/openid-connect/certs when using Keycloak"
-" as an OpenID provider"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:146
-msgid "OIDC JWKs URL"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:149
-msgid ""
-"Name of the OpenID Connect Audience that is being used for Authentication. In "
-"case of Keycloak this is the Client ID."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:151
-msgid "OIDC Audience"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:154
-msgid ""
-"The iss (issuer) claim identifies the principal that issued the JWT, which exi"
-"sts at a `/.well-known/openid-configuration` in case of most of the OpenID pro"
-"viders."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:156
-msgid "OIDC Issuer"
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:159
-msgid "The algorithm used to encode the JWT in the OpenID provider."
-msgstr ""
-
-#: ../app/registries/foreman/settings/auth.rb:161
-msgid "OIDC Algorithm"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:2
-#: ../app/registries/menu/loader.rb:48
-msgid "Config Management"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:5
-msgid "Foreman will create the host when a report is received"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:7
-msgid "Create new host when report is uploaded"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:10
-msgid ""
-"Foreman matchers will be inherited by children when evaluating smart class par"
-"ameters for hostgroups, organizations and locations"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:12
-msgid "Matchers inheritance"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:15
-msgid "Foreman will evaluate host smart class parameters in this order by default"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:17
-msgid "Default parameters lookup path"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:20
-msgid "Foreman will parse ERB in parameters value in the ENC output"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:22
-msgid "Interpolate ERB in parameters"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:25
-msgid ""
-"All hosts will show a configuration status even when a Puppet smart proxy is n"
-"ot assigned"
-msgstr ""
-
-#: ../app/registries/foreman/settings/cfgmgmt.rb:27
-msgid "Always show configuration status"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:2
-msgid "Email"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:7
-msgid "Email reply address for emails that Foreman is sending"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:9
-msgid "Email reply address"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:13
-msgid "Prefix to add to all outgoing email"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:15
-msgid "Email subject prefix"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:18
-msgid "Send a welcome email including username and URL to new users"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:20
-msgid "Send welcome email"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:23
-msgid "Method used to deliver email"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:25
-msgid "Delivery method"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:26
-msgid "Sendmail"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:26
-msgid "SMTP"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:29
-msgid "SMTP automatic STARTTLS"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:31
-msgid "SMTP enable StartTLS auto"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:34
-msgid "When using TLS, you can set how OpenSSL checks the certificate"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:36
-msgid "SMTP OpenSSL verify mode"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:37
-msgid "Default verification mode"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:37
-#: ../app/registries/foreman/settings/email.rb:69
-msgid "none"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:40
-msgid "SMTP address to connect to"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:42
-msgid "SMTP address"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:45
-msgid "SMTP port to connect to"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:47
-msgid "SMTP port"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:50
-msgid "HELO/EHLO domain"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:52
-msgid "SMTP HELO/EHLO domain"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:55
-msgid "Username to use to authenticate, if required"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:57
-msgid "SMTP username"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:60
-msgid "Password to use to authenticate, if required"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:62
-msgid "SMTP password"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:66
-msgid "Specify authentication type, if required"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:68
-msgid "SMTP authentication"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:72
-msgid ""
-"Specify additional options to sendmail. Only used when the delivery method is "
-"set to sendmail."
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:74
-msgid "Sendmail arguments"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:77
-msgid ""
-"The location of the sendmail executable. Only used when the delivery method is"
-" set to sendmail."
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:79
-msgid "Sendmail location"
-msgstr ""
-
-#: ../app/registries/foreman/settings/email.rb:83
-msgid "Invalid sendmail location, use settings.yaml for arbitrary location"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:45
-msgid "Foreman will create the host when new facts are received"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:47
-msgid "Create new host when facts are uploaded"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:50
-msgid ""
-"Hosts created from facts will be placed in the location this fact dictates. Th"
-"e content of this fact should be the full label of the location."
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:52
-msgid "Location fact"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:55
-msgid ""
-"Hosts created from facts will be placed in the organization this fact dictates"
-". The content of this fact should be the full label of the organization."
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:57
-msgid "Organization fact"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:60
-msgid ""
-"Hosts created from facts will be placed in this location if no location fact w"
-"as sent"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:62
-msgid "Default location"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:66
-msgid ""
-"Hosts created from facts will be placed in this organization if no organizatio"
-"n fact was sent"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:68
-msgid "Default organization"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:72
-msgid "Foreman will update a host's hostgroup from its facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:74
-msgid "Update hostgroup from facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:77
-msgid "Stop updating Operating System from facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:79
-msgid "Ignore facts for operating system"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:82
-msgid "Stop updating domain values from facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:84
-msgid "Ignore facts for domain"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:87
-msgid "Foreman will update a host's subnet from its facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:89
-msgid "Update subnets from facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:90
-msgid "Provisioning only"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:93
-msgid "Stop updating IP and MAC address values from facts (affects all interfaces)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:95
-msgid "Ignore interfaces facts for provisioning"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:98
-msgid ""
-"Skip creating or updating host network interfaces objects with identifiers mat"
-"ching these values from incoming facts. You can use * wildcard to match identi"
-"fiers with indexes e.g. macvtap*. The ignored interfaces raw facts will be sti"
-"ll stored in the DB, see the 'Exclude pattern' setting for more details."
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:100
-msgid "Ignore interfaces with matching identifier"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:103
-msgid ""
-"Exclude pattern for all types of imported facts (puppet, ansible, rhsm). Those"
-" facts won't be stored in foreman's database. You can use * wildcard to match "
-"names with indexes e.g. ignore* will filter out ignore, ignore123 as well as a"
-"::ignore or even a::ignore123::b"
-msgstr ""
-
-#: ../app/registries/foreman/settings/facts.rb:105
-msgid "Exclude pattern for facts stored in foreman"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:2
-#: ../app/views/users/_form.html.erb:39
-msgid "Browser locale"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:3
-#: ../app/views/users/_form.html.erb:41
-msgid "Browser timezone"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:8
-msgid "The default administrator email address"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:10
-msgid "Administrator email address"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:14
-msgid ""
-"URL where your Foreman instance is reachable (see also Provisioning > unattend"
-"ed_url)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:16
-msgid "Foreman URL"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:20
-msgid "Number of records shown per page in Foreman"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:22
-msgid "Entries per page"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:25
-msgid ""
-"Should the `foreman-rake db:seed` be executed on the next run of the installer"
-" modules?"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:27
-msgid "DB pending seed"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:30
-msgid ""
-"Open and read timeout for HTTP requests from Foreman to Smart Proxy (in second"
-"s)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:32
-msgid "Smart Proxy request timeout"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:35
-msgid ""
-"Text to be shown in the login-page footer. Keyword $VERSION is replaced by cur"
-"rent version."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:36
-#: ../app/views/about/index.html.erb:26 ../app/views/about/index.html.erb:99
-#: ../app/views/smart_proxies/plugins/_plugin_version.html.erb:2
-#: ../app/views/smart_proxies/show.html.erb:43
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Bios/index.js:40
-msgid "Version"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:37
-msgid "Login page footer text"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:40
-msgid ""
-"Set a proxy for all outgoing HTTP(S) connections from Foreman. System-wide pro"
-"xies must be configured at the operating system level."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:42
-msgid "HTTP(S) proxy"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:46
-msgid ""
-"Set hostnames to which requests are not to be proxied. Requests to the local h"
-"ost are excluded by default."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:48
-msgid "HTTP(S) proxy except hosts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:51
-msgid ""
-"Whether or not to show a menu to access experimental lab features (requires re"
-"load of page)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:53
-msgid "Show Experimental Labs"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:56
-msgid "Whether or not to show the new overview page for All Hosts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:58
-msgid "Show New Host Overview Page"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:61
-msgid ""
-"Display names of hosts as FQDNs. If disabled, only display names of hosts as h"
-"ostnames."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:63
-msgid "Display FQDN for hosts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:66
-msgid ""
-"Duration in minutes after servers are classed as out of sync. This setting is "
-"overridden by specific settings from config management tools (e.g. puppet_inte"
-"val, ansible_interval)."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:69
-msgid "Out of sync interval"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:72
-msgid "Foreman instance ID, uniquely identifies this Foreman instance."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:74
-msgid "Foreman UUID"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:77
-msgid "Language to use for new users"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:79
-msgid "Default language"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:83
-msgid "Timezone to use for new users"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:85
-msgid "Default timezone"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:89
-msgid ""
-"The instance title is shown above the header in a banner (requires a page relo"
-"ad)."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:91
-msgid "Instance title"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:94
-msgid ""
-"Hex value for color for the instance title banner. It will only be used if an "
-"instance title is defined. If no valid value is given, the default value is: #"
-"000000. (requires a page reload)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:96
-msgid "Instance color"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:99
-msgid ""
-"Duration in days to preserve audits for. Leave empty to disable the audits cle"
-"anup."
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:101
-msgid "Saved audits interval"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:104
-msgid "Foreman will load the new UI for host details"
-msgstr ""
-
-#: ../app/registries/foreman/settings/general.rb:106
-msgid "New host details UI"
-msgstr ""
-
-#: ../app/registries/foreman/settings/notification.rb:2
-#: ../app/views/users/_form.html.erb:79
-#: ../webpack/assets/javascripts/react_app/components/notifications/ToggleIcon/ToggleIcon.js:13
-msgid "Notifications"
-msgstr ""
-
-#: ../app/registries/foreman/settings/notification.rb:5
-msgid "Whether to pull RSS notifications or not"
-msgstr ""
-
-#: ../app/registries/foreman/settings/notification.rb:7
-msgid "RSS enable"
-msgstr ""
-
-#: ../app/registries/foreman/settings/notification.rb:10
-msgid "URL to fetch RSS notifications from"
-msgstr ""
-
-#: ../app/registries/foreman/settings/notification.rb:12
-msgid "RSS URL"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:9
-#: ../app/registries/menu/loader.rb:29 ../app/views/ssh_keys/new.html.erb:6
-#: ../app/views/taxonomies/_form.html.erb:8
-#: ../app/views/usergroups/_form.html.erb:28
-#: ../app/views/usergroups/index.html.erb:9 ../app/views/users/index.html.erb:1
-msgid "Users"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:10
-msgid "Usergroups"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:15
-msgid "Default owner on provisioned hosts, if empty Foreman will use current user"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:17
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:165
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:111
-msgid "Host owner"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:19
-#: ../app/views/hosts/_form.html.erb:126
-msgid "Select an owner"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:22
-msgid "Default encrypted root password on provisioned hosts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:24
-msgid "Root password"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:30
-msgid ""
-"URL hosts will retrieve templates from during build, when it starts with https"
-" unattended/userdata controllers cannot be accessed via HTTP"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:32
-msgid "Unattended URL"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:35
-msgid "Enable safe mode config templates rendering (recommended)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:37
-msgid "Safemode rendering"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:40
-msgid "Allow access to unattended URLs without build mode being used"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:42
-msgid "Access unattended without build"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:45
-msgid ""
-"Foreman will query the locally configured resolver instead of the SOA/NS autho"
-"rities"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:47
-msgid "Query local nameservers"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:50
-msgid ""
-"Time in minutes installation tokens should be valid for, 0 to disable token ge"
-"neration"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:52
-msgid "Installation token lifetime"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:55
-msgid "Time in seconds before SSH provisioning times out"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:57
-msgid "SSH timeout"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:60
-msgid ""
-"The IP address that should be used for the console listen address when provisi"
-"oning new virtual machines via Libvirt"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:62
-msgid "Libvirt default console address"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:65
-msgid "Foreman will update the host IP with the IP that made the built request"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:67
-msgid "Update IP from built request"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:70
-msgid ""
-"Foreman will use the short hostname instead of the FQDN for creating new virtu"
-"al machines"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:72
-msgid "Use short name for VMs"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:75
-msgid ""
-"List of timeouts (in seconds) for DNS lookup attempts such as the dns_lookup m"
-"acro and DNS record conflict validation"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:77
-msgid "DNS timeout"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:80
-msgid ""
-"Foreman will delete virtual machine if provisioning script ends with non zero "
-"exit code"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:82
-msgid "Clean up failed deployment"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:85
-msgid ""
-"Random gives unique names, MAC-based are longer but stable (and only works wit"
-"h bare-metal)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:87
-msgid "Type of name generator"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:91
-msgid ""
-"Default PXE menu item in global template - 'local', 'discovery' or custom, use"
-" blank for template default"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:93
-msgid "Default PXE global template entry"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:96
-msgid ""
-"Default PXE menu item in local template - 'local', 'force_local_chain_hd0' or "
-"custom, use blank for template default"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:98
-msgid "Default PXE local template entry"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:101
-msgid "Intermediate iPXE script for unattended installations"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:103
-msgid "iPXE intermediate script"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:107
-msgid ""
-"Destroy associated VM on host delete. When enabled, VMs linked to Hosts will b"
-"e deleted on Compute Resource. When disabled, VMs are unlinked when the host i"
-"s deleted, meaning they remain on Compute Resource and can be re-associated or"
-" imported back to Foreman again. This does not automatically power off the VM"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:109
-msgid "Destroy associated VM on host delete"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:112
-msgid ""
-"Maximum amount of keys in structured subtree, statistics stored in foreman::dr"
-"opped_subtree_facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:114
-msgid "Maximum structured facts"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:117
-msgid "Global Registration template"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:119
-msgid "Default Global registration template"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:122
-msgid ""
-"Default 'Host initial configuration' template, automatically assigned when a n"
-"ew operating system is created"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:124
-msgid "Default 'Host initial configuration' template"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:127
-msgid "Full path to CoreOS transpiler (ct)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:129
-msgid "CoreOS Transpiler Command"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:133
-msgid "CoreOS transpiler (ct) arguments as an comma-separated array"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:135
-msgid "CoreOS Transpiler Command Arguments"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:138
-msgid "Full path to Fedora CoreOS transpiler (fcct)"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:140
-msgid "Fedora CoreOS Transpiler Command"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:144
-msgid "Fedora CoreOS transpiler (fcct) arguments as an comma-separated array"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:146
-msgid "Fedora CoreOS Transpiler Command Arguments"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:153
-msgid ""
-"Global default %s template. This template gets deployed to all configured TFTP"
-" servers. It will not be affected by upgrades."
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:155
-msgid "Global default %s template"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:162
-msgid "Template that will be selected as %s default for local boot."
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:164
-msgid "Local boot %s template"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:175
-msgid "Foreman will automate certificate signing upon provision of new host"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:177
-msgid "Manage PuppetCA"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:180
-msgid "Foreman will use random UUIDs for certificate signing instead of hostnames"
-msgstr ""
-
-#: ../app/registries/foreman/settings/provisioning.rb:182
-msgid "Use UUID for certificates"
-msgstr ""
-
-#: ../app/registries/menu/loader.rb:15
+#: ../app/registries/menu/loader.rb:9
 msgid "My Account"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:18
+#: ../app/registries/menu/loader.rb:12
 msgid "Log Out"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:25
+#: ../app/registries/menu/loader.rb:19
 msgid "Administer"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:26
+#: ../app/registries/menu/loader.rb:20
 #: ../app/views/auth_source_externals/_form.html.erb:7
 #: ../app/views/auth_source_ldaps/_form.html.erb:8
 #: ../app/views/compute_resources/_form.html.erb:6
@@ -8949,7 +7887,7 @@ msgstr ""
 msgid "Locations"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:27
+#: ../app/registries/menu/loader.rb:21
 #: ../app/views/auth_source_externals/_form.html.erb:12
 #: ../app/views/auth_source_ldaps/_form.html.erb:11
 #: ../app/views/compute_resources/_form.html.erb:9
@@ -8970,7 +7908,7 @@ msgstr ""
 msgid "Organizations"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:28
+#: ../app/registries/menu/loader.rb:22
 #: ../app/views/auth_source_externals/edit.html.erb:4
 #: ../app/views/auth_source_ldaps/edit.html.erb:4
 #: ../app/views/auth_source_ldaps/new.html.erb:4
@@ -8980,7 +7918,15 @@ msgstr ""
 msgid "Authentication Sources"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:30
+#: ../app/registries/menu/loader.rb:23 ../app/views/ssh_keys/new.html.erb:6
+#: ../app/views/taxonomies/_form.html.erb:8
+#: ../app/views/usergroups/_form.html.erb:28
+#: ../app/views/usergroups/index.html.erb:9 ../app/views/users/index.html.erb:1
+#: ../config/initializers/f_foreman_settings_provisioning.rb:7
+msgid "Users"
+msgstr ""
+
+#: ../app/registries/menu/loader.rb:24
 #: ../app/views/usergroups/_form.html.erb:26
 #: ../app/views/usergroups/index.html.erb:1
 #: ../app/views/usergroups/index.html.erb:10
@@ -8989,7 +7935,7 @@ msgstr ""
 msgid "User Groups"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:31 ../app/views/filters/index.html.erb:5
+#: ../app/registries/menu/loader.rb:25 ../app/views/filters/index.html.erb:5
 #: ../app/views/roles/index.html.erb:1 ../app/views/usergroups/_form.html.erb:5
 #: ../app/views/usergroups/_form.html.erb:32
 #: ../app/views/users/_form.html.erb:14 ../app/views/users/_form.html.erb:104
@@ -8998,14 +7944,14 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:32 ../app/views/bookmarks/index.html.erb:1
+#: ../app/registries/menu/loader.rb:26 ../app/views/bookmarks/index.html.erb:1
 #: ../app/views/bookmarks/welcome.html.erb:1
 #: ../app/views/bookmarks/welcome.html.erb:6
 #: ../webpack/assets/javascripts/react_app/components/PF4/Bookmarks/Bookmarks.js:83
 msgid "Bookmarks"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:33
+#: ../app/registries/menu/loader.rb:27
 #: ../app/views/apipie_dsl/apipie_dsls/help.html.erb:356
 #: ../app/views/settings/index.html.erb:1
 #: ../webpack/assets/javascripts/react_app/components/Editor/components/EditorSettings.js:29
@@ -9013,45 +7959,50 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:34 ../app/views/about/index.html.erb:1
+#: ../app/registries/menu/loader.rb:28 ../app/views/about/index.html.erb:1
 msgid "About"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:39
+#: ../app/registries/menu/loader.rb:33
 msgid "Monitor"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:40
+#: ../app/registries/menu/loader.rb:34
 msgid "Dashboard"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:42
+#: ../app/registries/menu/loader.rb:36
 #: ../webpack/assets/javascripts/react_app/components/HostStatuses/index.js:33
 msgid "Host Statuses"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:50
+#: ../app/registries/menu/loader.rb:42
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:2
+msgid "Config Management"
+msgstr ""
+
+#: ../app/registries/menu/loader.rb:44
 #: ../app/views/report_templates/index.html.erb:1
 #: ../app/views/report_templates/welcome.html.erb:1
 #: ../app/views/report_templates/welcome.html.erb:7
 msgid "Report Templates"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:55 ../app/registries/menu/loader.rb:57
+#: ../app/registries/menu/loader.rb:49 ../app/registries/menu/loader.rb:51
 msgid "All Hosts"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:64 ../app/views/hosts/index.html.erb:2
+#: ../app/registries/menu/loader.rb:58 ../app/views/hosts/index.html.erb:2
 #: ../app/views/hosts/welcome.html.erb:3
-#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:191
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:194
 msgid "Register Host"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:67
+#: ../app/registries/menu/loader.rb:61
 msgid "Provisioning Setup"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:68
+#: ../app/registries/menu/loader.rb:62
 #: ../app/views/architectures/index.html.erb:1
 #: ../app/views/architectures/welcome.html.erb:1
 #: ../app/views/operatingsystems/_form.html.erb:26
@@ -9059,17 +8010,17 @@ msgstr ""
 msgid "Architectures"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:70
+#: ../app/registries/menu/loader.rb:64
 msgid "Hardware Models"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:73 ../app/views/media/index.html.erb:1
+#: ../app/registries/menu/loader.rb:67 ../app/views/media/index.html.erb:1
 #: ../app/views/operatingsystems/_form.html.erb:6
 #: ../app/views/operatingsystems/_form.html.erb:35
 msgid "Installation Media"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:74
+#: ../app/registries/menu/loader.rb:68
 #: ../app/views/architectures/_form.html.erb:4
 #: ../app/views/architectures/index.html.erb:8
 #: ../app/views/media/index.html.erb:12
@@ -9080,7 +8031,7 @@ msgstr ""
 msgid "Operating Systems"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:76
+#: ../app/registries/menu/loader.rb:70
 #: ../app/views/operatingsystems/_form.html.erb:32
 #: ../app/views/ptables/index.html.erb:1
 #: ../app/views/ptables/welcome.html.erb:1
@@ -9089,7 +8040,7 @@ msgstr ""
 msgid "Partition Tables"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:78
+#: ../app/registries/menu/loader.rb:72
 #: ../app/views/hosts/_operating_system.html.erb:32
 #: ../app/views/provisioning_templates/index.html.erb:1
 #: ../app/views/provisioning_templates/welcome.html.erb:1
@@ -9098,18 +8049,18 @@ msgstr ""
 msgid "Provisioning Templates"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:82
+#: ../app/registries/menu/loader.rb:76
 msgid "Configure"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:83 ../app/views/hostgroups/index.html.erb:1
+#: ../app/registries/menu/loader.rb:77 ../app/views/hostgroups/index.html.erb:1
 #: ../app/views/hostgroups/welcome.html.erb:1
 #: ../app/views/hostgroups/welcome.html.erb:9
 #: ../app/views/taxonomies/_form.html.erb:35
 msgid "Host Groups"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:84
+#: ../app/registries/menu/loader.rb:78
 #: ../app/views/common_parameters/index.html.erb:1
 #: ../app/views/common_parameters/welcome.html.erb:1
 #: ../app/views/common_parameters/welcome.html.erb:7
@@ -9117,11 +8068,11 @@ msgstr ""
 msgid "Global Parameters"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:87
+#: ../app/registries/menu/loader.rb:81
 msgid "Infrastructure"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:88 ../app/views/about/index.html.erb:10
+#: ../app/registries/menu/loader.rb:82 ../app/views/about/index.html.erb:10
 #: ../app/views/smart_proxies/index.html.erb:1
 #: ../app/views/smart_proxies/welcome.html.erb:1
 #: ../app/views/smart_proxies/welcome.html.erb:7
@@ -9129,7 +8080,7 @@ msgstr ""
 msgid "Smart Proxies"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:90
+#: ../app/registries/menu/loader.rb:84
 #: ../app/views/compute_attributes/edit.html.erb:12
 #: ../app/views/compute_attributes/new.html.erb:13
 #: ../app/views/compute_profiles/index.html.erb:1
@@ -9138,7 +8089,7 @@ msgstr ""
 msgid "Compute Profiles"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:91
+#: ../app/registries/menu/loader.rb:85
 #: ../app/views/smart_proxies/plugins/_dhcp.html.erb:7
 #: ../app/views/subnets/index.html.erb:1
 #: ../app/views/subnets/welcome.html.erb:1
@@ -9147,7 +8098,7 @@ msgstr ""
 msgid "Subnets"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:92 ../app/views/domains/index.html.erb:1
+#: ../app/registries/menu/loader.rb:86 ../app/views/domains/index.html.erb:1
 #: ../app/views/domains/welcome.html.erb:1
 #: ../app/views/domains/welcome.html.erb:7
 #: ../app/views/smart_proxies/plugins/_dns.html.erb:7
@@ -9156,14 +8107,14 @@ msgstr ""
 msgid "Domains"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:93
+#: ../app/registries/menu/loader.rb:87
 #: ../app/views/http_proxies/index.html.erb:1
 #: ../app/views/http_proxies/welcome.html.erb:1
 #: ../app/views/http_proxies/welcome.html.erb:7
 msgid "HTTP Proxies"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:94 ../app/views/realms/index.html.erb:1
+#: ../app/registries/menu/loader.rb:88 ../app/views/realms/index.html.erb:1
 #: ../app/views/realms/welcome.html.erb:1
 #: ../app/views/realms/welcome.html.erb:7
 #: ../app/views/smart_proxies/plugins/_realm.html.erb:7
@@ -9171,7 +8122,7 @@ msgstr ""
 msgid "Realms"
 msgstr ""
 
-#: ../app/registries/menu/loader.rb:99
+#: ../app/registries/menu/loader.rb:93
 msgid "Lab Features"
 msgstr ""
 
@@ -9185,6 +8136,15 @@ msgstr ""
 
 #: ../app/registries/pagelets/manager.rb:99
 msgid "Pagelet with %s key is not found"
+msgstr ""
+
+#: ../app/registries/setting_registry.rb:118
+#: ../app/registries/setting_registry.rb:125
+msgid "Setting definition for '%s' not found, can not set"
+msgstr ""
+
+#: ../app/registries/setting_registry.rb:136
+msgid "expected a value of type %s"
 msgstr ""
 
 #: ../app/services/association_authorizer.rb:22
@@ -9320,7 +8280,7 @@ msgid "Unsupported or no operating system found for this host."
 msgstr ""
 
 #: ../app/services/foreman/renderer/errors.rb:63
-msgid "Unkown '%{klass}' resource class"
+msgid "Unknown '%{klass}' resource class"
 msgstr ""
 
 #: ../app/services/foreman/renderer/scope/macros/base.rb:392
@@ -9353,31 +8313,31 @@ msgstr ""
 msgid "%{controller}: %{host}'s operating system %{os} has no OS family"
 msgstr ""
 
-#: ../app/services/host_build_status.rb:27
+#: ../app/services/host_build_status.rb:28
 msgid "Failed to validate %{host}: %{error}"
 msgstr ""
 
-#: ../app/services/host_build_status.rb:31
+#: ../app/services/host_build_status.rb:32
 msgid "No templates found for this host."
 msgstr ""
 
-#: ../app/services/host_build_status.rb:36
+#: ../app/services/host_build_status.rb:37
 msgid "Template %s is empty."
 msgstr ""
 
-#: ../app/services/host_build_status.rb:39
+#: ../app/services/host_build_status.rb:40
 msgid "Failure parsing %{template}: %{error}."
 msgstr ""
 
-#: ../app/services/host_build_status.rb:44
+#: ../app/services/host_build_status.rb:45
 msgid "No smart proxies found."
 msgstr ""
 
-#: ../app/services/host_build_status.rb:50
+#: ../app/services/host_build_status.rb:51
 msgid "Failure deploying via smart proxy %{proxy}: %{error}."
 msgstr ""
 
-#: ../app/services/host_build_status.rb:52
+#: ../app/services/host_build_status.rb:53
 msgid "Error connecting to %{proxy}: %{error}."
 msgstr ""
 
@@ -9693,27 +8653,27 @@ msgstr ""
 msgid "Unable to get classes from Puppet for %s"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:11
+#: ../app/services/proxy_api/puppet_ca.rb:11
 msgid "Unable to get PuppetCA autosign"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:17
+#: ../app/services/proxy_api/puppet_ca.rb:17
 msgid "Unable to set PuppetCA autosign for %s"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:26
+#: ../app/services/proxy_api/puppet_ca.rb:26
 msgid "Unable to delete PuppetCA autosign for %s"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:32
+#: ../app/services/proxy_api/puppet_ca.rb:32
 msgid "Unable to sign PuppetCA certificate for %s"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:41
+#: ../app/services/proxy_api/puppet_ca.rb:41
 msgid "Unable to delete PuppetCA certificate for %s"
 msgstr ""
 
-#: ../app/services/proxy_api/puppetca.rb:47
+#: ../app/services/proxy_api/puppet_ca.rb:47
 msgid "Unable to get PuppetCA certificates"
 msgstr ""
 
@@ -9764,7 +8724,7 @@ msgstr ""
 msgid "Unable to connect"
 msgstr ""
 
-#: ../app/services/proxy_status/puppetca.rb:24
+#: ../app/services/proxy_status/puppet_ca.rb:24
 msgid "Could not locate CA certificate."
 msgstr ""
 
@@ -9774,15 +8734,6 @@ msgstr ""
 
 #: ../app/services/report_importer.rb:101
 msgid "Invalid log level: %s"
-msgstr ""
-
-#: ../app/services/setting_registry.rb:118
-#: ../app/services/setting_registry.rb:125
-msgid "Setting definition for '%s' not found, can not set"
-msgstr ""
-
-#: ../app/services/setting_registry.rb:136
-msgid "expected a value of type %s"
 msgstr ""
 
 #: ../app/services/smart_proxies/puppet_ca_certificate.rb:13
@@ -9815,7 +8766,7 @@ msgstr ""
 msgid "Regenerate Report"
 msgstr ""
 
-#: ../app/services/ui_notifications/rss_notifications_checker.rb:62
+#: ../app/services/ui_notifications/rss_notifications_checker.rb:60
 msgid "Open"
 msgstr ""
 
@@ -9939,7 +8890,7 @@ msgstr ""
 #: ../app/views/http_proxies/index.html.erb:8
 #: ../app/views/key_pairs/index.html.erb:8
 #: ../app/views/ssh_keys/_ssh_keys_tab.html.erb:6
-#: ../config/initializers/foreman_register.rb:14
+#: ../config/initializers/foreman_register.rb:16
 #: ../webpack/assets/javascripts/react_app/components/BookmarkForm/BookmarkForm.js:59
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Status/StatusTable.js:33
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:40
@@ -9957,6 +8908,14 @@ msgstr ""
 #: ../app/views/about/index.html.erb:24
 #: ../app/views/smart_proxies/index.html.erb:12
 msgid "Features"
+msgstr ""
+
+#: ../app/views/about/index.html.erb:26 ../app/views/about/index.html.erb:99
+#: ../app/views/smart_proxies/plugins/_plugin_version.html.erb:2
+#: ../app/views/smart_proxies/show.html.erb:43
+#: ../config/initializers/f_foreman_settings_general.rb:36
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Bios/index.js:40
+msgid "Version"
 msgstr ""
 
 #: ../app/views/about/index.html.erb:46
@@ -10952,7 +9911,7 @@ msgstr ""
 #: ../app/views/compute_resources_vms/index/_vmware.html.erb:8
 #: ../app/views/hosts/_assign_hosts.html.erb:12
 #: ../app/views/hosts/_list.html.erb:9
-#: ../config/initializers/foreman_register.rb:16
+#: ../config/initializers/foreman_register.rb:18
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/OperatingSystem/index.js:25
 #: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/RegistrationCommandsPageHelpers.js:74
 #: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/components/fields/OperatingSystem.js:69
@@ -11048,7 +10007,7 @@ msgstr ""
 #. TRANSLATORS: "Table name" or "Table name|Column name" for error messages
 #: ../app/views/compute_attributes/_form.html.erb:4
 #: ../app/views/compute_resources/show.html.erb:68
-#: ../app/views/hostgroups/_form.html.erb:36
+#: ../app/views/hostgroups/_form.html.erb:44
 #: ../app/views/hosts/_form.html.erb:75 model_attributes.rb:88
 msgid "Compute profile"
 msgstr ""
@@ -11539,11 +10498,6 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: ../app/views/compute_resources_vms/form/libvirt/_base.html.erb:21
-#: ../app/views/compute_resources_vms/form/ovirt/_base.html.erb:76
-msgid "Image to use"
-msgstr ""
-
 #: ../app/views/compute_resources_vms/form/libvirt/_network.html.erb:8
 msgid "Network type"
 msgstr ""
@@ -11654,7 +10608,7 @@ msgid "Cores per socket"
 msgstr ""
 
 #: ../app/views/compute_resources_vms/form/ovirt/_base.html.erb:40
-#: ../config/initializers/foreman_register.rb:42
+#: ../config/initializers/foreman_register.rb:44
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtOvirt.js:22
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:151
 msgid "Sockets"
@@ -11668,6 +10622,10 @@ msgstr ""
 #: ../app/views/compute_resources_vms/show/_ovirt.html.erb:33
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtOvirt.js:37
 msgid "Keyboard"
+msgstr ""
+
+#: ../app/views/compute_resources_vms/form/ovirt/_base.html.erb:76
+msgid "Image to use"
 msgstr ""
 
 #: ../app/views/compute_resources_vms/form/ovirt/_network.html.erb:13
@@ -11800,7 +10758,7 @@ msgstr ""
 #: ../app/views/compute_resources_vms/index/_ovirt.html.erb:6
 #: ../app/views/compute_resources_vms/index/_vmware.html.erb:7
 #: ../app/views/hosts/select_multiple_power_state.html.erb:9
-#: ../config/initializers/foreman_register.rb:11
+#: ../config/initializers/foreman_register.rb:13
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:14
 msgid "Power"
 msgstr ""
@@ -11897,7 +10855,7 @@ msgstr ""
 
 #: ../app/views/config_reports/_list.html.erb:7
 #: ../app/views/hosts/_list.html.erb:13
-#: ../config/initializers/foreman_register.rb:24
+#: ../config/initializers/foreman_register.rb:26
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:81
 msgid "Last report"
 msgstr ""
@@ -12291,34 +11249,34 @@ msgstr ""
 msgid "Parent"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:30
+#: ../app/views/hostgroups/_form.html.erb:37
 #: ../app/views/hosts/_form.html.erb:57
 msgid "Bare Metal"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:31
+#: ../app/views/hostgroups/_form.html.erb:39
 msgid "Deploy on"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:52
+#: ../app/views/hostgroups/_form.html.erb:60
 #: ../app/views/nic/_base_form.html.erb:33
 msgid "IPv4 Subnet"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:57
+#: ../app/views/hostgroups/_form.html.erb:65
 #: ../app/views/hosts/_nics.html.erb:41 ../app/views/nic/_base_form.html.erb:38
 msgid "IPv6 Subnet"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:66
+#: ../app/views/hostgroups/_form.html.erb:74
 msgid "Password must be 8 characters or more"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:77
+#: ../app/views/hostgroups/_form.html.erb:85
 msgid "Parent Parameters"
 msgstr ""
 
-#: ../app/views/hostgroups/_form.html.erb:80
+#: ../app/views/hostgroups/_form.html.erb:88
 msgid "Host Group Parameters"
 msgstr ""
 
@@ -12384,7 +11342,7 @@ msgid "Netmask"
 msgstr ""
 
 #: ../app/views/hosts/_bmc.html.erb:35
-#: ../config/initializers/foreman_register.rb:35
+#: ../config/initializers/foreman_register.rb:37
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/NetworkingInterfaces/NICDescriptionList.js:89
 msgid "MAC"
 msgstr ""
@@ -12476,6 +11434,11 @@ msgid "Host Parameters"
 msgstr ""
 
 #: ../app/views/hosts/_form.html.erb:126
+#: ../config/initializers/f_foreman_settings_provisioning.rb:17
+msgid "Select an owner"
+msgstr ""
+
+#: ../app/views/hosts/_form.html.erb:126
 msgid "Owned By"
 msgstr ""
 
@@ -12533,7 +11496,7 @@ msgstr ""
 
 #. TRANSLATORS: "Table name" or "Table name|Column name" for error messages
 #: ../app/views/hosts/_list.html.erb:10
-#: ../config/initializers/foreman_register.rb:40
+#: ../config/initializers/foreman_register.rb:42
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:84
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:143
 #: model_attributes.rb:362
@@ -12772,7 +11735,7 @@ msgid "Rebuild orchestration configuration"
 msgstr ""
 
 #: ../app/views/hosts/review_before_build.html.erb:3
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:104
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:100
 msgid "The following errors may prevent a successful build:"
 msgstr ""
 
@@ -14730,7 +13693,17 @@ msgid "Personal Access Tokens"
 msgstr ""
 
 #: ../app/views/users/_form.html.erb:39
+#: ../config/initializers/f_foreman_settings_general.rb:2
+msgid "Browser locale"
+msgstr ""
+
+#: ../app/views/users/_form.html.erb:39
 msgid "Language"
+msgstr ""
+
+#: ../app/views/users/_form.html.erb:41
+#: ../config/initializers/f_foreman_settings_general.rb:3
+msgid "Browser timezone"
 msgstr ""
 
 #: ../app/views/users/_form.html.erb:46 ../app/views/users/index.html.erb:14
@@ -14745,6 +13718,12 @@ msgstr ""
 msgid ""
 "Send a test message to the user's email address to confirm the configuration i"
 "s working."
+msgstr ""
+
+#: ../app/views/users/_form.html.erb:79
+#: ../config/initializers/f_foreman_settings_notification.rb:2
+#: ../webpack/assets/javascripts/react_app/components/notifications/ToggleIcon/ToggleIcon.js:13
+msgid "Notifications"
 msgstr ""
 
 #: ../app/views/users/_form.html.erb:81
@@ -14817,72 +13796,1137 @@ msgstr ""
 msgid "A class representing %s object"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:16
+#: ../config/initializers/f_foreman_settings_auth.rb:2
+msgid "Authentication"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:5
+msgid "Foreman will use OAuth for API authorization"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:7
+msgid "OAuth active"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:10
+#: ../config/initializers/f_foreman_settings_auth.rb:12
+msgid "OAuth consumer key"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:16
+#: ../config/initializers/f_foreman_settings_auth.rb:18
+msgid "OAuth consumer secret"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:22
+msgid ""
+"When enabled, Foreman will map users by username in request-header. If this is"
+" disabled, OAuth requests will have admin rights."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:24
+msgid "OAuth map users"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:27
+msgid ""
+"Foreman will block user logins from an IP address after this number of failed "
+"login attempts for 5 minutes. Set to 0 to disable bruteforce protection"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:29
+msgid "Failed login attempts limit"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:32
+msgid ""
+"Only known Smart Proxies may access features that use Smart Proxy authenticati"
+"on"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:34
+msgid "Restrict registered smart proxies"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:37
+msgid ""
+"List of hostnames, IPv4, IPv6 addresses or subnets to be trusted in addition t"
+"o Smart Proxies for access to fact/report importers and ENC output"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:39
+msgid "Trusted hosts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:42
+msgid "SSL Certificate path that Foreman would use to communicate with its proxies"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:44
+msgid "SSL certificate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:47
+msgid "SSL CA file path that Foreman will use to communicate with its proxies"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:49
+msgid "SSL CA file"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:52
+msgid "SSL Private Key path that Foreman will use to communicate with its proxies"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:54
+msgid "SSL private key"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:57
+msgid "Environment variable containing the subject DN from a client SSL certificate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:59
+msgid "SSL client DN env"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:62
+msgid ""
+"Environment variable containing the verification status of a client SSL certif"
+"icate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:64
+msgid "SSL client verify env"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:67
+msgid "Environment variable containing a client's SSL certificate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:69
+msgid "SSL client cert env"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:72
+msgid ""
+"SSL CA file path that will be used in templates (to verify the connection to F"
+"oreman)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:74
+msgid "Server CA file"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:78
+msgid "Private key file path that Foreman will use to encrypt websockets"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:80
+msgid "Websockets SSL key"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:83
+msgid "Certificate path that Foreman will use to encrypt websockets"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:85
+msgid "Websockets SSL certificate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:89
+msgid ""
+"VNC/SPICE websocket proxy console access encryption (websockets_ssl_key/cert s"
+"etting required)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:91
+msgid "Websockets encryption"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:92
+msgid ""
+"Unable to turn on websockets_encrypt, either websockets_ssl_key or websockets_"
+"ssl_cert is missing"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:93
+msgid "Unable to unset websockets_ssl_key when websockets_encrypt is on"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:94
+msgid "Unable to unset websockets_ssl_cert when websockets_encrypt is on"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:98
+msgid ""
+"Redirect your users to this url on logout (authorize_login_delegation should a"
+"lso be enabled)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:100
+msgid "Login delegation logout URL"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:103
+msgid ""
+"Name of the external auth source where unknown externally authentication users"
+" (see authorize_login_delegation) should be created. Empty means no autocreati"
+"on."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:105
+msgid "Authorize login delegation auth source user autocreate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:108
+msgid "Authorize login delegation with REMOTE_USER HTTP header"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:110
+msgid "Authorize login delegation"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:113
+msgid "Authorize login delegation with REMOTE_USER HTTP header for API calls too"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:115
+msgid "Authorize login delegation API"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:118
+msgid "Log out idle users after a certain number of minutes"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:120
+msgid "Idle timeout"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:123
+msgid ""
+"Password hashing algorithm. A password change is needed effect existing passwo"
+"rds."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:125
+msgid "Password hashing algorithm"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:126
+msgid "SHA1"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:126
+msgid "BCrypt"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:126
+msgid "PBKDF2 SHA1"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:129
+msgid ""
+"Cost value of bcrypt password hash function for internal auth-sources (4-30). "
+"A higher value is safer but verification is slower, particularly for stateless"
+" API calls and UI logins. A password change is needed effect existing password"
+"s."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:131
+msgid "BCrypt password cost"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:134
+msgid ""
+"Cost value of PBKDF2 password hash function for internal auth-sources. A highe"
+"r value is safer but verification is slower, particularly for stateless API ca"
+"lls and UI logins. A password change is needed effect existing passwords."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:136
+msgid "PBKDF2 password cost"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:139
+msgid ""
+"Permits access to BMC interface passwords through ENC YAML output and in templ"
+"ates"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:141
+msgid "BMC credentials access"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:144
+msgid ""
+"OpenID Connect JSON Web Key Set(JWKS) URL. Typically https://keycloak.example."
+"com/auth/realms/<realm name>/protocol/openid-connect/certs when using Keycloak"
+" as an OpenID provider"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:146
+msgid "OIDC JWKs URL"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:149
+msgid ""
+"Name of the OpenID Connect Audience that is being used for Authentication. In "
+"case of Keycloak this is the Client ID."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:151
+msgid "OIDC Audience"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:154
+msgid ""
+"The iss (issuer) claim identifies the principal that issued the JWT, which exi"
+"sts at a `/.well-known/openid-configuration` in case of most of the OpenID pro"
+"viders."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:156
+msgid "OIDC Issuer"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:159
+msgid "The algorithm used to encode the JWT in the OpenID provider."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_auth.rb:161
+msgid "OIDC Algorithm"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:5
+msgid "Foreman will create the host when a report is received"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:7
+msgid "Create new host when report is uploaded"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:10
+msgid ""
+"Foreman matchers will be inherited by children when evaluating smart class par"
+"ameters for hostgroups, organizations and locations"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:12
+msgid "Matchers inheritance"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:15
+msgid "Foreman will evaluate host smart class parameters in this order by default"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:17
+msgid "Default parameters lookup path"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:20
+msgid "Foreman will parse ERB in parameters value in the ENC output"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:22
+msgid "Interpolate ERB in parameters"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:25
+msgid ""
+"All hosts will show a configuration status even when a Puppet smart proxy is n"
+"ot assigned"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_cfgmgmt.rb:27
+msgid "Always show configuration status"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:2
+msgid "Email"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:7
+msgid "Email reply address for emails that Foreman is sending"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:9
+msgid "Email reply address"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:13
+msgid "Prefix to add to all outgoing email"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:15
+msgid "Email subject prefix"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:18
+msgid "Send a welcome email including username and URL to new users"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:20
+msgid "Send welcome email"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:23
+msgid "Method used to deliver email"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:25
+msgid "Delivery method"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:26
+msgid "Sendmail"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:26
+msgid "SMTP"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:29
+msgid "SMTP automatic STARTTLS"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:31
+msgid "SMTP enable StartTLS auto"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:34
+msgid "When using TLS, you can set how OpenSSL checks the certificate"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:36
+msgid "SMTP OpenSSL verify mode"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:37
+msgid "Default verification mode"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:37
+#: ../config/initializers/f_foreman_settings_email.rb:69
+msgid "none"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:40
+msgid "SMTP address to connect to"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:42
+msgid "SMTP address"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:45
+msgid "SMTP port to connect to"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:47
+msgid "SMTP port"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:50
+msgid "HELO/EHLO domain"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:52
+msgid "SMTP HELO/EHLO domain"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:55
+msgid "Username to use to authenticate, if required"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:57
+msgid "SMTP username"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:60
+msgid "Password to use to authenticate, if required"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:62
+msgid "SMTP password"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:66
+msgid "Specify authentication type, if required"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:68
+msgid "SMTP authentication"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:72
+msgid ""
+"Specify additional options to sendmail. Only used when the delivery method is "
+"set to sendmail."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:74
+msgid "Sendmail arguments"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:77
+msgid ""
+"The location of the sendmail executable. Only used when the delivery method is"
+" set to sendmail."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:79
+msgid "Sendmail location"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_email.rb:83
+msgid "Invalid sendmail location, use settings.yaml for arbitrary location"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:45
+msgid "Foreman will create the host when new facts are received"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:47
+msgid "Create new host when facts are uploaded"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:50
+msgid ""
+"Hosts created from facts will be placed in the location this fact dictates. Th"
+"e content of this fact should be the full label of the location."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:52
+msgid "Location fact"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:55
+msgid ""
+"Hosts created from facts will be placed in the organization this fact dictates"
+". The content of this fact should be the full label of the organization."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:57
+msgid "Organization fact"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:60
+msgid ""
+"Hosts created from facts will be placed in this location if no location fact w"
+"as sent"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:62
+msgid "Default location"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:66
+msgid ""
+"Hosts created from facts will be placed in this organization if no organizatio"
+"n fact was sent"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:68
+msgid "Default organization"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:72
+msgid "Foreman will update a host's hostgroup from its facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:74
+msgid "Update hostgroup from facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:77
+msgid "Stop updating Operating System from facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:79
+msgid "Ignore facts for operating system"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:82
+msgid "Stop updating domain values from facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:84
+msgid "Ignore facts for domain"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:87
+msgid "Foreman will update a host's subnet from its facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:89
+msgid "Update subnets from facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:90
+msgid "Provisioning only"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:93
+msgid "Stop updating IP and MAC address values from facts (affects all interfaces)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:95
+msgid "Ignore interfaces facts for provisioning"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:98
+msgid ""
+"Skip creating or updating host network interfaces objects with identifiers mat"
+"ching these values from incoming facts. You can use * wildcard to match identi"
+"fiers with indexes e.g. macvtap*. The ignored interfaces raw facts will be sti"
+"ll stored in the DB, see the 'Exclude pattern' setting for more details."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:100
+msgid "Ignore interfaces with matching identifier"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:103
+msgid ""
+"Exclude pattern for all types of imported facts (puppet, ansible, rhsm). Those"
+" facts won't be stored in foreman's database. You can use * wildcard to match "
+"names with indexes e.g. ignore* will filter out ignore, ignore123 as well as a"
+"::ignore or even a::ignore123::b"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_facts.rb:105
+msgid "Exclude pattern for facts stored in foreman"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:8
+msgid "The default administrator email address"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:10
+msgid "Administrator email address"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:14
+msgid ""
+"URL where your Foreman instance is reachable (see also Provisioning > unattend"
+"ed_url)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:16
+msgid "Foreman URL"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:20
+msgid "Number of records shown per page in Foreman"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:22
+msgid "Entries per page"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:25
+msgid ""
+"Should the `foreman-rake db:seed` be executed on the next run of the installer"
+" modules?"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:27
+msgid "DB pending seed"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:30
+msgid ""
+"Open and read timeout for HTTP requests from Foreman to Smart Proxy (in second"
+"s)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:32
+msgid "Smart Proxy request timeout"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:35
+msgid ""
+"Text to be shown in the login-page footer. Keyword $VERSION is replaced by cur"
+"rent version."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:37
+msgid "Login page footer text"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:40
+msgid ""
+"Set an HTTP(s) proxy for all outgoing HTTP(S) connections from Foreman. System"
+"-wide proxies must be configured at the operating system level."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:42
+msgid "HTTP(S) proxy"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:46
+msgid ""
+"Set hostnames to which requests are not to be proxied. Requests to the local h"
+"ost are excluded by default."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:48
+msgid "HTTP(S) proxy except hosts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:51
+msgid ""
+"Whether or not to show a menu to access experimental lab features (requires re"
+"load of page)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:53
+msgid "Show Experimental Labs"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:56
+msgid "Whether or not to show the new overview page for All Hosts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:58
+msgid "Show New Host Overview Page"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:61
+msgid ""
+"Display names of hosts as FQDNs. If disabled, only display names of hosts as h"
+"ostnames."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:63
+msgid "Display FQDN for hosts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:66
+msgid ""
+"Duration in minutes after servers are classed as out of sync. This setting is "
+"overridden by specific settings from config management tools (e.g. puppet_inte"
+"val, ansible_interval)."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:69
+msgid "Out of sync interval"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:72
+msgid "Foreman instance ID, uniquely identifies this Foreman instance."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:74
+msgid "Foreman UUID"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:77
+msgid "Language to use for new users"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:79
+msgid "Default language"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:83
+msgid "Timezone to use for new users"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:85
+msgid "Default timezone"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:89
+msgid ""
+"The instance title is shown above the header in a banner (requires a page relo"
+"ad)."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:91
+msgid "Instance title"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:94
+msgid ""
+"Hex value for color for the instance title banner. It will only be used if an "
+"instance title is defined. If no valid value is given, the default value is: #"
+"000000. (requires a page reload)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:96
+msgid "Instance color"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:99
+msgid ""
+"Duration in days to preserve audits for. Leave empty to disable the audits cle"
+"anup."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:101
+msgid "Saved audits interval"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:104
+msgid "Foreman will load the new UI for host details"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_general.rb:106
+msgid "New host details UI"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_notification.rb:5
+msgid "Whether to pull RSS notifications or not"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_notification.rb:7
+msgid "RSS enable"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_notification.rb:10
+msgid "URL to fetch RSS notifications from"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_notification.rb:12
+msgid "RSS URL"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:8
+msgid "Usergroups"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:13
+msgid "Default owner on provisioned hosts, if empty Foreman will use current user"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:15
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:165
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/SystemProperties/index.js:111
+msgid "Host owner"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:20
+msgid "Default encrypted root password on provisioned hosts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:22
+msgid "Root password"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:28
+msgid ""
+"URL hosts will retrieve templates from during build, when it starts with https"
+" unattended/userdata controllers cannot be accessed via HTTP"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:30
+msgid "Unattended URL"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:33
+msgid "Enable safe mode config templates rendering (recommended)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:35
+msgid "Safemode rendering"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:38
+msgid "Allow access to unattended URLs without build mode being used"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:40
+msgid "Access unattended without build"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:43
+msgid ""
+"Foreman will query the locally configured resolver instead of the SOA/NS autho"
+"rities"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:45
+msgid "Query local nameservers"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:48
+msgid ""
+"Time in minutes installation tokens should be valid for, 0 to disable token ge"
+"neration"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:50
+msgid "Installation token lifetime"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:53
+msgid "Time in seconds before SSH provisioning times out"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:55
+msgid "SSH timeout"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:58
+msgid ""
+"The IP address that should be used for the console listen address when provisi"
+"oning new virtual machines via Libvirt"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:60
+msgid "Libvirt default console address"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:63
+msgid "Foreman will update the host IP with the IP that made the built request"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:65
+msgid "Update IP from built request"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:68
+msgid ""
+"Foreman will use the short hostname instead of the FQDN for creating new virtu"
+"al machines"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:70
+msgid "Use short name for VMs"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:73
+msgid ""
+"List of timeouts (in seconds) for DNS lookup attempts such as the dns_lookup m"
+"acro and DNS record conflict validation"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:75
+msgid "DNS timeout"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:78
+msgid ""
+"Foreman will delete virtual machine if provisioning script ends with non zero "
+"exit code"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:80
+msgid "Clean up failed deployment"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:83
+msgid ""
+"Random gives unique names, MAC-based are longer but stable (and only works wit"
+"h bare-metal)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:85
+msgid "Type of name generator"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:89
+msgid ""
+"Default PXE menu item in global template - 'local', 'discovery' or custom, use"
+" blank for template default"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:91
+msgid "Default PXE global template entry"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:94
+msgid ""
+"Default PXE menu item in local template - 'local', 'force_local_chain_hd0' or "
+"custom, use blank for template default"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:96
+msgid "Default PXE local template entry"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:99
+msgid "Intermediate iPXE script for unattended installations"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:101
+msgid "iPXE intermediate script"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:105
+msgid ""
+"Destroy associated VM on host delete. When enabled, VMs linked to Hosts will b"
+"e deleted on Compute Resource. When disabled, VMs are unlinked when the host i"
+"s deleted, meaning they remain on Compute Resource and can be re-associated or"
+" imported back to Foreman again. This does not automatically power off the VM"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:107
+msgid "Destroy associated VM on host delete"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:110
+msgid ""
+"Maximum amount of keys in structured subtree, statistics stored in foreman::dr"
+"opped_subtree_facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:112
+msgid "Maximum structured facts"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:115
+msgid "Global Registration template"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:117
+msgid "Default Global registration template"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:120
+msgid ""
+"Default 'Host initial configuration' template, automatically assigned when a n"
+"ew operating system is created"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:122
+msgid "Default 'Host initial configuration' template"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:125
+msgid "Full path to CoreOS transpiler (ct)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:127
+msgid "CoreOS Transpiler Command"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:131
+msgid "CoreOS transpiler (ct) arguments as an comma-separated array"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:133
+msgid "CoreOS Transpiler Command Arguments"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:136
+msgid "Full path to Fedora CoreOS transpiler (fcct)"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:138
+msgid "Fedora CoreOS Transpiler Command"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:142
+msgid "Fedora CoreOS transpiler (fcct) arguments as an comma-separated array"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:144
+msgid "Fedora CoreOS Transpiler Command Arguments"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:151
+msgid ""
+"Global default %s template. This template gets deployed to all configured TFTP"
+" servers. It will not be affected by upgrades."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:153
+msgid "Global default %s template"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:160
+msgid "Template that will be selected as %s default for local boot."
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:162
+msgid "Local boot %s template"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:173
+msgid "Foreman will automate certificate signing upon provision of new host"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:175
+msgid "Manage PuppetCA"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:178
+msgid "Foreman will use random UUIDs for certificate signing instead of hostnames"
+msgstr ""
+
+#: ../config/initializers/f_foreman_settings_provisioning.rb:180
+msgid "Use UUID for certificates"
+msgstr ""
+
+#: ../config/initializers/foreman_register.rb:18
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/OperatingSystem/index.js:48
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:47
 msgid "OS"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:31
+#: ../config/initializers/foreman_register.rb:33
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:79
 msgid "IPv4 address"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:33
+#: ../config/initializers/foreman_register.rb:35
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:64
 msgid "IPv6 address"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:35
+#: ../config/initializers/foreman_register.rb:37
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/DetailsCard/index.js:94
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtOvirt.js:53
 #: ../webpack/assets/javascripts/react_app/components/HostDetails/Tabs/Details/Cards/Virtualization/VirtVmware.js:36
 msgid "MAC address"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:38
+#: ../config/initializers/foreman_register.rb:40
 msgid "Reported data"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:44
+#: ../config/initializers/foreman_register.rb:46
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:158
 msgid "Cores"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:46
+#: ../config/initializers/foreman_register.rb:48
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:165
 msgid "RAM"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:48
+#: ../config/initializers/foreman_register.rb:50
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:172
 msgid "Virtual"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:50
+#: ../config/initializers/foreman_register.rb:52
 msgid "Disks space"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:50
+#: ../config/initializers/foreman_register.rb:52
 msgid "Disks total space"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:52
+#: ../config/initializers/foreman_register.rb:54
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:186
 msgid "Kernel version"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:54
+#: ../config/initializers/foreman_register.rb:56
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:193
 msgid "BIOS vendor"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:56
+#: ../config/initializers/foreman_register.rb:58
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:200
 msgid "BIOS release date"
 msgstr ""
 
-#: ../config/initializers/foreman_register.rb:58
+#: ../config/initializers/foreman_register.rb:60
 #: ../webpack/assets/javascripts/react_app/components/HostsIndex/Columns/core.js:207
 msgid "BIOS version"
 msgstr ""
@@ -15015,12 +15059,6 @@ msgstr ""
 msgid "locale_name"
 msgstr ""
 
-#: ../lib/foreman/http_proxy.rb:28
-msgid ""
-"Proxied request failed with: %s\n"
-"%s"
-msgstr ""
-
 #: ../lib/foreman/telemetry_sinks/statsd_sink.rb:13
 #: ../lib/foreman/telemetry_sinks/statsd_sink.rb:18
 #: ../lib/foreman/telemetry_sinks/statsd_sink.rb:23
@@ -15029,36 +15067,6 @@ msgstr ""
 
 #: ../lib/generators/plugin/migration_generator.rb:38
 msgid "Could not find %{migration_name} migration in %{destination}"
-msgstr ""
-
-#: ../lib/net/dns/a_record.rb:13
-msgid "IPv4 DNS record"
-msgid_plural "IPv4 DNS records"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../lib/net/dns/aaaa_record.rb:13
-msgid "IPv6 DNS record"
-msgid_plural "IPv6 DNS records"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../lib/net/dns/ptr4_record.rb:12
-msgid "Reverse IPv4 DNS record"
-msgid_plural "Reverse IPv4 DNS records"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../lib/net/dns/ptr6_record.rb:12
-msgid "Reverse IPv6 DNS record"
-msgid_plural "Reverse IPv6 DNS records"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../lib/net/validations.rb:12
-msgid ""
-"hostname can contain only lowercase letters, numbers, dashes and dots accordin"
-"g to RFC921, RFC952 and RFC1123"
 msgstr ""
 
 #: ../lib/ws_proxy.rb:52
@@ -15093,8 +15101,12 @@ msgstr ""
 
 #: ../webpack/assets/javascripts/bundle_novnc.js:91
 #: ../webpack/assets/javascripts/foreman_tools.js:51
-#: ../webpack/assets/javascripts/react_app/components/PF4/TableIndexPage/Table/Table.js:130
+#: ../webpack/assets/javascripts/react_app/components/PF4/TableIndexPage/Table/Table.js:133
 msgid "Loading..."
+msgstr ""
+
+#: ../webpack/assets/javascripts/compute_resource/libvirt.js:95
+msgid "Image not found"
 msgstr ""
 
 #: ../webpack/assets/javascripts/compute_resource/openstack.js:32
@@ -15305,8 +15317,12 @@ msgstr ""
 
 #: ../webpack/assets/javascripts/react_app/components/AuthSource/Welcome.js:17
 msgid ""
-"The authentication process currently requires an LDAP provider, such as {FreeI"
-"PA}, {OpenLDAP} or {Microsoft}."
+"The authentication process currently requires an LDAP provider, such as {Free_"
+"IPA}, {OpenLDAP} or {Microsoft}."
+msgstr ""
+
+#: ../webpack/assets/javascripts/react_app/components/AuthSource/Welcome.js:21
+msgid "FreeIPA"
 msgstr ""
 
 #: ../webpack/assets/javascripts/react_app/components/AuthSource/Welcome.js:28
@@ -15515,23 +15531,34 @@ msgid "Failed to submit the request."
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:43
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:39
 msgid "Review before build"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:75
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:71
 msgid "Build enables host {hostName} to rebuild on next boot"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:86
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:82
 msgid "This action will delete this host and all its data (i.e facts, report)"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:98
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/BuildModal.js:94
 msgid "No errors detected"
+msgstr ""
+
+#:
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/ErrorsTree/components/ErrorPresenter.js:10
+msgid "Copy"
+msgstr ""
+
+#:
+#: ../webpack/assets/javascripts/react_app/components/HostDetails/ActionsBar/ErrorsTree/components/ErrorPresenter.js:11
+#: ../webpack/assets/javascripts/react_app/components/common/ClipboardCopy/index.js:67
+msgid "Copied!"
 msgstr ""
 
 #:
@@ -16482,11 +16509,6 @@ msgid "Default: %s"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/components/common/ClipboardCopy/index.js:67
-msgid "Copied!"
-msgstr ""
-
-#:
 #: ../webpack/assets/javascripts/react_app/components/common/DateTimePicker/DateComponents/TodayButton.js:17
 msgid "Today"
 msgstr ""
@@ -16768,7 +16790,7 @@ msgstr ""
 
 #:
 #: ../webpack/assets/javascripts/react_app/routes/Audits/AuditsPage/AuditsPage.js:36
-#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:206
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:209
 msgid " Documentation"
 msgstr ""
 
@@ -16942,6 +16964,11 @@ msgid ""
 msgstr ""
 
 #:
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/components/fields/DownloadUtility.js:18
+msgid "Download utility"
+msgstr ""
+
+#:
 #: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/components/fields/Insecure.js:15
 msgid "Insecure"
 msgstr ""
@@ -17092,12 +17119,12 @@ msgid "Update packages"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:232
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:235
 msgid "Advanced"
 msgstr ""
 
 #:
-#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:245
+#: ../webpack/assets/javascripts/react_app/routes/RegistrationCommands/RegistrationCommandsPage/index.js:248
 msgid "There was an error while loading the data, see the logs for more information."
 msgstr ""
 
