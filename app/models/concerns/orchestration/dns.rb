@@ -108,7 +108,7 @@ module Orchestration::DNS
   end
 
   def dns_conflict_detected?
-    return false if ip.blank? || hostname.blank?
+    return false if (ip.blank? && ip6.blank?) || hostname.blank?
     # can't validate anything if dont have an ip-address yet
     return false unless require_ip4_validation? || require_ip6_validation?
     # we should only alert on conflicts if overwrite mode is off
