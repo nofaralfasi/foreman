@@ -82,7 +82,6 @@ module Foreman
         "syspurpose_role" => "Red Hat Enterprise Linux Server",
         "syspurpose_usage" => "Development/Test",
         "syspurpose_sla" => "Self-Support",
-        "syspurpose_addons" => "first addon, second addon, third addon",
         "ansible_user" => "win_ansible_user",
         "create_ansible_user" => "true",
         "ansible_ssh_pass" => "win_ansible_user_ssh_pass",

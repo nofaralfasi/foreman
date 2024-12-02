@@ -19,12 +19,10 @@ test_on:
   sys_role = " --role '#{host_param('syspurpose_role')}'" if host_param('syspurpose_role')
   sys_usage = " --usage '#{host_param('syspurpose_usage')}'" if host_param('syspurpose_usage')
   sys_sla = " --sla '#{host_param('syspurpose_sla')}'" if host_param('syspurpose_sla')
-  sys_addons = " #{host_param('syspurpose_addons').split(',')
-                                                  .map { |add_on| "--addon '#{add_on.strip}'" }.join(" ")}" if host_param('syspurpose_addons')
 -%>
 <% if subman_registration -%>
 rhsm --organization="<%= subman_org %>" --activation-key="<%= subman_keys %>"<%= subman_hostname -%><%= subman_rhsm_baseurl -%><%= subman_insights -%>
 <% end -%>
 <%- if host_param('syspurpose_role') %>
-syspurpose<%= sys_role %><%= sys_usage %><%= sys_sla %><%= sys_addons %>
+syspurpose<%= sys_role %><%= sys_usage %><%= sys_sla %>
 <% end -%>

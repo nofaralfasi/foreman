@@ -30,7 +30,7 @@ part /boot --fstype ext3 --size=100 --asprimary
 part /     --fstype ext3 --size=1024 --grow
 part swap  --recommended
 rhsm --organization="Org" --activation-key="key" --connect-to-insights
-syspurpose --role 'Red Hat Enterprise Linux Server' --usage 'Development/Test' --sla 'Self-Support' --addon 'first addon' --addon 'second addon' --addon 'third addon'
+syspurpose --role 'Red Hat Enterprise Linux Server' --usage 'Development/Test' --sla 'Self-Support'
 
 skipx
 text

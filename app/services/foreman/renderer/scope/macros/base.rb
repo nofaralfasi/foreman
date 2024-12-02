@@ -201,7 +201,7 @@ module Foreman
           apipie :method, 'Returns an array of all possible host status classes sorted alphabetically by status name' do
             desc "Useful to generate a report on all host statuses."
             returns array_of: 'HostStatus', desc: 'Array of host status objects'
-            example "all_host_statuses # => [Katello::PurposeAddonsStatus, HostStatus::BuildStatus, ForemanOpenscap::ComplianceStatus, HostStatus::ConfigurationStatus, Katello::ErrataStatus, HostStatus::ExecutionStatus, Katello::PurposeRoleStatus, Katello::PurposeSlaStatus, Katello::SubscriptionStatus, Katello::PurposeStatus, Katello::TraceStatus, Katello::PurposeUsageStatus] "
+            example "all_host_statuses # => [HostStatus::BuildStatus, ForemanOpenscap::ComplianceStatus, HostStatus::ConfigurationStatus, Katello::ErrataStatus, HostStatus::ExecutionStatus, Katello::PurposeRoleStatus, Katello::PurposeSlaStatus, Katello::SubscriptionStatus, Katello::PurposeStatus, Katello::TraceStatus, Katello::PurposeUsageStatus] "
           end
           def all_host_statuses
             @all_host_statuses ||= HostStatus.status_registry.to_a.sort_by(&:status_name)
@@ -210,7 +210,7 @@ module Foreman
           apipie :method, 'Returns hash representing all statuses for a given host' do
             required :host, 'Host::Managed', desc: 'a host object to get the statuses for'
             returns object_of: Hash, desc: 'Hash representing all statuses for a given host'
-            example 'all_host_statuses(@host) # => {"Addons"=>0, "Build"=>1, "Compliance"=>0, "Configuration"=>0, "Errata"=>0, "Execution"=>1, "Role"=>0, "Service Level"=>0, "Subscription"=>0, "System Purpose"=>0, "Traces"=>0, "Usage"=>0}'
+            example 'all_host_statuses(@host) # => {"Build"=>1, "Compliance"=>0, "Configuration"=>0, "Errata"=>0, "Execution"=>1, "Role"=>0, "Service Level"=>0, "Subscription"=>0, "System Purpose"=>0, "Traces"=>0, "Usage"=>0}'
             example "<%- load_hosts.each_record do |host| -%>\n<%= host.name -%>, <%=   all_host_statuses(host)['Subscription'] %>\n<%- end -%>"
           end
           def all_host_statuses_hash(host)
@@ -220,7 +220,7 @@ module Foreman
           apipie :method, 'Returns hash representing all statuses for a given host in human-readable format' do
             required :host, 'Host::Managed', desc: 'a host object to get the statuses for'
             returns object_of: Hash, desc: 'Hash representing all statuses for a given host in human-readable format'
-            example 'all_host_statuses_labels(@host) # => {"Addons"=>"Unknown", "Build"=>"Installed", "Compliance"=>"Not applicable", "Configuration"=>"No reports", "Errata"=>"Security errata applicable", "Execution"=>"Last execution succeeded", "Role"=>"Unknown", "Service Level"=>"Unknown", "Subscription"=>"Simple Content Access", "System Purpose"=>"Unknown", "Traces"=>"No processes require restarting", "Usage"=>"Unknown"}'
+            example 'all_host_statuses_labels(@host) # => {"Build"=>"Installed", "Compliance"=>"Not applicable", "Configuration"=>"No reports", "Errata"=>"Security errata applicable", "Execution"=>"Last execution succeeded", "Role"=>"Unknown", "Service Level"=>"Unknown", "Subscription"=>"Simple Content Access", "System Purpose"=>"Unknown", "Traces"=>"No processes require restarting", "Usage"=>"Unknown"}'
             example "<%- load_hosts.each_record do |host| -%>\n<%= host.name -%>, <%=   all_host_statuses_labels(host)['Subscription'] %>\n<%- end -%>"
           end
           def all_host_statuses_labels_hash(host)

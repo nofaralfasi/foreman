@@ -133,8 +133,6 @@ runcmd:
           syspurpose set-role "Red Hat Enterprise Linux Server"
           syspurpose set-usage "Development/Test"
           syspurpose set-sla "Self-Support"
-  
-          syspurpose add-addons 'first addon' 'second addon' 'third addon'
       else
         echo "Syspurpose CLI not found."
       fi
