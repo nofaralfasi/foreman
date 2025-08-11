@@ -54,7 +54,7 @@ module Api
           return
         end
         @setting = Foreman.settings.set_user_value(@setting.name, value)
-
+        # require 'pry-byebug'; binding.pry
         # Check if validation failed during set_user_value
         if @setting.errors.any?
           render_error(:custom_error, status: :unprocessable_entity, locals: { message: @setting.errors.full_messages.join(', ') })

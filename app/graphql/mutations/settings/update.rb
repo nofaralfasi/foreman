@@ -29,6 +29,8 @@ module Mutations
         validate_object(definition)
 
         record = Foreman.settings.set_user_value(definition.name, params[:value])
+        # require 'pry-byebug'; binding.pry
+        # we never got here
 
         # Check if validation failed during set_user_value
         if record.errors.any?

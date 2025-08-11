@@ -124,7 +124,7 @@ class SettingRegistry
     definition = find(name)
     raise ActiveRecord::RecordNotFound.new(_("Setting definition for '%s' not found, can not set") % name, Setting, name) unless definition
     db_record = _find_or_new_db_record(name)
-
+    require 'pry-byebug'; binding.pry
     value_type = value.class.to_s.downcase
     value_type = 'boolean' if value_type == "trueclass" || value_type == "falseclass"
     

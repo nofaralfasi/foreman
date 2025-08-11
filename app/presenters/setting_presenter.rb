@@ -75,7 +75,8 @@ class SettingPresenter
   end
 
   def settings_type
-
+    # require 'pry-byebug'; binding.pry
+    # attribute(:settings_type) || Setting.setting_type_from_value(default)
     # Access the settings_type attribute value
     @attributes&.[]('settings_type')&.value || Setting.setting_type_from_value(default)
   end

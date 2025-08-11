@@ -64,7 +64,7 @@ class Setting < ApplicationRecord
 
   # Override settings_type to ensure proper delegation to setting definition
   def settings_type
-
+    # require 'pry-byebug'; binding.pry
     setting_definition&.settings_type
   end
 
@@ -106,7 +106,8 @@ class Setting < ApplicationRecord
   # 2. URL type settings that contain user:password credentials
   # @return [Boolean] true if the setting should be encrypted
   def encrypted?
-
+    require 'pry-byebug'; binding.pry
+    # we never got here
     return true if setting_definition&.encrypted?
 
     # Auto-encrypt URL type settings that contain credentials for security
@@ -117,6 +118,8 @@ class Setting < ApplicationRecord
   # @param v [Object] The value to set
   def value=(v)
     v = v.to_yaml unless v.nil?
+    require 'pry-byebug'; binding.pry
+    # wasn't useful - setting_definition&.encrypted?  returned false
 
     # Determine if this setting should be encrypted (explicit or auto-detected)
     should_encrypt = setting_definition&.encrypted? || auto_encrypt_url_with_password?(v)
@@ -177,15 +180,16 @@ class Setting < ApplicationRecord
       self.value = intermediate
 
     when "url"
+      # require 'pry-byebug'; binding.pry
       # URL type parsing with validation
       intermediate = val&.to_s&.strip
       intermediate = nil if intermediate.blank? && default.nil?
       
       # Validate URL format
-      if intermediate.present? && !HttpURLValidator.new(attributes: [:value]).send(:valid_http_url?, intermediate)
-        invalid_value_error _("must be a valid HTTP(S) URL with a host")
-        return false
-      end
+      # if intermediate.present? && !HttpURLValidator.new(attributes: [:value]).send(:is_http_url?, intermediate)
+      #   invalid_value_error _("must be a valid HTTP(S) URL with a host")
+      #   return false
+      # end
 
       self.value = intermediate
 
@@ -329,11 +333,14 @@ class Setting < ApplicationRecord
 
   # Auto-encrypt URL settings that contain user:password credentials
   def auto_encrypt_url_with_password?(val)
+    # require 'pry-byebug'; binding.pry
+    # returned false
     settings_type == 'url' && self.class.url_has_credentials?(val)
   end
 
   # Check if URL contains user:password credentials (shared with AuditExtensions)
   def self.url_has_credentials?(url_value)
+    # require 'pry-byebug'; binding.pry
     return false unless url_value.is_a?(String) && url_value.present?
 
     begin

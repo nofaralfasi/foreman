@@ -182,13 +182,11 @@ module AuditExtensions
         audit_attribute: attribute,
       }
       if action == 'update'
-
-        # Apply redaction to log fields as well
-        audited_fields[:audit_field_old] = should_redact_value?(change[0]) ? REDACTED : change[0]
-        audited_fields[:audit_field_new] = should_redact_value?(change[1]) ? REDACTED : change[1]
-        log_line = [audited_fields[:audit_field_old], audited_fields[:audit_field_new]].join(', ')
+        audited_fields[:audit_field_old] = change[0]
+        audited_fields[:audit_field_new] = change[1]
+        log_line = change.join(', ')
       else
-
+        require 'pry-byebug'; binding.pry
         redacted_change = should_redact_value?(change) ? REDACTED : change
         audited_fields[:audit_field] = redacted_change
         log_line = redacted_change
@@ -204,8 +202,10 @@ module AuditExtensions
     audited_changes.each do |name, change|
       next if change.nil? || change.to_s.empty?
       if change.is_a? Array
+        require 'pry-byebug'; binding.pry
         change.map! { |c| should_redact_value?(c) ? REDACTED : c }
       else
+        require 'pry-byebug'; binding.pry
         audited_changes[name] = REDACTED if should_redact_value?(change)
       end
     end
@@ -213,6 +213,7 @@ module AuditExtensions
   
   # Determines if a value should be redacted from audit logs
   def should_redact_value?(value)
+    require 'pry-byebug'; binding.pry
     return true if value.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX)
     
     # Redact URL credentials for Setting models
