@@ -182,12 +182,16 @@ module AuditExtensions
         audit_attribute: attribute,
       }
       if action == 'update'
-        audited_fields[:audit_field_old] = change[0]
-        audited_fields[:audit_field_new] = change[1]
-        log_line = change.join(', ')
+
+        # Apply redaction to log fields as well
+        audited_fields[:audit_field_old] = should_redact_value?(change[0]) ? REDACTED : change[0]
+        audited_fields[:audit_field_new] = should_redact_value?(change[1]) ? REDACTED : change[1]
+        log_line = [audited_fields[:audit_field_old], audited_fields[:audit_field_new]].join(', ')
       else
-        audited_fields[:audit_field] = change
-        log_line = change
+
+        redacted_change = should_redact_value?(change) ? REDACTED : change
+        audited_fields[:audit_field] = redacted_change
+        log_line = redacted_change
       end
       Foreman::Logging.with_fields(audited_fields) do
         audit_logger.info "#{auditable_type} (#{auditable_id}) #{action} event on #{attribute} #{log_line}"
@@ -200,12 +204,22 @@ module AuditExtensions
     audited_changes.each do |name, change|
       next if change.nil? || change.to_s.empty?
       if change.is_a? Array
-        change.map! { |c| c.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX) ? REDACTED : c }
+        change.map! { |c| should_redact_value?(c) ? REDACTED : c }
       else
-        audited_changes[name] = REDACTED if change.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX)
+        audited_changes[name] = REDACTED if should_redact_value?(change)
       end
     end
   end
+  
+  # Determines if a value should be redacted from audit logs
+  def should_redact_value?(value)
+    return true if value.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX)
+    
+    # Redact URL credentials for Setting models
+    auditable_type == 'Setting' && Setting.url_has_credentials?(value)
+  end
+
+  private
 
   def filter_passwords
     if action == 'update'

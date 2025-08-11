@@ -29,6 +29,15 @@ module Mutations
         validate_object(definition)
 
         record = Foreman.settings.set_user_value(definition.name, params[:value])
+
+        # Check if validation failed during set_user_value
+        if record.errors.any?
+          return {
+            :setting => definition,
+            :errors => map_errors_to_path(record)
+          }
+        end
+        
         save_object(definition, record)
       end
 

@@ -8,7 +8,7 @@ class Setting < ApplicationRecord
   include EncryptValue
   include PermissionName
 
-  TYPES = %w{integer boolean hash array string}
+  TYPES = %w{integer boolean hash array string url}
   NONZERO_ATTRS = %w{puppet_interval idle_timeout entries_per_page outofsync_interval}
   # constant BLANK_ATTRS is deprecated and all settings without custom validation allow blank values
   # if you wish to validate non-empty arrays, please add validation through the new setting DSL
@@ -41,11 +41,12 @@ class Setting < ApplicationRecord
   validates :value, :format => { :with => Resolv::AddressRegex }, :if => proc { |s| IP_ATTRS.include? s.name }
   validates :value, :regexp => true, :if => proc { |s| REGEXP_ATTRS.include? s.name }
   validates :value, :array_type => true, :if => proc { |s| s.settings_type == "array" }
+  validates :value, :http_url => { allow_blank: true }, :if => proc { |s| s.settings_type == "url" }
   validates_with ValueValidator, :if => proc { |s| Foreman.settings.ready? && s.respond_to?("validate_#{s.name}") }
   validates :value, :array_hostnames_ips => true, :if => proc { |s| ARRAY_HOSTNAMES.include? s.name }
   validates :value, :email => true, :if => proc { |s| EMAIL_ATTRS.include? s.name }
   before_save :clear_value_when_default
-  before_save :encrypt_url_if_password_present, :if => proc { |s| s.value.is_a?(String) && s.value.start_with?('http') }
+
   validate :validate_frozen_attributes
   before_validation :remove_whitespaces, :if => proc { |s| s.settings_type == "array" }
   # Custom validations are added from SettingManager class
@@ -59,7 +60,13 @@ class Setting < ApplicationRecord
   scoped_search on: :name, complete_value: :true, operators: ['=', '~']
   scoped_search on: :description, complete_value: :true, operators: ['~']
 
-  delegate :settings_type, :encrypted, :encrypted?, :default, to: :setting_definition, allow_nil: true
+  delegate :encrypted, :default, to: :setting_definition, allow_nil: true
+
+  # Override settings_type to ensure proper delegation to setting definition
+  def settings_type
+
+    setting_definition&.settings_type
+  end
 
   def self.config_file
     'settings.yaml'
@@ -93,11 +100,29 @@ class Setting < ApplicationRecord
     name
   end
 
+  # Determines if this setting should be encrypted
+  # Settings are encrypted if:
+  # 1. Explicitly marked as encrypted in the setting definition, OR
+  # 2. URL type settings that contain user:password credentials
+  # @return [Boolean] true if the setting should be encrypted
+  def encrypted?
+
+    return true if setting_definition&.encrypted?
+
+    # Auto-encrypt URL type settings that contain credentials for security
+    auto_encrypt_url_with_password?(value)
+  end
+
+  # Sets the setting value with automatic encryption for sensitive data
+  # @param v [Object] The value to set
   def value=(v)
     v = v.to_yaml unless v.nil?
-    # the has_attribute is for enabling DB migrations on older versions
-    if setting_definition&.encrypted?
-      # Don't re-write the attribute if the current encrypted value is identical to the new one
+
+    # Determine if this setting should be encrypted (explicit or auto-detected)
+    should_encrypt = setting_definition&.encrypted? || auto_encrypt_url_with_password?(v)
+
+    if should_encrypt
+      # Optimization: Don't re-encrypt if the current value is already the same
       current_value = self[:value]
       unless is_decryptable?(current_value) && decrypt_field(current_value) == v
         self[:value] = encrypt_field(v)
@@ -148,6 +173,19 @@ class Setting < ApplicationRecord
       intermediate = val
       intermediate = intermediate.to_s.strip unless NOT_STRIPPED.include?(name)
       intermediate = nil if intermediate.blank? && default.nil?
+
+      self.value = intermediate
+
+    when "url"
+      # URL type parsing with validation
+      intermediate = val&.to_s&.strip
+      intermediate = nil if intermediate.blank? && default.nil?
+      
+      # Validate URL format
+      if intermediate.present? && !HttpURLValidator.new(attributes: [:value]).send(:valid_http_url?, intermediate)
+        invalid_value_error _("must be a valid HTTP(S) URL with a host")
+        return false
+      end
 
       self.value = intermediate
 
@@ -285,12 +323,25 @@ class Setting < ApplicationRecord
     self[:value] = value.each { |a| a.strip! if a.respond_to? :strip! }
   end
 
-  def encrypt_url_if_password_present
-    uri = URI.parse(value)
-    return unless uri.userinfo&.include?(':')
 
-    self[:value] = encrypt_field(value)
-  rescue URI::InvalidURIError
-    errors.add(:value, _("Invalid URI '#{value}'"))
+
+  private
+
+  # Auto-encrypt URL settings that contain user:password credentials
+  def auto_encrypt_url_with_password?(val)
+    settings_type == 'url' && self.class.url_has_credentials?(val)
+  end
+
+  # Check if URL contains user:password credentials (shared with AuditExtensions)
+  def self.url_has_credentials?(url_value)
+    return false unless url_value.is_a?(String) && url_value.present?
+
+    begin
+      # Remove YAML prefix if present, then parse URI
+      clean_url = url_value.gsub(/^--- /, '')
+      URI.parse(clean_url).userinfo&.include?(':') || false
+    rescue URI::InvalidURIError
+      false
+    end
   end
 end

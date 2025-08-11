@@ -75,7 +75,9 @@ class SettingPresenter
   end
 
   def settings_type
-    attribute(:settings_type) || Setting.setting_type_from_value(default)
+
+    # Access the settings_type attribute value
+    @attributes&.[]('settings_type')&.value || Setting.setting_type_from_value(default)
   end
 
   def matches_search_query?(query)

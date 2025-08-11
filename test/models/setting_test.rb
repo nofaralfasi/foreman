@@ -9,6 +9,10 @@ class SettingTest < ActiveSupport::TestCase
     assert Setting::IP_ATTRS.include? "libvirt_default_console_address"
   end
 
+  def test_url_type_is_in_types_constant
+    assert Setting::TYPES.include?('url'), 'Expected url to be included in TYPES constant'
+  end
+
   def test_should_not_find_a_value_if_doesnt_exists
     assert_nil Setting["no_such_thing"]
   end
@@ -398,57 +402,137 @@ class SettingTest < ActiveSupport::TestCase
       setting
     end
 
-    test 'encrypt URL setting when it contains password' do
+    test 'encrypt URL type setting when it contains password' do
       url = 'http://user:pass@example.com'
-      setting = create_setting(url)
+      # Create URL type setting
+      setting = Setting.new(name: 'test_url_with_pass', value: url)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil) # No explicit encryption flag
+      setting.stubs(:default).returns(nil)
+      setting.save!
 
-      assert setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL to be encrypted'
+      assert setting.encrypted?, 'Expected URL setting with password to be considered encrypted'
+      assert setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL to be encrypted in database'
       assert_equal url, setting.value
     end
 
-    test 'does not encrypt URL when userinfo does not contain password' do
+    test 'does not encrypt URL type setting when userinfo does not contain password' do
       url = 'http://user@example.com'
-      setting = create_setting(url)
+      setting = Setting.new(name: 'test_url_no_pass', value: url)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+      setting.save!
 
-      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted'
+      refute setting.encrypted?, 'Expected URL setting without password not to be considered encrypted'
+      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted in database'
       assert_equal url, setting.value
     end
 
-    test 'does not encrypt URL when URL does not have userinfo' do
+    test 'does not encrypt URL type setting when URL does not have userinfo' do
       url = 'http://example.com'
-      setting = create_setting(url)
+      setting = Setting.new(name: 'test_url_no_auth', value: url)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+      setting.save!
 
-      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted'
+      refute setting.encrypted?, 'Expected URL setting without userinfo not to be considered encrypted'
+      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted in database'
       assert_equal url, setting.value
     end
 
-    test 'adds an error when URL is invalid' do
+    test 'validates URL type setting format' do
+      url = 'not_a_url'
+      setting = Setting.new(name: 'test_invalid_url', value: url)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+
+      refute setting.valid?, 'Expected invalid URL to fail validation'
+      assert_includes setting.errors[:value], "Invalid HTTP(S) URL"
+    end
+    test 'parse_string_value works for URL type' do
+      setting = Setting.new(name: 'test_url_parse')
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+
+      url = 'http://proxy.example.com:8080'
+      setting.parse_string_value(url)
+      assert_equal url, setting.value
+    end
+
+    test 'URL setting with credentials is encrypted on save and audits are redacted' do
+      url = 'http://user:pass@proxy.example.com'
+      setting = Setting.new(name: 'test_url_audit', value: url)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+
+      # Verify the value gets encrypted when it contains credentials
+      setting.save!
+      assert setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL with credentials to be encrypted'
+      assert_equal url, setting.value, 'Expected decrypted value to match original'
+
+      # Verify that the audit was created and the sensitive value was redacted
+      audit = setting.audits.last
+      assert_not_nil audit, 'Expected audit to be created'
+      if audit.audited_changes['value']
+        refute_includes audit.audited_changes['value'].to_s, 'pass', 'Expected password to be redacted from audit'
+        assert_includes audit.audited_changes['value'].to_s, '[redacted]', 'Expected audit to contain redaction marker'
+      end
+    end
+
+    test 'no error when URL is invalid and the setting is not http_proxy' do
       url = 'http://example.com/hello world'
-      setting = create_setting(url)
-
-      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted'
-      assert_includes setting.errors[:value], "Invalid URI '#{url}'"
-    end
-
-    test 'encrypt_url_if_password_present is not called if value does not start with http' do
-      setting = Setting.new(name: 'test_url', value: 'ftp://user:pass@example.com')
-
-      setting.expects(:encrypt_url_if_password_present).never
-      setting.save!
-    end
-
-    test 'encrypt_url_if_password_present is not called if value includes http but is not a URL' do
-      setting = Setting.new(name: 'test_url', value: 'my_http_proxy')
-
-      setting.expects(:encrypt_url_if_password_present).never
-      setting.save!
+      attrs = { :name => "not_http_proxy", :value => url }
+      setting = Setting.find_or_create_by(attrs)
+      assert_empty setting.errors[:value]
     end
 
     test 'encrypted? should return false when URL contains password' do
-      setting = Setting.new(name: 'test_url', value: 'http://user:pass@example.comjkjk')
+      setting = Setting.new(name: 'http_proxy', value: 'http://user:pass@example.comjkjk')
       setting.save!
 
       assert_not setting.encrypted?, 'encrypted? should return false when URL contains password'
+    end
+  end
+
+  test "url type setting rejects malformed URLs" do
+    setting = Setting.new(name: 'test_malformed_url')
+    setting.stubs(:settings_type).returns('url')
+    setting.stubs(:setting_definition).returns(nil)
+    setting.stubs(:default).returns(nil)
+
+    # Test the specific bug case: missing slash after protocol
+    setting.errors.clear
+    result = setting.parse_string_value('https:/USER:SECRETPASSWORD@squid-server:3129')
+
+    assert setting.errors.any?, "Expected validation error for malformed URL: https:/USER:SECRETPASSWORD@squid-server:3129"
+    assert setting.errors.full_messages.any? { |msg| msg.include?('valid') },
+           "Expected validation error message, got: #{setting.errors.full_messages}"
+  end
+
+  test "url type setting accepts well-formed URLs" do
+    setting = Setting.new(name: 'test_valid_url')
+    setting.stubs(:settings_type).returns('url')
+    setting.stubs(:setting_definition).returns(nil)
+    setting.stubs(:default).returns(nil)
+
+    # Test valid URLs that should be accepted
+    valid_urls = [
+      'https://example.com',
+      'http://proxy.example.com:8080',
+      'https://user:pass@proxy.com/path'
+    ]
+
+    valid_urls.each do |good_url|
+      setting.errors.clear
+      result = setting.parse_string_value(good_url)
+
+      assert_empty setting.errors, "Unexpected validation error for valid URL: #{good_url}, errors: #{setting.errors.full_messages}"
+      assert_equal good_url, setting.value, "URL value should be preserved: #{good_url}"
     end
   end
 end

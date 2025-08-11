@@ -173,6 +173,27 @@ module RenderersSharedTests
       end
     end
 
+    test "global_setting blocks encrypted settings" do
+      # Setup an encrypted setting
+      Setting.any_instance.expects(:encryption_key).at_least_once.returns('25d224dd383e92a7e0c82b8bf7c985e815f34cf5')
+      setting = Setting.new(name: 'test_encrypted_url', value: 'http://user:pass@proxy.example.com')
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:setting_definition).returns(nil)
+      setting.stubs(:default).returns(nil)
+      setting.save!
+      
+      # Add to allowed settings for this test
+      original_allowed = Foreman::Renderer.config.allowed_global_settings
+      Foreman::Renderer.config.allowed_global_settings += [:test_encrypted_url]
+      
+      source = OpenStruct.new(content: '<%= global_setting("test_encrypted_url") %>')
+      assert_raises(Foreman::Renderer::Errors::FilteredGlobalSettingAccessed) do
+        renderer.render(source, @scope)
+      end
+    ensure
+      Foreman::Renderer.config.allowed_global_settings = original_allowed
+    end
+
     test "should raise SyntaxError" do
       source = OpenStruct.new(content: '<%- begin %>')
       assert_raises(Foreman::Renderer::Errors::SyntaxError) do

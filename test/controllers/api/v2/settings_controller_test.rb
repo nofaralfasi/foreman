@@ -142,6 +142,20 @@ class Api::V2::SettingsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return validation error for malformed URL in http_proxy setting" do
+    # Test that malformed URLs are properly rejected with error response
+    malformed_url = 'https:/USER:PASS@proxy.example.com'  # Missing slash after https:/
+    
+    put :update, params: { :id => 'http_proxy', :setting => { :value => malformed_url } }
+    
+    assert_response :unprocessable_entity
+    
+    response_body = JSON.parse(@response.body)
+    
+    # Verify the API returns proper validation error for malformed URLs
+    assert_includes response_body['error']['message'], 'must be a valid HTTP(S) URL', "API should return validation error for malformed URL"
+  end
+
   test "should view setting as system admin" do
     user = user_one_as_system_admin
     setting = Setting.first

@@ -24,6 +24,71 @@ class AuditExtensionsTest < ActiveSupport::TestCase
     assert_equal "[redacted]", a.last.audited_changes["value"]
   end
 
+  test "audit's change is filtered when URL contains credentials" do
+    url_with_creds = 'https://user:password@proxy.example.com:8080'
+    
+    # Create a setting audit manually to test the filtering
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_with_creds] }
+    )
+    
+    # The filter_encrypted callback should redact the URL
+    audit.send(:filter_encrypted)
+    
+    assert_equal "[redacted]", audit.audited_changes['value'][1]
+    refute_includes audit.audited_changes['value'].to_s, 'password', 'Expected password to be redacted'
+  end
+
+  test "audit's change is not filtered when URL has no credentials" do
+    url_without_creds = 'https://proxy.example.com:8080'
+    
+    # Create a setting audit manually to test the filtering
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_without_creds] }
+    )
+    
+    # The filter_encrypted callback should NOT redact the URL
+    audit.send(:filter_encrypted)
+    
+    assert_equal url_without_creds, audit.audited_changes['value'][1]
+    assert_includes audit.audited_changes['value'].to_s, url_without_creds
+  end
+
+  test "audit log output redacts URL credentials" do
+    url_with_creds = 'https://user:password@proxy.example.com:8080'
+    
+    # Create a setting audit to test log output
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_with_creds] }
+    )
+    
+    # Mock the logger to capture log output
+    logger = mock('logger')
+    logger.expects(:info?).returns(true)
+    
+    # Expect the log message to contain [redacted] instead of the actual password
+    logger.expects(:info).with do |message|
+      message.include?('[redacted]') && !message.include?('password')
+    end
+    
+    Foreman::Logging.expects(:logger).with('audit').returns(logger)
+    
+    # Stub telemetry calls
+    audit.stubs(:telemetry_increment_counter)
+    
+    # Call log_audit and verify redaction
+    audit.send(:log_audit)
+  end
+
   context "with multiple taxonomies" do
     def setup
       @loc = taxonomies(:location1)

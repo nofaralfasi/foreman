@@ -54,6 +54,13 @@ module Api
           return
         end
         @setting = Foreman.settings.set_user_value(@setting.name, value)
+
+        # Check if validation failed during set_user_value
+        if @setting.errors.any?
+          render_error(:custom_error, status: :unprocessable_entity, locals: { message: @setting.errors.full_messages.join(', ') })
+          return
+        end
+        
         process_response @setting.save
       rescue Foreman::SettingValueException => e
         render_error :custom_error, :locals => { :message => e.bare_message }, :status => :unprocessable_entity

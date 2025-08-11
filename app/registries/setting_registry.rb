@@ -125,12 +125,15 @@ class SettingRegistry
     raise ActiveRecord::RecordNotFound.new(_("Setting definition for '%s' not found, can not set") % name, Setting, name) unless definition
     db_record = _find_or_new_db_record(name)
 
-    type = value.class.to_s.downcase
-    type = 'boolean' if type == "trueclass" || type == "falseclass"
-    case type
-    when 'string'
+    value_type = value.class.to_s.downcase
+    value_type = 'boolean' if value_type == "trueclass" || value_type == "falseclass"
+    
+    # String values should always go through parse_string_value for proper validation
+    # This includes string, text, and url types when the input is a string
+    if value_type == 'string' || ['url', 'string', 'text'].include?(definition.settings_type)
       db_record.parse_string_value(value)
-    when definition.settings_type
+    elsif value_type == definition.settings_type
+      # Direct assignment for non-string types (integer, boolean, hash, array)
       db_record.value = value
     else
       raise ::Foreman::SettingValueException.new(N_('expected a value of type %s'), definition.settings_type)
