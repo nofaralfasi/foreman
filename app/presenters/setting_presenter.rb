@@ -59,6 +59,7 @@ class SettingPresenter
   end
 
   def encrypted?
+    require 'pry-byebug'; binding.pry
     !!encrypted
   end
 

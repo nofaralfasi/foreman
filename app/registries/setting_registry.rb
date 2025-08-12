@@ -190,6 +190,12 @@ class SettingRegistry
       end
       definition.updated_at = s.updated_at
       definition.value_from_db = s.value
+      require 'pry-byebug'; binding.pry
+      # Auto-detect URLs with credentials and update encrypted flag
+      if !definition.encrypted && definition.settings_type == 'url' && Setting.url_has_credentials?(s.value)
+        definition.encrypted = true
+      end
+      
       logger.debug("Updated cached value for setting=#{s.name}") unless ignore_cache
     end
     @values_loaded_at = Time.zone.now if settings.any?
@@ -197,6 +203,12 @@ class SettingRegistry
 
   def _add(name, category:, type:, default:, description:, full_name:, context:, encrypted: false, collection: nil, options: {})
     select_collection_registry.add(name, collection: collection, **options) if collection
+
+    require 'pry-byebug'; binding.pry
+    # Auto-detect URLs with credentials and mark them as encrypted
+    if !encrypted && type.to_s == 'url' && Setting.url_has_credentials?(default)
+      encrypted = true
+    end
 
     @settings[name.to_s] = SettingPresenter.new({ name: name,
                                                   context: context,

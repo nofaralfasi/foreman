@@ -60,13 +60,13 @@ class Setting < ApplicationRecord
   scoped_search on: :name, complete_value: :true, operators: ['=', '~']
   scoped_search on: :description, complete_value: :true, operators: ['~']
 
-  delegate :encrypted, :default, to: :setting_definition, allow_nil: true
+  # delegate :encrypted, :default, to: :setting_definition, allow_nil: true
+  delegate :settings_type, :encrypted, :encrypted?, :default, to: :setting_definition, allow_nil: true
 
   # Override settings_type to ensure proper delegation to setting definition
-  def settings_type
-
-    setting_definition&.settings_type
-  end
+  # def settings_type
+  #   setting_definition&.settings_type
+  # end
 
   def self.config_file
     'settings.yaml'
@@ -106,7 +106,7 @@ class Setting < ApplicationRecord
   # 2. URL type settings that contain user:password credentials
   # @return [Boolean] true if the setting should be encrypted
   def encrypted?
-
+    require 'pry-byebug'; binding.pry
     return true if setting_definition&.encrypted?
 
     # Auto-encrypt URL type settings that contain credentials for security
@@ -117,7 +117,7 @@ class Setting < ApplicationRecord
   # @param v [Object] The value to set
   def value=(v)
     v = v.to_yaml unless v.nil?
-
+    require 'pry-byebug'; binding.pry
     # Determine if this setting should be encrypted (explicit or auto-detected)
     should_encrypt = setting_definition&.encrypted? || auto_encrypt_url_with_password?(v)
 
@@ -334,6 +334,7 @@ class Setting < ApplicationRecord
 
   # Check if URL contains user:password credentials (shared with AuditExtensions)
   def self.url_has_credentials?(url_value)
+    require 'pry-byebug'; binding.pry
     return false unless url_value.is_a?(String) && url_value.present?
 
     begin
