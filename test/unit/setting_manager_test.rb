@@ -84,6 +84,25 @@ class SettingManagerTest < ActiveSupport::TestCase
     end
   end
 
+  it 'allows URL type settings' do
+    Foreman::SettingManager.define(:test_context) do
+      category(:general) do
+        setting(:test_url_setting,
+          type: :url,
+          default: 'https://example.com',
+          description: 'This is a URL setting',
+          full_name: 'Test URL Setting')
+      end
+    end
+    assert_not_nil setting_memo['test_url_setting']
+    assert_equal :url, setting_memo['test_url_setting'][:type]
+  end
+
+  it 'includes URL in available types' do
+    available_types = Foreman::SettingManager.available_types
+    assert_includes available_types, :url
+  end
+
   describe 'Validations' do
     setup do
       @validation_backup = Setting._validators[:value].dup
