@@ -59,11 +59,14 @@ const SettingValueEdit = ({ setting, updateSetting }) => {
     setLoading(false);
   };
 
-  const successCallback = submitValue => {
-    updateSetting(submitValue);
+  const successCallback = (response, submitValue) => {
+    const updated = response?.data;
+    updateSetting(updated || submitValue);
 
     if (setting.name === SETTING_NEW_HOSTS_PAGE) {
-      const bool = value === 'true';
+      const rawVal =
+        (updated && updated.value) !== undefined ? updated.value : value;
+      const bool = String(rawVal) === 'true';
       setContext(context => {
         context.metadata.UISettings.displayNewHostsPage = bool;
         return context;
@@ -92,7 +95,7 @@ const SettingValueEdit = ({ setting, updateSetting }) => {
       url: SETTING_UPDATE_PATH.replace(':id', setting.id),
       params: { ...setting, value: splitValue },
       key: `${setting.id}-EDIT`,
-      handleSuccess: () => successCallback(splitValue),
+      handleSuccess: response => successCallback(response, splitValue),
       handleError: errorCallback,
       errorToast: error => {
         const msg =

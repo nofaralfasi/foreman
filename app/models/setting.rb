@@ -8,7 +8,7 @@ class Setting < ApplicationRecord
   include EncryptValue
   include PermissionName
 
-  TYPES = %w{integer boolean hash array string}
+  TYPES = %w{integer boolean hash array string url}
   NONZERO_ATTRS = %w{puppet_interval idle_timeout entries_per_page outofsync_interval}
   # constant BLANK_ATTRS is deprecated and all settings without custom validation allow blank values
   # if you wish to validate non-empty arrays, please add validation through the new setting DSL
@@ -44,8 +44,9 @@ class Setting < ApplicationRecord
   validates_with ValueValidator, :if => proc { |s| Foreman.settings.ready? && s.respond_to?("validate_#{s.name}") }
   validates :value, :array_hostnames_ips => true, :if => proc { |s| ARRAY_HOSTNAMES.include? s.name }
   validates :value, :email => true, :if => proc { |s| EMAIL_ATTRS.include? s.name }
+  validates :value, :http_url => { allow_blank: true }, :if => proc { |s| s.settings_type == "url" }
+
   before_save :clear_value_when_default
-  before_save :encrypt_url_if_password_present, :if => proc { |s| s.name == "http_proxy" && s.value.present? }
   validate :validate_frozen_attributes
   before_validation :remove_whitespaces, :if => proc { |s| s.settings_type == "array" }
   # Custom validations are added from SettingManager class
@@ -94,6 +95,9 @@ class Setting < ApplicationRecord
   end
 
   def value=(v)
+    if setting_definition&.settings_type == "url"
+      update_encrypted_flag_from_url(v)
+    end
     v = v.to_yaml unless v.nil?
     # the has_attribute is for enabling DB migrations on older versions
     if setting_definition&.encrypted?
@@ -143,7 +147,7 @@ class Setting < ApplicationRecord
         invalid_value_error _("must be an array")
       end
 
-    when "string", "text", nil
+    when "string", "text", "url", nil
       # string is taken as default setting type for parsing
       intermediate = val
       intermediate = intermediate.to_s.strip unless NOT_STRIPPED.include?(name)
@@ -285,11 +289,13 @@ class Setting < ApplicationRecord
     self[:value] = value.each { |a| a.strip! if a.respond_to? :strip! }
   end
 
-  def encrypt_url_if_password_present
-    uri = URI.parse(value)
-    return unless uri.userinfo&.include?(':')
-
-    self[:value] = encrypt_field(value)
+  # Check if URL contains user:password credentials
+  def update_encrypted_flag_from_url(value)
+    if URI.parse(value).userinfo&.include?(':')
+      setting_definition&.encrypted = true
+    else
+      setting_definition&.encrypted = false
+    end
   rescue URI::InvalidURIError
     errors.add(:value, _("Invalid URI '#{value}'"))
   end

@@ -78,6 +78,18 @@ module RenderersSharedTests
       assert_equal 'PASS', renderer.render(source, @scope)
     end
 
+    test "global_setting returns masked for encrypted setting" do
+      Setting.find_or_create_by!(name: 'http_proxy', value: 'http://user:pass@example.com')
+      source = OpenStruct.new(content: '<%= global_setting("http_proxy") %>')
+      assert_equal '*****', renderer.render(source, @scope)
+    end
+
+    test "global_setting returns actual value for url without password" do
+      Setting.find_or_create_by!(name: 'http_proxy', value: 'http://user@example.com')
+      source = OpenStruct.new(content: '<%= global_setting("http_proxy") %>')
+      assert_equal 'http://user@example.com', renderer.render(source, @scope)
+    end
+
     test "global_setting helper method with special case 'false'" do
       source = OpenStruct.new(content: '<%= global_setting("default_pxe_item_global") %>')
       Setting[:default_pxe_item_global] = false
