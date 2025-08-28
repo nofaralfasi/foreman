@@ -7,6 +7,7 @@ module Foreman
           include Foreman::Renderer::Errors
           include ::Foreman::ForemanURLRenderer
           include ActiveSupport::NumberHelper
+          include HiddenValue
 
           attr_reader :template_name, :medium_provider
 
@@ -32,17 +33,24 @@ module Foreman
 
           apipie :method, 'Returns the value of global setting' do
             settings = Foreman::Renderer.config.allowed_global_settings.sort.map { |s| "__#{s}__" }.join(', ')
-            desc "Not not all settings are exposed, only those which are allowed via safe mode: #{settings}"
+            desc "Not all settings are exposed, only those which are allowed via safe mode: #{settings}. Encrypted/sensitive settings return '*****' instead of their actual values for security."
             required :name, String, desc: 'the name of the setting which can be found by hovering the setting with mouse cursor in the UI, or via API/CLI'
             optional :blank_default, Object, desc: 'if the setting is not set to any value, this value will be returned instead', default: nil
             raises error: FilteredGlobalSettingAccessed, desc: 'when user setting is not accessible in safe mode'
-            returns Object, desc: 'The value of global setting, e.g. String, Integer, Array, Provisioning Template etc'
+            returns Object, desc: 'The value of global setting, e.g. String, Integer, Array, Provisioning Template etc. Returns "*****" for encrypted settings.'
             example "global_setting('outofsync_interval', 30) # => 30"
+            example "global_setting('http_proxy') # => '*****' if it contains credentials"
           end
           def global_setting(name, blank_default = nil)
             raise FilteredGlobalSettingAccessed.new(name: name) if Setting[:safemode_render] && !Foreman::Renderer.config.allowed_global_settings.include?(name.to_sym)
             setting = Foreman.settings.find(name)
-            (setting.settings_type != "boolean" && setting.value.blank?) ? blank_default : setting.value
+
+            # Hide encrypted/sensitive settings by returning a masked value
+            if setting.encrypted?
+              setting.hidden_value
+            else
+              (setting.settings_type != "boolean" && setting.value.blank?) ? blank_default : setting.value
+            end
           end
 
           apipie :method, 'Returns true if plugin with a given name is installed in this Foreman instance' do

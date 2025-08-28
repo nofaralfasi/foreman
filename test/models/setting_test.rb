@@ -245,6 +245,37 @@ class SettingTest < ActiveSupport::TestCase
     check_length_must_be_under_8 'entries_per_page'
   end
 
+  test "http_url validation applies to URL type settings" do
+    url_setting = Setting.new(name: 'test_url_setting', value: 'invalid url')
+    url_setting.stubs(:settings_type).returns('url')
+    url_setting.valid?
+    assert_includes url_setting.errors[:value], "Invalid HTTP(S) URL"
+  end
+
+  test "http_url validation allows blank values for URL settings" do
+    setting = Setting.new(name: 'test_url_setting', value: '')
+    setting.stubs(:settings_type).returns('url')
+    setting.valid?
+    assert_not_includes setting.errors[:value], "Invalid HTTP(S) URL"
+  end
+
+  test "http_url validation allows valid URLs for URL settings" do
+    setting = Setting.new(name: 'test_url_setting', value: 'http://example.com')
+    setting.stubs(:settings_type).returns('url')
+    setting.valid?
+    assert_not_includes setting.errors[:value], "Invalid HTTP(S) URL"
+  end
+
+  test "non-URL settings can contain invalid URL format without http_url validation error" do
+    %w[string integer boolean].each do |type|
+      setting = Setting.new(name: "test_#{type}_setting", value: 'not a url at all')
+      setting.stubs(:settings_type).returns(type)
+      setting.valid?
+      assert_not_includes setting.errors[:value], "Invalid HTTP(S) URL",
+        "#{type} setting should not get http_url validation"
+    end
+  end
+
   # test parsing string values
   test "parse boolean attribute from string" do
     check_parsed_value "boolean", true, "true"
@@ -419,24 +450,55 @@ class SettingTest < ActiveSupport::TestCase
     end
 
     test 'adds an error when URL is invalid' do
-      url = 'http://example.com/hello world'
-      attrs = { :name => "http_proxy", :value => url }
-      setting = Setting.find_or_create_by(attrs)
+      attrs = { :name => "test_url_setting", :value => 'http://example.com/hello world' }
+      setting = Setting.find_or_create_by!(attrs)
+      setting.stubs(:settings_type).returns('url')
 
-      refute setting.is_decryptable?(setting.read_attribute(:value)), 'Expected URL not to be encrypted'
+      setting.valid?
       assert_includes setting.errors[:value], "Invalid HTTP(S) URL"
     end
-    test 'no error when URL is invalid and the setting is not http_proxy' do
-      url = 'http://example.com/hello world'
-      attrs = { :name => "not_http_proxy", :value => url }
-      Setting.find_or_create_by!(attrs)
+
+    test 'encrypted? should return true when URL contains password' do
+      url = 'http://user:pass@example.com'
+      attrs = { :name => "http_proxy", :value => url }
+      setting = Setting.find_or_create_by!(attrs)
+
+      assert setting.encrypted?, 'encrypted? should return true when URL contains password'
     end
 
-    test 'encrypted? should return false when URL contains password' do
-      setting = Setting.new(name: 'http_proxy', value: 'http://user:pass@example.comjkjk')
-      setting.save!
+    test 'encrypted? should return false when URL does not contain password' do
+      url = 'http://user@example.com'
+      attrs = { :name => "http_proxy", :value => url }
+      setting = Setting.find_or_create_by!(attrs)
 
-      assert_not setting.encrypted?, 'encrypted? should return false when URL contains password'
+      refute setting.encrypted?, 'encrypted? should not return true when URL does not contain password'
+    end
+  end
+
+  describe 'update_encrypted_flag_from_url' do
+    test 'sets encrypted flag to true when URL contains password' do
+      setting = Setting.new(name: 'test_url', value: '')
+      setting_definition = mock('setting_definition')
+      setting_definition.expects(:encrypted=).with(true)
+      setting.stubs(:setting_definition).returns(setting_definition)
+
+      setting.send(:update_encrypted_flag_from_url, 'http://user:pass@example.com')
+    end
+
+    test 'sets encrypted flag to false when URL has no password' do
+      setting = Setting.new(name: 'test_url', value: '')
+      setting_definition = mock('setting_definition')
+      setting_definition.expects(:encrypted=).with(false)
+      setting.stubs(:setting_definition).returns(setting_definition)
+
+      setting.send(:update_encrypted_flag_from_url, 'http://user@example.com')
+    end
+
+    test 'adds error when URL is invalid' do
+      setting = Setting.new(name: 'test_url', value: '')
+      setting.send(:update_encrypted_flag_from_url, '://example.com')
+
+      assert_includes setting.errors[:value], "Invalid URI '://example.com'"
     end
   end
 end
