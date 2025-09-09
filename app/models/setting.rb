@@ -8,7 +8,7 @@ class Setting < ApplicationRecord
   include EncryptValue
   include PermissionName
 
-  TYPES = %w{integer boolean hash array string}
+  TYPES = %w{integer boolean hash array string url}
   NONZERO_ATTRS = %w{puppet_interval idle_timeout entries_per_page outofsync_interval}
   # constant BLANK_ATTRS is deprecated and all settings without custom validation allow blank values
   # if you wish to validate non-empty arrays, please add validation through the new setting DSL
@@ -41,11 +41,12 @@ class Setting < ApplicationRecord
   validates :value, :format => { :with => Resolv::AddressRegex }, :if => proc { |s| IP_ATTRS.include? s.name }
   validates :value, :regexp => true, :if => proc { |s| REGEXP_ATTRS.include? s.name }
   validates :value, :array_type => true, :if => proc { |s| s.settings_type == "array" }
+  validates :value, :http_url => { allow_blank: true }, :if => proc { |s| s.settings_type == "url" }
   validates_with ValueValidator, :if => proc { |s| Foreman.settings.ready? && s.respond_to?("validate_#{s.name}") }
   validates :value, :array_hostnames_ips => true, :if => proc { |s| ARRAY_HOSTNAMES.include? s.name }
   validates :value, :email => true, :if => proc { |s| EMAIL_ATTRS.include? s.name }
   before_save :clear_value_when_default
-  before_save :encrypt_url_if_password_present, :if => proc { |s| s.name == "http_proxy" && s.value.present? }
+
   validate :validate_frozen_attributes
   before_validation :remove_whitespaces, :if => proc { |s| s.settings_type == "array" }
   # Custom validations are added from SettingManager class
@@ -147,6 +148,12 @@ class Setting < ApplicationRecord
       # string is taken as default setting type for parsing
       intermediate = val
       intermediate = intermediate.to_s.strip unless NOT_STRIPPED.include?(name)
+      intermediate = nil if intermediate.blank? && default.nil?
+
+      self.value = intermediate
+
+    when "url"
+      intermediate = val&.to_s&.strip
       intermediate = nil if intermediate.blank? && default.nil?
 
       self.value = intermediate
@@ -285,12 +292,16 @@ class Setting < ApplicationRecord
     self[:value] = value.each { |a| a.strip! if a.respond_to? :strip! }
   end
 
-  def encrypt_url_if_password_present
-    uri = URI.parse(value)
-    return unless uri.userinfo&.include?(':')
+  # Check if URL contains user:password credentials (shared with AuditExtensions)
+  def self.url_has_credentials?(url_value)
+    return false unless url_value.is_a?(String) && url_value.present?
 
-    self[:value] = encrypt_field(value)
-  rescue URI::InvalidURIError
-    errors.add(:value, _("Invalid URI '#{value}'"))
+    begin
+      # Remove YAML prefix if present, then parse URI
+      clean_url = url_value.gsub(/^--- /, '')
+      URI.parse(clean_url).userinfo&.include?(':') || false
+    rescue URI::InvalidURIError
+      false
+    end
   end
 end

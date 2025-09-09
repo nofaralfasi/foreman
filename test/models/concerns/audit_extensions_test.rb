@@ -24,6 +24,131 @@ class AuditExtensionsTest < ActiveSupport::TestCase
     assert_equal "[redacted]", a.last.audited_changes["value"]
   end
 
+  test "audit's change is filtered when URL contains credentials" do
+    url_with_creds = 'https://user:password@proxy.example.com:8080'
+    
+    # Create a setting audit manually to test the filtering
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_with_creds] }
+    )
+    
+    # The filter_encrypted callback should redact the URL
+    audit.send(:filter_encrypted)
+    
+    assert_equal "[redacted]", audit.audited_changes['value'][1]
+    refute_includes audit.audited_changes['value'].to_s, 'password', 'Expected password to be redacted'
+  end
+
+  test "audit's change is not filtered when URL has no credentials" do
+    url_without_creds = 'https://proxy.example.com:8080'
+    
+    # Create a setting audit manually to test the filtering
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_without_creds] }
+    )
+    
+    # The filter_encrypted callback should NOT redact the URL
+    audit.send(:filter_encrypted)
+    
+    assert_equal url_without_creds, audit.audited_changes['value'][1]
+    assert_includes audit.audited_changes['value'].to_s, url_without_creds
+  end
+
+  test "audit log output redacts URL credentials" do
+    url_with_creds = 'https://user:password@proxy.example.com:8080'
+    
+    # Create a setting audit to test log output
+    audit = Audit.new(
+      auditable_type: 'Setting',
+      auditable_id: 1,
+      action: 'update',
+      audited_changes: { 'value' => ['old_value', url_with_creds] }
+    )
+    
+    # Mock the logger to capture log output
+    logger = mock('logger')
+    logger.expects(:info?).returns(true)
+    
+    # Expect the log message to contain [redacted] instead of the actual password
+    logger.expects(:info).with do |message|
+      message.include?('[redacted]') && !message.include?('password')
+    end
+    
+    Foreman::Logging.expects(:logger).with('audit').returns(logger)
+    
+    # Stub telemetry calls
+    audit.stubs(:telemetry_increment_counter)
+    
+    # Call log_audit and verify redaction
+    audit.send(:log_audit)
+  end
+
+  describe '#should_redact_value?' do
+    let(:audit) { Audit.new }
+
+    test "returns true for encrypted values" do
+      encrypted_value = EncryptValue::ENCRYPTION_PREFIX + "encrypted_data"
+      assert audit.send(:should_redact_value?, encrypted_value)
+    end
+
+    test "returns true for URL credentials in Setting audits" do
+      audit.auditable_type = 'Setting'
+      url_with_creds = 'https://user:password@proxy.example.com:8080'
+      
+      Setting.expects(:url_has_credentials?).with(url_with_creds).returns(true)
+      assert audit.send(:should_redact_value?, url_with_creds)
+    end
+
+    test "returns false for URLs without credentials in Setting audits" do
+      audit.auditable_type = 'Setting'
+      url_without_creds = 'https://proxy.example.com:8080'
+      
+      Setting.expects(:url_has_credentials?).with(url_without_creds).returns(false)
+      refute audit.send(:should_redact_value?, url_without_creds)
+    end
+
+    test "returns false for URLs with credentials in non-Setting audits" do
+      audit.auditable_type = 'Host'
+      url_with_creds = 'https://user:password@proxy.example.com:8080'
+      
+      # Should not call Setting.url_has_credentials? for non-Setting audits
+      Setting.expects(:url_has_credentials?).never
+      refute audit.send(:should_redact_value?, url_with_creds)
+    end
+
+    test "returns false for regular strings in Setting audits" do
+      audit.auditable_type = 'Setting'
+      regular_value = 'some_regular_setting_value'
+      
+      Setting.expects(:url_has_credentials?).with(regular_value).returns(false)
+      refute audit.send(:should_redact_value?, regular_value)
+    end
+
+    test "handles nil values gracefully" do
+      audit.auditable_type = 'Setting'
+      refute audit.send(:should_redact_value?, nil)
+    end
+
+    test "handles empty strings gracefully" do
+      audit.auditable_type = 'Setting'
+      Setting.expects(:url_has_credentials?).with('').returns(false)
+      refute audit.send(:should_redact_value?, '')
+    end
+
+    test "handles non-string values gracefully" do
+      audit.auditable_type = 'Setting'
+      number_value = 12345
+      Setting.expects(:url_has_credentials?).with(number_value).returns(false)
+      refute audit.send(:should_redact_value?, number_value)
+    end
+  end
+
   context "with multiple taxonomies" do
     def setup
       @loc = taxonomies(:location1)

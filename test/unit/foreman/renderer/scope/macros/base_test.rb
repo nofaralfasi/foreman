@@ -266,4 +266,92 @@ class BaseMacrosTest < ActiveSupport::TestCase
       assert_equal command, 'cp /dev/null /tmp/ifcfg-$sanitized_real'
     end
   end
+
+  describe '#global_setting' do
+    setup do
+      @original_allowed = Foreman::Renderer.config.allowed_global_settings.dup
+    end
+
+    teardown do
+      Foreman::Renderer.config.allowed_global_settings = @original_allowed
+    end
+
+    test "should return hidden value for URL settings with credentials" do
+      Foreman::Renderer.config.allowed_global_settings += [:test_url_with_creds]
+      
+      # Create a URL setting with credentials
+      setting = mock('setting')
+      setting.stubs(:encrypted?).returns(true)
+      setting.stubs(:hidden_value).returns('*****')
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:value).returns('https://user:password@proxy.example.com')
+      
+      Foreman.settings.expects(:find).with('test_url_with_creds').returns(setting)
+      
+      result = @scope.global_setting('test_url_with_creds')
+      assert_equal '*****', result
+    end
+
+    test "should return actual value for URL settings without credentials" do
+      Foreman::Renderer.config.allowed_global_settings += [:test_url_no_creds]
+      
+      # Create a URL setting without credentials
+      setting = mock('setting')
+      setting.stubs(:encrypted?).returns(false)
+      setting.stubs(:settings_type).returns('url')
+      setting.stubs(:value).returns('https://proxy.example.com')
+      
+      Foreman.settings.expects(:find).with('test_url_no_creds').returns(setting)
+      
+      result = @scope.global_setting('test_url_no_creds')
+      assert_equal 'https://proxy.example.com', result
+    end
+
+    test "should return hidden value for explicitly encrypted settings" do
+      Foreman::Renderer.config.allowed_global_settings += [:test_encrypted_setting]
+      
+      # Create an explicitly encrypted setting
+      setting = mock('setting')
+      setting.stubs(:encrypted?).returns(true)
+      setting.stubs(:hidden_value).returns('*****')
+      setting.stubs(:settings_type).returns('string')
+      setting.stubs(:value).returns('secret_value')
+      
+      Foreman.settings.expects(:find).with('test_encrypted_setting').returns(setting)
+      
+      result = @scope.global_setting('test_encrypted_setting')
+      assert_equal '*****', result
+    end
+
+    test "should return actual value for non-encrypted settings" do
+      Foreman::Renderer.config.allowed_global_settings += [:test_regular_setting]
+      
+      # Create a regular non-encrypted setting
+      setting = mock('setting')
+      setting.stubs(:encrypted?).returns(false)
+      setting.stubs(:settings_type).returns('string')
+      setting.stubs(:value).returns('regular_value')
+      
+      Foreman.settings.expects(:find).with('test_regular_setting').returns(setting)
+      
+      result = @scope.global_setting('test_regular_setting')
+      assert_equal 'regular_value', result
+    end
+
+    test "should return hidden value even when blank_default is provided for encrypted settings" do
+      Foreman::Renderer.config.allowed_global_settings += [:test_blank_encrypted]
+      
+      # Create a blank encrypted setting
+      setting = mock('setting')
+      setting.stubs(:encrypted?).returns(true)
+      setting.stubs(:hidden_value).returns('*****')
+      setting.stubs(:settings_type).returns('string')
+      setting.stubs(:value).returns('')
+      
+      Foreman.settings.expects(:find).with('test_blank_encrypted').returns(setting)
+      
+      result = @scope.global_setting('test_blank_encrypted', 'default_value')
+      assert_equal '*****', result
+    end
+  end
 end

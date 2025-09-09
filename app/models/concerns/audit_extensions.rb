@@ -200,11 +200,19 @@ module AuditExtensions
     audited_changes.each do |name, change|
       next if change.nil? || change.to_s.empty?
       if change.is_a? Array
-        change.map! { |c| c.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX) ? REDACTED : c }
+        change.map! { |c| should_redact_value?(c) ? REDACTED : c }
       else
-        audited_changes[name] = REDACTED if change.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX)
+        audited_changes[name] = REDACTED if should_redact_value?(change)
       end
     end
+  end
+  
+  # Determines if a value should be redacted from audit logs
+  def should_redact_value?(value)
+    return true if value.to_s.start_with?(EncryptValue::ENCRYPTION_PREFIX)
+    
+    # Redact URL credentials for Setting models
+    auditable_type == 'Setting' && Setting.url_has_credentials?(value)
   end
 
   def filter_passwords

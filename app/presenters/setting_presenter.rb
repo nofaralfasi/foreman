@@ -59,7 +59,11 @@ class SettingPresenter
   end
 
   def encrypted?
-    !!encrypted
+    # Check if explicitly marked as encrypted
+    return true if !!encrypted
+
+    # Auto-detect URLs with credentials like the Setting model does
+    settings_type == 'url' && Setting.url_has_credentials?(value)
   end
 
   def hidden_value?
@@ -75,7 +79,8 @@ class SettingPresenter
   end
 
   def settings_type
-    attribute(:settings_type) || Setting.setting_type_from_value(default)
+    # Access the settings_type attribute value
+    @attributes&.[]('settings_type')&.value || Setting.setting_type_from_value(default)
   end
 
   def matches_search_query?(query)

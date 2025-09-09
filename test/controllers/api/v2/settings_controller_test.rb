@@ -147,6 +147,81 @@ class Api::V2::SettingsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return validation error for malformed URL in URL type settings" do
+    # Test that malformed URLs are properly rejected with error response for any URL type setting
+    malformed_url = 'https:/USER:PASS@proxy.example.com'  # Missing slash after https:/
+    
+    # Test with the known URL type setting
+    put :update, params: { :id => 'http_proxy', :setting => { :value => malformed_url } }
+    
+    assert_response :unprocessable_entity, "URL type setting should reject malformed URL"
+    
+    response_body = JSON.parse(@response.body)
+    
+    # Verify the API returns proper validation error for malformed URLs
+    assert_includes response_body['error']['message'], 'must be a valid HTTP(S) URL', 
+                   "API should return validation error for malformed URL in URL type setting"
+  end
+
+  test "should accept valid URL in URL type settings" do
+    # Test that valid URLs are accepted for URL type settings
+    valid_urls = [
+      'https://proxy.example.com:3128',
+      'http://proxy.example.com:8080',
+      'https://user:pass@proxy.example.com',
+      'https://proxy.example.com/path'
+    ]
+    
+    valid_urls.each do |valid_url|
+      put :update, params: { :id => 'http_proxy', :setting => { :value => valid_url } }
+      
+      assert_response :success, "URL type setting should accept valid URL: #{valid_url}"
+      
+      # Verify the value was set (should be encrypted if it has credentials)
+      setting = Setting.find_by_name('http_proxy')
+      assert_equal valid_url, setting.value, "URL should be properly stored and retrievable"
+    end
+  end
+
+  test "validates URL format for all URL type settings dynamically" do
+    # This test is designed to work with any settings that have type 'url'
+    # It finds URL type settings from the actual setting definitions
+    
+    malformed_url = 'https:/USER:SECRETPASSWORD@squid-server:3129'  # Missing slash after https:/
+    valid_url = 'https://proxy.example.com:8080'
+    
+    # Get URL type settings from the setting registry
+    url_type_settings = []
+    Foreman::SettingManager.settings.each do |name, definition|
+      if definition[:type] == :url
+        url_type_settings << name.to_s
+      end
+    end
+    
+    # Fallback to known URL setting if none found in registry
+    url_type_settings = ['http_proxy'] if url_type_settings.empty?
+    
+    url_type_settings.each do |setting_name|
+      # Test malformed URL rejection
+      put :update, params: { :id => setting_name, :setting => { :value => malformed_url } }
+      
+      assert_response :unprocessable_entity, "Setting #{setting_name} should reject malformed URL"
+      
+      response_body = JSON.parse(@response.body)
+      assert_includes response_body['error']['message'], 'must be a valid HTTP(S) URL', 
+                     "Setting #{setting_name} should return URL validation error"
+      
+      # Test valid URL acceptance
+      put :update, params: { :id => setting_name, :setting => { :value => valid_url } }
+      
+      assert_response :success, "Setting #{setting_name} should accept valid URL"
+      
+      # Verify the value was stored correctly
+      setting = Setting.find_by_name(setting_name)
+      assert_equal valid_url, setting.value, "Setting #{setting_name} should store valid URL correctly"
+    end
+  end
+
   test "should view setting as system admin" do
     user = user_one_as_system_admin
     setting = Setting.first
