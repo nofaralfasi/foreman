@@ -123,6 +123,18 @@ const HostsIndex = () => {
     setAPIOptions: response.setAPIOptions,
   });
 
+  // Sync API options when URL params change (e.g., via browser navigation)
+  // This handles the case where useAPI's internal state doesn't update on re-render
+  const urlParamsString = `${urlSearchQuery}|${urlPage}|${urlPerPage}`;
+  const prevUrlParamsRef = React.useRef(urlParamsString);
+  useEffect(() => {
+    if (prevUrlParamsRef.current !== urlParamsString) {
+      prevUrlParamsRef.current = urlParamsString;
+      setAPIOptions({ ...apiOptions, params: defaultParams });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlParamsString]);
+
   /* eslint-disable consistent-return */
   useEffect(() => {
     const handleLoadJS = () => {
